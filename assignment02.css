@@ -1,1 +1,31 @@
+/* --- put your css here --- */ 
 
+/* external css is imported into html using the <link> tag in the <head> section, as shown below.
+
+  <head>
+    <link rel="stylesheet" href="assignment02.css">
+  </head>
+
+*/
+
+
+/* --- pre-existing css --- */
+.stripey tr:nth-child(even) {
+  background-color: gray;
+}
+.stripey tr:nth-child(odd) {
+  background-color: white;
+}
+.stripey th {
+  color: white;
+  background-color: black;
+}
+.mousey td:hover {
+  background-color: yellow;
+}
+.rightey td {
+  text-align: right;
+}
+input[type="text"].pinkey:focus {
+  background-color: pink;
+}
