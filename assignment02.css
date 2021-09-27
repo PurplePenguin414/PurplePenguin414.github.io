@@ -92,8 +92,8 @@ img {
   right: 50px;
   bottom: 150px;
 }
-#bird {
 .positionMe  {position:relative}
+#bird {
   position: absolute;
   top: 50px;
   left: 250px;
