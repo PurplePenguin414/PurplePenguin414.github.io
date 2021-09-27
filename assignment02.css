@@ -68,3 +68,15 @@ span {
  span {
   background: yellow;
 }
+.a {
+  display: inline;
+}
+.b {
+  display: block;
+}
+.c {
+  display: inline-block;
+}
+
+/* --- My part c css --- */
+
