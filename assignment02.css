@@ -30,7 +30,7 @@ input[type="text"].pinkey:focus {
   background-color: pink;
 }
 
-/* --- My css --- */
+/* --- My part A css --- */
 body{
   background: skyblue;
 } 
@@ -45,4 +45,26 @@ p:nth-child(9) {
 }
 p:nth-child(8) {
    margin-left: 10px;
+}
+/* --- My part B css --- */
+div {
+  margin: 0px 0px 50px;
+}
+span {
+  display: inline-block;
+  width: 100px;
+}
+span {
+  display: inline-block;
+  height: 50px;
+}
+ span {
+  padding: 5px 20px;
+}
+span {
+  border: Solid blue;
+  border-width: 5px;
+}
+ span {
+  background: yellow;
 }
