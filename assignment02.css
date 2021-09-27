@@ -117,6 +117,3 @@ tr:nth-child(odd) {
 td:hover {
   background-color: yellow;
 }
-tr:style {
-  text-align:right;
-}
