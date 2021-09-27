@@ -79,4 +79,44 @@ span {
 }
 
 /* --- My part c css --- */
-
+img {
+  position: static;
+}
+#cat{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+#dog{
+  position: relative;
+  left: 50px;
+  bottom: 150px;
+}
+.positionMe  {position:relative}
+#bird {
+  position: absolute;
+  top: 50px;
+  left: 250px;
+  z-index: 1;
+}
+nav{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: green;
+  opacity: 0.9;
+  padding: 5px ;
+  font-size: 20px;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:nth-child(odd) {
+  background-color: #808080;
+}
+td:hover {
+  background-color: yellow;
+}
+tr:style {
+  text-align:right;
+}
