@@ -29,3 +29,6 @@
 input[type="text"].pinkey:focus {
   background-color: pink;
 }
+body{
+  background: skyblue;
+}
