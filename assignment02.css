@@ -117,3 +117,8 @@ tr:nth-child(odd) {
 td:hover {
   background-color: yellow;
 }
+input:hover, input:focus {
+ background-color: #FFB6C1;
+ border: 1px solid #FF0000;
+ color:#000000;
+}
