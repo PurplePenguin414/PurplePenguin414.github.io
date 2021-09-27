@@ -29,6 +29,20 @@
 input[type="text"].pinkey:focus {
   background-color: pink;
 }
+
+/* --- My css --- */
 body{
   background: skyblue;
+} 
+p:nth-child(11) {
+   font-family: Arial, Helvetica, sans-serif; 
+}
+p:nth-child(10) {
+   margin-left: 10px;
+}
+p:nth-child(9) {
+   margin-left: 10px;
+}
+p:nth-child(8) {
+   margin-left: 10px;
 }
