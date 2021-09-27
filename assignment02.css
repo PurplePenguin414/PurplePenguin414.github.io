@@ -89,7 +89,7 @@ img {
 }
 #dog{
   position: relative;
-  left: 50px;
+  right: 50px;
   bottom: 150px;
 }
 .positionMe  {position:relative}
