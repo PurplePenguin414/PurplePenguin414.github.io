@@ -68,8 +68,6 @@ for(let j=1; j<=18; j++) {
 // create an "Over" function
 function over (elem) { 
   if(elem.children[2].innerHTML == " ") {
-    let par = elem.children[1].innerHTML;
-    let score = elem.children[2].innerHTML;
     elem.children[3].innerHTML = score - par;}
   else {
     let par = elem.children[1].innerHTML;
