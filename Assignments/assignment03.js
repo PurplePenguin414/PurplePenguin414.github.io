@@ -67,7 +67,7 @@ for(let i=1; i<=18; i++) {
 
 // create an "Over" function
 function over (elem) {
-  if(elem.children[2].innerHTML > "1") 
+  if(elem.children[1].innerHTML > "1") 
     elem.children[3].innerHTML = "1";
   else {
     let currentScore = elem.children[3].innerHTML;
