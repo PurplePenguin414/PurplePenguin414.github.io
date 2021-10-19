@@ -59,20 +59,22 @@ function Zero (elem) {
   }
 }
 
-for(let i=1; i<=18; i++) {
+for(let j=1; j<=18; j++) {
   // console.log(i);
-  elem[i] = document.getElementById(i.toString());
-  elem[i].children[3].children[0] = function(){over(elem[i]);};
+  elem[j] = document.getElementById(j.toString());
+  var par = elem[j].children[1].innerHTML;
+  var score = elem[j].children[2].innerHTML;
+  elem[j].children[4].children[0].onclick = function(){over(elem[j]);};
 }
 
 // create an "Over" function
-function over (elem) {
-  if(elem.children[1].innerHTML > "1") 
-    elem.children[3].innerHTML = "1";
+function over (elem) { 
+  if(elem.children[2].innerHTML == "0") 
+    elem.children[3].innerHTML = par - score;
   else {
-    let currentScore = elem.children[3].innerHTML;
+    let currentScore = elem.children[2].innerHTML;
     currentScore = Number.parseInt(currentScore);
-    elem.children[3].innerHTML = currentScore +1;
+    elem.children[3].innerHTML = currentScore +0;
   }
 }
 
@@ -100,7 +102,7 @@ function create2dArray (tableid) {
 
 function createTotalsRow(arr2d) {
   // initialize totals row
-  let totalsRow = ["TOTAL", 0, 0];
+  let totalsRow = [0, 0, 0, 0];
   let rows = arr2d.length;
   let cols = arr2d[0].length;
   // skip row 0, the top row
