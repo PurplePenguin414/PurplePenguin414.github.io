@@ -62,7 +62,7 @@ function Zero (elem) {
 for(let i=1; i<=18; i++) {
   // console.log(i);
   elem[i] = document.getElementById(i.toString());
-  elem[i].children[3] = function(){over(elem[i]);};
+  elem[i].children[3].children[0] = function(){over(elem[i]);};
 }
 
 // create an "Over" function
