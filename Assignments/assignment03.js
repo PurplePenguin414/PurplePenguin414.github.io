@@ -62,19 +62,21 @@ function Zero (elem) {
 for(let j=1; j<=18; j++) {
   // console.log(i);
   elem[j] = document.getElementById(j.toString());
-  var par = elem[j].children[1].innerHTML;
-  var score = elem[j].children[2].innerHTML;
-  elem[j].children[4].children[0].onclick = function(){over(elem[j]);};
+  elem[j].children[4].children[3].onclick = function(){over(elem[j]);};
 }
 
 // create an "Over" function
 function over (elem) { 
-  if(elem.children[2].innerHTML == "0") 
-    elem.children[3].innerHTML = par - score;
+  if(elem.children[2].innerHTML == " ") {
+    par = Number.parseInt(par);
+    score = Number.parseInt(score);
+    elem.children[3].innerHTML = score - par;}
   else {
-    let currentScore = elem.children[2].innerHTML;
-    currentScore = Number.parseInt(currentScore);
-    elem.children[3].innerHTML = currentScore +0;
+    let par = elem.children[1].innerHTML;
+    let score = elem.children[2].innerHTML;
+    par = Number.parseInt(par);
+    score = Number.parseInt(score);
+    elem.children[3].innerHTML = par - score;
   }
 }
 
@@ -91,9 +93,9 @@ function create2dArray (tableid) {
   let arr = [];
   let rows = tableid.children[0].children.length;
   let cols = tableid.children[0].children[0].children.length;
-  for(let i=0; i<rows; i++) {
+  for(let i=1; i<rows; i++) {
     arr[i] = [];
-    for(let j=0; j<cols; j++) {
+    for(let j=1; j<cols; j++) {
       arr[i][j] = tableid.children[0].children[i].children[j].innerHTML;
     }
   }
@@ -104,7 +106,7 @@ function createTotalsRow(arr2d) {
   // initialize totals row
   let totalsRow = [0, 0, 0, 0];
   let rows = arr2d.length;
-  let cols = arr2d[0].length;
+  let cols = arr2d[1].length;
   // skip row 0, the top row
   for(let i=1; i<rows; i++) {
     // skip column 0, the item column
@@ -126,11 +128,11 @@ function createObj (tableid) {
   let obj = {};
   let rows = tableid.children[0].children.length;
   let cols = tableid.children[0].children[0].children.length;
-  for(let i=0; i<rows; i++) {
+  for(let i=1; i<4; i++) {
     obj["row"+i] = {}; // use bracket notation
-    for(let j=0; j<cols; j++) {
+    for(let j=1; j<18; j++) {
       obj["row"+i]["col"+j] = 
-        tableid.children[0].children[i].children[j].innerHTML;
+        tableid.children[1].children[i].children[j].innerHTML;
     }
   }
   return obj;
@@ -138,13 +140,13 @@ function createObj (tableid) {
 
 function createTotalsRowObj(obj) {
   // initialize totals row object
-  let totalsRowObj = {"col1":0, "col2":0, "col3":0};
-  let rows = Object.keys(obj).length;
-  let cols = 4;
+  let totalsRowObj = {"col1":1, "col2":1, "col3":1};
+  let rows = 4;
+  let cols = 18;
   // skip row 0, the top row
-  for(let i=1; i<rows; i++) {
+  for(let i=1; i<4; i++) {
     // skip column 0, the item column
-    for(let j=1; j<cols; j++) {
+    for(let j=1; j<18; j++) {
       totalsRowObj["col"+j] += Number.parseFloat(obj["row"+i]["col"+j]);
     }
   }
