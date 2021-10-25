@@ -128,7 +128,10 @@ function resetAllClubDistances() {
 // navigate to "About" screen
 function displayAbout() {
 	// your code here
+	JOptionPane.showMessageDialog(null, "This is the simple message 
+    		dialog box.", "Roseindia.net", 1);
 	// window.location.href = "clubAbout.html";
+	window.location.href = "clubAbout.html";
 }
 
 // navigate to "Penalty Info" screen
