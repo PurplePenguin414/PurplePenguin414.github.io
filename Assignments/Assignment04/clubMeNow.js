@@ -128,7 +128,7 @@ function resetAllClubDistances() {
 // navigate to "About" screen
 function displayAbout() {
 	// your code here
-	alert("Hello friends, this is message.");
+	alert("ClubMeNow version 1.0.0");
 	// window.location.href = "clubAbout.html";
 	window.location.href = "clubAbout.html";
 }
