@@ -35,9 +35,42 @@ appendTableRow3(table2a,"7","8","9");
 // Instructions
 // add a new function, appendTableRow5(), which adds 5-column rows instead of 3-column rows
 // create a 5-row by 5-column table showing the numbers, 1 through 25
+let div2b = document.getElementById("2B");
+let table2b = createTable("table2b");
+div2b.appendChild(table2b);
+table2b.setAttribute("style", "border:1px solid black;")
+table2b.setAttribute("width", "100%")
+appendTableRow5(table2b,"1","2","3","4","5");
+appendTableRow5(table2b,"6","7","8","9","10");
+appendTableRow5(table2b,"11","12","13","14","15");
+appendTableRow5(table2b,"16","17","18","19","20");
+appendTableRow5(table2b,"21","22","23","24","25");
 // put borders around the cells, too, not just around the edge of the table
 // Display output in <div id="2B">
-
+function appendTableRow5 (tableobj, col1, col2, col3, col4, col5) {
+  // create column (table division) DOM objects
+  let td1 = document.createElement("td");
+  let td2 = document.createElement("td");
+  let td3 = document.createElement("td");
+  let td4 = document.createElement("td");
+  let td5 = document.createElement("td");
+  // insert content into columns
+  td1.innerHTML = col1;
+  td2.innerHTML = col2;
+  td3.innerHTML = col3;
+  td4.innerHTML = col4;
+  td5.innerHTML = col5;
+  // create table row DOM object
+  let tr = document.createElement("tr");
+  // append table divisions (columns) to table row
+  tr.appendChild(td1);
+  tr.appendChild(td2);
+  tr.appendChild(td3);
+  tr.appendChild(td4); 
+  tr.appendChild(td5);
+  // append the row to the tbody element in the table
+  tableobj.children[0].appendChild(tr);
+}
 // ==================
 
 // 8. create "totals" row and column in a table
