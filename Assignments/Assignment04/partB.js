@@ -74,7 +74,20 @@ function appendTableRow5 (tableobj, col1, col2, col3, col4, col5) {
 // ==================
 
 // 8. create "totals" row and column in a table
-
+var tds = document.getElementById('table3B').getElementsByTagName('td');
+            var sum = 0;
+            var sum2 = 0;
+            for(var i = 0; i < tds.length; i ++) {
+                if(tds[i].className == 'count-me') {
+                    sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                }
+            }
+            for(var i = 0; i < tds.length; i ++) {
+                if(tds[i].className == 'count-me2') {
+                    sum2 += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                }
+            }
+            document.getElementById('table3B').innerHTML += '<tr><td>total</td><td>' + sum + '</td><td>' + sum2 + '</td></tr>';
 // Instructions
 // don't change table3A. it's just a template.
 // Use table03A to create table3B. Create new functions as in item 2, above. 
