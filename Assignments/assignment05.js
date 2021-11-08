@@ -79,7 +79,7 @@ function loadContent() {
       covidJson = this.responseText;
       covidJsObj = JSON.parse(covidJson);
       newConfirmedOver1000 = [];
-      TotalConfirmedPer100000 = [];
+      totalConfirmedPer100000 = [];
       
 	    for (let c of covidJsObj.Countries) {
         if (c.NewConfirmed > 5000) {
