@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>  
+  <title> Assignment 5 </title> 
+ </head> 
+ <body> 
+  <!-- ---------------------------------------------------
+Filename: assignment05
+Author: Megan Gibbs
+Contact: Mlgibbs@svsu.edu
+Description: Covid19 Chart
+---------------------------------------------------------- --> 
+<h2>Example Chart using Chart.js</h2>
+<canvas id="myChart"></canvas>
 
+<h2>Example AJAX call to Covid19api</h2>
+<button type="button" onclick="loadContent()">Load Covid-19 Content</button>
+
+
+<!-- ChartJS: https://www.chartjs.org/ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+<!-- Lodash: https://lodash.com/ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+
+<!-- Day.js: https://day.js.org/docs/en/installation/browser -->
+<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+<script>
+  dayjs().format();
+  console.log(dayjs().format("YYYY-MM-DD"));
+
+</script>
+    <footer> 
+   <p>&copy; 2020. George Corser. All rights reserved. </p> 
+  </footer>  
+ </body>
+</html>
