@@ -113,6 +113,50 @@ function loadContent() {
 
     } // end if
     
+    if (this.readyState == 4 
+        && this.status == 200) {
+      
+      covidJson = this.responseText;
+      covidJsObj = JSON.parse(covidJson);
+      TotalConfirmedPer100000 = [];
+      
+	    for (let c of covidJsObj.Countries) {
+        if (c.TotalConfirmed > 5000) {
+          TotalConfirmedPer100000.push({ 
+            "Slug": c.Slug, 
+            "TotalConfirmed": c.TotalConfirmed, 
+            "TotalDeaths": c.TotalDeaths,
+            "Population": c.populations
+          });
+        }
+      }
+      TotalConfirmedPer100000 = _.orderBy(TotalConfirmedPer100000, "TotalDeaths", "desc");
+
+      chartData.data.datasets[0].backgroundColor 
+        = "rgba(100,100,100,0.4)"; // gray
+      chartData.data.datasets[1].backgroundColor 
+        = "rgba(255,0,0,0.4)"; // red
+      chartData.data.datasets[0].label  
+        = 'new cases';
+      chartData.data.datasets[1].label  
+        = 'new deaths';
+      chartData.data.labels  
+        = TotalConfirmedPer100000.map( (x) => x.Slug );
+      chartData.data.datasets[0].data  
+        = TotalConfirmedPer100000.map( 
+          (x) => x.TotalConfirmed );
+      chartData.data.datasets[1].data  
+        = TotalConfirmedPer100000.map( 
+          (x) => x.TotalDeaths );
+      chartData.data.datasets[2].data  
+        = TotalConfirmedPer100000.map( 
+          100000 * x.TotalDeaths / x.Population );
+      chartData.options.title.text 
+        = "Covid 19 Hotspots" + dayjs().format("YYYY-MM-DD") ;
+      myChart = new Chart(ctx, chartData); 
+
+    } // end if
+    
   }; // end xhttp.onreadystatechange = function()
   
   xhttp.open("GET", URL, true);
