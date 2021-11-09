@@ -44,9 +44,8 @@ var chartData = {
           maxTicksLimit: 11,
           callback: function(label, index, labels) {
             return (   label/1000 > 9 
-                    || label/1000 == 1 
-                    || label/1000 == 0.1 
-                    || label/1000 == 0.01) 
+                    || label/1000 == 1
+                    || label/1000 == 0.1 ) 
               ? label/1000+'k' :  "";
           }
         },
