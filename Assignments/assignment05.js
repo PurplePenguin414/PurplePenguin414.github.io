@@ -126,6 +126,7 @@ for (let i=0; i< covidJsObj.Countries.length; i++) {
   })
   
 }
+	TotalConfirmedPer10000 = _.orderBy(TotalConfirmedPer10000, "TotalDeaths", "desc");
     } // end if
 
   }; // end xhttp.onreadystatechange = function()
