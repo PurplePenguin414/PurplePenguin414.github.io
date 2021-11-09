@@ -134,7 +134,22 @@ for (let i=0; i< covidJsObj.Countries.length; i++) {
   xhttp.send();
   
 } // end function loadContent() 
-
+  function loadData() {
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 
+        && this.status == 200) {
+       
+      covidJson = this.responseText;
+      covidJson = JSON.parse(covidJson);
+      console.log(covidJson.Global);
+    }
+  }
+        let url = "https://api.covid19api.com/summary";
+        xhttp.open("GET", url, true);
+        xhttp.send();
+      
+    }
 // data from: https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population
 var populations = {
   'china' : 1405137440,
