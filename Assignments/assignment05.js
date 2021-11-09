@@ -110,23 +110,24 @@ function loadContent() {
       chartData.options.title.text 
         = "Covid 19 Hotspots " + dayjs().format("YYYY-MM-DD");
       myChart = new Chart(ctx, chartData); 
-
-    } // end if
-	  
+      
+      
     var popArr = [];
 for([p, v] of Object.entries(populations)) 
   popArr.push([p, v]);
-for (let i=0; i<covidJsObj.Countries.length; i++) {
+for (let i=0; i< covidJsObj.Countries.length; i++) {
   popArr.push({
     "Slug": "\"" + covidJsObj.Countries[i].Slug + "\"",
     "TotalConfirmed": covidJsObj.Countries[i].TotalConfirmed,
     "TotalDeaths": covidJsObj.Countries[i].TotalDeath,
-    "Population": covidJsObj.Countries[i].populations,
+    "Population": populations[i.Slug],
     "TotalConfirmedPer10000": (covidJsObj.Countries[i].TotalConfirmed / populations[i]) * 100000
     // continue here...
   })
   
 }
+    } // end if
+
   }; // end xhttp.onreadystatechange = function()
   
   xhttp.open("GET", URL, true);
