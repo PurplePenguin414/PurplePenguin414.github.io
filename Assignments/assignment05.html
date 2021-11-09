@@ -10,11 +10,21 @@ Author: Megan Gibbs
 Contact: Mlgibbs@svsu.edu
 Description: Covid19 Chart
 ---------------------------------------------------------- --> 
-<h2>Example Chart using Chart.js</h2>
-<canvas id="myChart"></canvas>
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <h2>Example Chart using Chart.js</h2>
+              <canvas id="myChart"></canvas>
 
-<h2>Example AJAX call to Covid19api</h2>
-<button type="button" onclick="loadContent()">Load Covid-19 Content</button>
+            <h2>Example AJAX call to Covid19api</h2>
+              <button type="button" onclick="loadContent()">Load Covid-19 Content</button>
+        </div>
+        <div class="col-md">
+        (1 point) Put today's date in the title of the chart. Use Day.js (.format() method). (2 points) Use "populations" object to create an array of objects containing Slug, TotalConfirmed, TotalDeaths, Population (which comes from the "populations" object), and TotalConfirmedPer100000 (which is computed using population). (1 point) Use Lodash (_.orderBy() method) to sort data on TotalConfirmedPer100000, descending, so the graph shows the country with the highest TotalConfirmedPer100000 first. (2 points) Show bars for TotalConfirmed, TotalDeaths, and TotalConfirmedPer100000in the graph -- only for countries with AT LEAST 50,000 total deaths.(2 points) Implement an AJAX call to https://api.covid19api.com/summary (Links to an external site.). Save results to localStorage. Only do AJAX calls if the most recent AJAX call was over 24 hours ago or there is no data in localStorage. Otherwise, pull the data from localStorage. (1 point) Adjust the logarithmic scale so the y axis shows only powers of 10. (1 point) Put the chart inside a Bootstrap DIV. Add a second DIV so the second DIV appears to the right of the chart if the screen is medium-sized or bigger, otherwise the second DIV appears below the chart. The second DIV can be something simple, like a paragraph of text, as shown below. Your result should look something like the image below.
+        </div>
+    </div>
+</div>
+
 
 
 <!-- ChartJS: https://www.chartjs.org/ -->
@@ -25,7 +35,6 @@ Description: Covid19 Chart
 
 <!-- Day.js: https://day.js.org/docs/en/installation/browser -->
 <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-  <script src='assignment05.js'></script>
 <script>
   dayjs().format();
   console.log(dayjs().format("YYYY-MM-DD"));
