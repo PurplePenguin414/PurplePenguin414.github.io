@@ -112,11 +112,11 @@ function loadContent() {
       myChart = new Chart(ctx, chartData); 
       
       
-    var popArr = [];
+    var TotalConfirmedPer10000 = [];
 for([p, v] of Object.entries(populations)) 
-  popArr.push([p, v]);
+  TotalConfirmedPer10000.push([p, v]);
 for (let i=0; i< covidJsObj.Countries.length; i++) {
-  popArr.push({
+  TotalConfirmedPer10000.push({
     "Slug": "\"" + covidJsObj.Countries[i].Slug + "\"",
     "TotalConfirmed": covidJsObj.Countries[i].TotalConfirmed,
     "TotalDeaths": covidJsObj.Countries[i].TotalDeath,
