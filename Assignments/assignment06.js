@@ -64,12 +64,6 @@ var chartData = {
 
 // ---------- loadContent() function ----------
 
-// Note: you can't execute API data dependent code outside the loadContent() function because the code might execute before the AJAX call responds, that is, it might execute before the variable, covidJson, is initialized with data from the API. Example below.
-// console.log(covidJson.Global.NewConfirmed); // error 
-
-// code below modified from: 
-// https://www.w3schools.com/js/js_ajax_intro.asp
-
 function loadContent() {
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -84,7 +78,6 @@ function loadContent() {
       var popArr = []
       for([p, v] of Object.entries(populations)) 
         popArr[p] = v
-      // console.log( popArr )
       
 	    for (let c of covidJsObj.Countries) {
         if (c.NewConfirmed > 5000) {
@@ -261,7 +254,7 @@ let loans = [
   { loan_year: 2024, loan_amount: 10000.0, loan_int_rate: 0.0453 }
 ];
 //global variables
-let loanWithInterest = 0;
+let loanWInterest = 0;
 let int = 0;
 let payments;
 
@@ -310,8 +303,8 @@ function loadDoc() {
   $("#loan_amt0" + 1).val(defaultLoanAmount.toFixed(2)); //Jquery selector, setting default loan amount in first line
   var defaultInterestRate = loans[0].loan_int_rate;
   $("#loan_int0" + 1).val(defaultInterestRate); //Jquery selector, setting default InterestRate in first line
-  var loanWithInterest = loans[0].loan_amount * (1 + loans[0].loan_int_rate);
-  $("#loan_bal0" + 1).text(toMoney(loanWithInterest)); // Jquery selector, uses toMoney & setting default loanWithInterest in first line
+  var loanWInterest = loans[0].loan_amount * (1 + loans[0].loan_int_rate);
+  $("#loan_bal0" + 1).text(toMoney(loanWInterest)); // Jquery selector, uses toMoney & setting default loanWInterest in first line
 
   // pre-fill defaults for other loan years
   // asking 2,3,4,5
@@ -329,9 +322,9 @@ function loadDoc() {
       backgroundColor: "grey",
       color: "white"
     });
-    loanWithInterest = //keeps updating the interest to have the total
-      (loanWithInterest + defaultLoanAmount) * (1 + defaultInterestRate);
-    $("#loan_bal0" + i).text(toMoney(loanWithInterest)); //adds dollar signs and comma at balance
+    loanWInterest = //keeps updating the interest to have the total
+      (loanWInterest + defaultLoanAmount) * (1 + defaultInterestRate);
+    $("#loan_bal0" + i).text(toMoney(loanWInterest)); //adds dollar signs and comma at balance
   } // end: "for" loop
 
   //all input fields: select contents on focus
@@ -397,11 +390,10 @@ function updateLoansArray() {
   } // end: if
 } // end: function updateLoansArray()
 
-// -------------------------------------------------------
 //display the data in the entry form
 //filling out the form and replacing the field witth correct computations
 let updateForm = () => {
-  loanWithInterest = 0;
+  loanWInterest = 0;
   let totalAmt = 0;
   for (i = 1; i < 6; i++) {
     $(`#loan_year0${i}`).val(loans[i - 1].loan_year);
@@ -409,37 +401,34 @@ let updateForm = () => {
     $(`#loan_amt0${i}`).val(amt);
     totalAmt += parseFloat(amt);
     $(`#loan_int0${i}`).val(loans[i - 1].loan_int_rate);
-    loanWithInterest =
-      (loanWithInterest + parseFloat(amt)) * (1 + loans[0].loan_int_rate);
-    $("#loan_bal0" + i).text(toMoney(loanWithInterest));
+    loanWInterest =
+      (loanWInterest + parseFloat(amt)) * (1 + loans[0].loan_int_rate);
+    $("#loan_bal0" + i).text(toMoney(loanWInterest));
   }
-  int = loanWithInterest - totalAmt;
+  int = loanWInterest - totalAmt;
   $(`#loan_int_accrued`).text(toMoney(int)); //show the interest
 }; // end: function updateForm()
 
 // ----- ANGULAR -----
 //creates variable app and assign value angular module
 var app = angular.module("myApp", []);
-
-//contoller takes the total amount borrowed and spread it in how many years
 app.controller("myCtrl", function ($scope) {
-  $scope.payments = []; // controller connects with the view in HTML
+  $scope.payments = [];
   $scope.populate = function () {
     //populates the payments array
 
-    updateForm(); //updates form
+    updateForm(); 
 
     //payments
-    let total = loanWithInterest; //calculate total
+    let total = loanWInterest; //calculate total
     let iRate = loans[0].loan_int_rate;
     let r = iRate / 12;
     let n = 11;
     //loan payment formula
-    //https://www.thebalance.com/loan-payment-calculations-315564
     let pay =
       12 * (total / (((1 + r) ** (n * 12) - 1) / (r * (1 + r) ** (n * 12)))); //formula to get computation with same payments for every period
     for (let i = 0; i < 10; i++) {
-      //loop that generate the calculation as the period increases
+      //loop that calculate as the period increases
       total -= pay;
       let int = total * iRate;
       $scope.payments[i] = {
