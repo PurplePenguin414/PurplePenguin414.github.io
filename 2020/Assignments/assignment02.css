@@ -1,0 +1,124 @@
+/* --- put your css here --- */ 
+
+/* external css is imported into html using the <link> tag in the <head> section, as shown below.
+
+  <head>
+    <link rel="stylesheet" href="assignment02.css">
+  </head>
+
+*/
+
+
+/* --- pre-existing css --- */
+.stripey tr:nth-child(even) {
+  background-color: gray;
+}
+.stripey tr:nth-child(odd) {
+  background-color: white;
+}
+.stripey th {
+  color: white;
+  background-color: black;
+}
+.mousey td:hover {
+  background-color: yellow;
+}
+.rightey td {
+  text-align: right;
+}
+input[type="text"].pinkey:focus {
+  background-color: pink;
+}
+
+/* --- My part A css --- */
+body{
+  background: skyblue;
+} 
+p:nth-child(11) {
+   font-family: Arial, Helvetica, sans-serif; 
+}
+p:nth-child(10) {
+   margin-left: 10px;
+}
+p:nth-child(9) {
+   margin-left: 10px;
+}
+p:nth-child(8) {
+   margin-left: 10px;
+}
+/* --- My part B css --- */
+div {
+  margin: 0px 0px 50px;
+}
+span {
+  display: inline-block;
+  width: 100px;
+}
+span {
+  display: inline-block;
+  height: 50px;
+}
+ span {
+  padding: 5px 20px;
+}
+span {
+  border: Solid blue;
+  border-width: 5px;
+}
+ span {
+  background: yellow;
+}
+.a {
+  display: inline;
+}
+.b {
+  display: block;
+}
+.c {
+  display: inline-block;
+}
+
+/* --- My part c css --- */
+img {
+  position: static;
+}
+#cat{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+#dog{
+  position: relative;
+  right: 50px;
+  bottom: 150px;
+}
+.positionMe  {position:relative}
+#bird {
+  position: absolute;
+  top: 50px;
+  left: 250px;
+  z-index: 1;
+}
+nav{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: green;
+  opacity: 0.9;
+  padding: 5px ;
+  font-size: 20px;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:nth-child(odd) {
+  background-color: #808080;
+}
+td:hover {
+  background-color: yellow;
+}
+input:hover, input:focus {
+ background-color: #FFB6C1;
+ border: 1px solid #FF0000;
+ color:#000000;
+}
