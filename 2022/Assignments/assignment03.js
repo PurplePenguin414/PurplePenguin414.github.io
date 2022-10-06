@@ -1,5 +1,5 @@
 
-function convertF2C(f, c) {
-  f = parseFloat(f);
-  document.getElementById("c").innerHTML=(f-32)/1.8;
+function convertF2C(valNum) {
+  valNum = parseFloat(valNum);
+  document.getElementById("c").innerHTML=(valNum-32)/1.8;
 }
