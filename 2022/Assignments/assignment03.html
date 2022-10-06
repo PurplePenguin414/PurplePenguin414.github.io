@@ -2,6 +2,14 @@
 <html>
 <h1>CIS-255: Assignment 03 Fall 2022</h1>
 <h2>03A. Convert Fahrenheit to Celsius</h2>
+  <script>
+    function convertF2C(f) {
+      f = parseFloat(f);
+      out = ((f-32)/1.8);
+      document.getElementById("cout").innerHTML= out;
+      return ((f-32)/1.8);
+    }
+  </script>
 <form>
   <fieldset>
     <legend>Enter a temperature </legend>
