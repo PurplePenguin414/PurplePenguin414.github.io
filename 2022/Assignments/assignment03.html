@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
    <script>
-      function convertF2C(f) {
-      f = parseFloat(f);
-      out = ((f-32)/1.8);
+      function convertF2C(fer) {
+      let fer = parseFloat(fer);
+      let out = ((f-32)/1.8);
       document.getElementById("cout").innerHTML= out;
       console.log(out);
       }
@@ -57,27 +57,45 @@
    <h2>03D. Generate new string from input fields</h2>
    <form>
       <fieldset>
-         <legend>Enter a number </legend>
-         <input id="n" type="text" />
-         <input type="button" 
-            onclick='sumDigits("n");' 
-            value="Add"/>
+         <legend>Enter Your Full Name or Title: </legend>
+         <label for="title">Title:</label><br />
+         <input id="title" type="text" />
          <br />
-         <label for="sum">Sum:</label><br />
-         <input id="result" type="text" disabled />
+         <label for="fname">First Name:</label><br />
+         <input id="fname" type="text" />
+         <br />
+         <label for="lname">Last Name:</label><br />
+         <input id="lname" type="text" />
+         <br />
+         <label for="s">Suffix:</label><br />
+         <input id="s" type="text" />
+         <input type="button" 
+            onclick= 'fullName("title", "fname", "lname", "s")';
+            value="Submit"/>
+         <br />
+         <label for="fullName">Your Full Name:</label><br />
+         <input id="fullName" type="text" disabled />
       </fieldset>
    </form>
    <h2>03E. Tic-Tac-Toe game</h2>
    <form>
       <fieldset>
-         <legend>Enter a number </legend>
-         <input id="n" type="text" />
-         <input type="button" 
-            onclick='sumDigits("n");' 
-            value="Add"/>
-         <br />
-         <label for="sum">Sum:</label><br />
-         <input id="result" type="text" disabled />
+         <table id='tic' class = 'table table-striped' border = "1">
+         <tr>
+            <td class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='1-1();'>&nbsp;&nbsp;x&nbsp;&nbsp;</button></td>
+            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='1-2();'>&nbsp;&nbsp;o&nbsp;&nbsp;</button></th>
+            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='1-3();'>&nbsp;&nbsp;x&nbsp;&nbsp;</button></th>
+         </tr>
+         <tr>
+            <td class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='1-1();'>&nbsp;&nbsp;o&nbsp;&nbsp;</button></td>
+            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='1-2();'>&nbsp;&nbsp;x&nbsp;&nbsp;</button></th>
+            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='1-3();'>&nbsp;&nbsp;o&nbsp;&nbsp;</button></th>
+         </tr>
+         <tr>
+            <td class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='1-1();'>&nbsp;&nbsp;x&nbsp;&nbsp;</button></td>
+            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='1-2();'>&nbsp;&nbsp;o&nbsp;&nbsp;</button></th>
+            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='1-3();'>&nbsp;&nbsp;x&nbsp;&nbsp;</button></th>
+         </tr>
       </fieldset>
    </form>
 </html>
