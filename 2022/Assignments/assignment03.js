@@ -24,3 +24,19 @@ function sumDigits() {
   var rezultat = document.getElementById("result");
   rezultat.value = sum;
 }
+
+function fullName() {
+  var title = document.getElementById("title").value,
+  fname = document.getElementById("fName").value,
+  lname = document.getElementById("lName").value,
+  s = document.getElementById("s").value,
+  Fullname = Fullname.concat(title, fname, lname, s);
+  
+  console.log(Fullname);
+  
+  document.getElementById("fullName").innerHTML= Fullname;
+  
+}
+
+var tb1 = document.getElementById('tic');
+
