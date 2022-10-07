@@ -8,7 +8,7 @@ function GCD(x, y) {
     y = x % y;
     x = t;
   }
-  document.getElementById("out").innerHTML= x;
+  document.getElementById("cout").innerHTML= x;
   return x;
 }
 
@@ -21,8 +21,8 @@ function sumDigits() {
       value = Math.floor(value / 10);
   }
   
-  let rezultat = document.getElementById("result");
-  rezultat.value = sum;
+  let result = document.getElementById("result");
+  result.value = sum;
 }
 
 function fullName() {
