@@ -4,7 +4,7 @@ function GCD(x, y) {
   x = Math.abs(x);
   y = Math.abs(y);
   while(y) {
-    var t = y;
+    let t = y;
     y = x % y;
     x = t;
   }
@@ -13,7 +13,7 @@ function GCD(x, y) {
 }
 
 function sumDigits() {
-    var value = document.getElementById("n").value,
+    let value = document.getElementById("n").value,
         sum = 0;
 
   while (value) {
@@ -21,12 +21,12 @@ function sumDigits() {
       value = Math.floor(value / 10);
   }
   
-  var rezultat = document.getElementById("result");
+  let rezultat = document.getElementById("result");
   rezultat.value = sum;
 }
 
 function fullName() {
-  var title = document.getElementById("title").value,
+  let title = document.getElementById("title").value,
   fname = document.getElementById("fName").value,
   lname = document.getElementById("lName").value,
   s = document.getElementById("s").value,
@@ -38,5 +38,5 @@ function fullName() {
   
 }
 
-var tb1 = document.getElementById('tic');
+let tb1 = document.getElementById('tic');
 
