@@ -8,7 +8,7 @@ function GCD(x, y) {
     y = x % y;
     x = t;
   }
-  document.getElementById("cout").innerHTML= x;
+  document.getElementById("out").innerHTML= x;
   return x;
 }
 
