@@ -1,6 +1,4 @@
 function GCD(x, y) {
-  if ((typeof x !== 'number') || (typeof y !== 'number')) 
-    return false;
   x = Math.abs(x);
   y = Math.abs(y);
   while(y) {
@@ -8,8 +6,8 @@ function GCD(x, y) {
     y = x % y;
     x = t;
   }
-  document.getElementById("out").innerHTML= x;
-  return x;
+  let result = document.getElementById("03B");
+  result.value = x;
 }
 
 function sumDigits() {
@@ -27,16 +25,42 @@ function sumDigits() {
 
 function fullName() {
   let title = document.getElementById("title").value,
-  fname = document.getElementById("fName").value,
-  lname = document.getElementById("lName").value,
+  fname = document.getElementById("fname").value,
+  lname = document.getElementById("lname").value,
   s = document.getElementById("s").value,
-  Fullname = Fullname.concat(title, fname, lname, s);
+  Fullname = `${title}. ${fname} ${lname}, ${s}`;
   
-  console.log(Fullname);
-  
-  document.getElementById("fullName").innerHTML= Fullname;
-  
+  let name = document.getElementById("03D");
+  name.value = Fullname;
 }
 
-let tb1 = document.getElementById('tic');
+var tb1 = document.getElementById('tic');
 
+function AA(){
+  let aa = document.getElementById("03D");
+  aa.value = x;
+}
+function AB(){
+  
+}
+function AC(){
+  
+}
+function BA(){
+  
+}
+function BB(){
+  
+}
+function BC(){
+  
+}
+function CA(){
+  
+}
+function CB(){
+  
+}
+function CC(){
+  
+}
