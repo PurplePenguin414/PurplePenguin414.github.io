@@ -40,7 +40,8 @@ function fullName() {
     
     if(s == "none")
         s = "";
-
+    else if (s != "none")
+        s += ".";
     if(fname.length > 0)
         fname += " ";
     if(lname.length > 0)
