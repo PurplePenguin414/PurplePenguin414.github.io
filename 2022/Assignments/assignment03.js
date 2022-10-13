@@ -37,17 +37,19 @@ function fullName() {
     let fname = document.getElementById("fname").value;
     let lname = document.getElementById("lname").value;
     let title = document.getElementById("title").value;
-    
+      
     if(s == "none")
         s = "";
-    else if (s != "none")
+    else if (s != "")
         s += ".";
     if(fname.length > 0)
         fname += " ";
     if(lname.length > 0)
-        lname += " ";
+        lname += ", ";
     if(title == "none")
         title = "";
+    else if (title != "")
+      title += ". ";
     else title += " ";
 
     document.getElementById("03D").value = title + fname + lname + s;
