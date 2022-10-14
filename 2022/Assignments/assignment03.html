@@ -76,25 +76,18 @@
       </fieldset>
    </form>
    <h2>03E. Tic-Tac-Toe game</h2>
-   <form>
-      <fieldset>
-         <table id='tic' class = 'table table-striped' border = "1">
-         <tr>
-            <td class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='AA();'>&nbsp;&nbsp;x&nbsp;&nbsp;</button></td>
-            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='AB();'>&nbsp;&nbsp;o&nbsp;&nbsp;</button></th>
-            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='AC();'>&nbsp;&nbsp;x&nbsp;&nbsp;</button></th>
-         </tr>
-         <tr>
-            <td class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='BA();'>&nbsp;&nbsp;o&nbsp;&nbsp;</button></td>
-            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='BB();'>&nbsp;&nbsp;x&nbsp;&nbsp;</button></th>
-            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='BC();'>&nbsp;&nbsp;o&nbsp;&nbsp;</button></th>
-         </tr>
-         <tr>
-            <td class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='CA();'>&nbsp;&nbsp;x&nbsp;&nbsp;</button></td>
-            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='CB();'>&nbsp;&nbsp;o&nbsp;&nbsp;</button></th>
-            <th class = 'cmn_fullHeight'><button class='btn btn-warning cmn_noPadding cmn_fullHeight' onclick='CC();'>&nbsp;&nbsp;x&nbsp;&nbsp;</button></th>
-         </tr>
-      </fieldset>
-   </form>
+   <div class="ticTac">
+            <div data-cell-index="0" class="cell"></div>
+            <div data-cell-index="1" class="cell"></div>
+            <div data-cell-index="2" class="cell"></div>
+            <div data-cell-index="3" class="cell"></div>
+            <div data-cell-index="4" class="cell"></div>
+            <div data-cell-index="5" class="cell"></div>
+            <div data-cell-index="6" class="cell"></div>
+            <div data-cell-index="7" class="cell"></div>
+            <div data-cell-index="8" class="cell"></div>
+    </div>
+    <h3 class="game--status"></h3>
+    <button class="game--restart">Restart Game</button>
    <script src="https://purplepenguin414.github.io/2022/Assignments/assignment03.js"></script>
 </html>
