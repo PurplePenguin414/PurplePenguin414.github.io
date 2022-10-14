@@ -1,3 +1,9 @@
+/*
+    Filename:    assignment03.js
+    Author:      Megan Gibbs (mlgibbs@svsu.edu)
+    Description: Assignment 03 js
+ */
+
 function GCD() {
 
     let x = parseInt(document.getElementById("one").value);
