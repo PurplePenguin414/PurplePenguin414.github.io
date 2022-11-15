@@ -27,58 +27,49 @@ function loadJson() {
 }
 
 let id = document.getElementById("id");
+let c = document.getElementById("Country");
+let code = document.getElementById("Code");
+let slug = document.getElementById("Slug");
+let ncon = document.getElementById("nConfirmed");
+let tcon = document.getElementById("tConfirmed");
+let ndeath = document.getElementById("nDeaths");
+let tdeath = document.getElementById("tDeaths");
+let nrec = document.getElementById("nRecovered");
+let trec =document.getElementById("tRecovered");
+let d = document.getElementById("date");
 
 function loadPriorCountry () {
   country--
-  if (country < 0) 
+  if (country < 0) {
     country = 0
     id.innerHTML = json.Countries[country].ID
-    document.getElementById("Country").innerHTML 
-    = json.Countries[country].Country
-    document.getElementById("Code").innerHTML 
-    = json.Countries[country].CountryCode
-    document.getElementById("Slug").innerHTML 
-    = json.Countries[country].Slug
-    document.getElementById("nConfirmed").innerHTML 
-    = json.Countries[country].NewConfirmed
-    document.getElementById("tConfirmed").innerHTML 
-    = json.Countries[country].TotalConfirmed
-    document.getElementById("nDeaths").innerHTML 
-    = json.Countries[country].NewDeaths
-    document.getElementById("tDeaths").innerHTML 
-    = json.Countries[country].TotalDeaths
-    document.getElementById("nRecovered").innerHTML 
-    = json.Countries[country].NewRecovered
-    document.getElementById("tRecovered").innerHTML 
-    = json.Countries[country].TotalRecovered
-    document.getElementById("date").innerHTML 
-    = json.Countries[country].Date
+    c.innerHTML = json.Countries[country].Country
+    code.innerHTML = json.Countries[country].CountryCode
+    slug.innerHTML = json.Countries[country].Slug
+    ncon.innerHTML = json.Countries[country].NewConfirmed
+    tcon.innerHTML = json.Countries[country].TotalConfirmed
+    ndeath.innerHTML = json.Countries[country].NewDeaths
+    tdeath.innerHTML = json.Countries[country].TotalDeaths
+    nrec.innerHTML = json.Countries[country].NewRecovered
+    trec.innerHTML = json.Countries[country].TotalRecovered
+    d.innerHTML = json.Countries[country].Date
+  }
     
 }
 function loadNextCountry () {
   country++
-  if (country > json.Countries.length - 1) 
-    country = json.Countries.length - 1;
-    document.getElementById("id").innerHTML 
-    = json.Countries[country].ID
-    document.getElementById("Country").innerHTML 
-    = json.Countries[country].Country
-    document.getElementById("Code").innerHTML 
-    = json.Countries[country].CountryCode
-    document.getElementById("Slug").innerHTML 
-    = json.Countries[country].Slug
-    document.getElementById("nConfirmed").innerHTML 
-    = json.Countries[country].NewConfirmed
-    document.getElementById("tConfirmed").innerHTML 
-    = json.Countries[country].TotalConfirmed
-    document.getElementById("nDeaths").innerHTML 
-    = json.Countries[country].NewDeaths
-    document.getElementById("tDeaths").innerHTML 
-    = json.Countries[country].TotalDeaths
-    document.getElementById("nRecovered").innerHTML 
-    = json.Countries[country].NewRecovered
-    document.getElementById("tRecovered").innerHTML 
-    = json.Countries[country].TotalRecovered
-    document.getElementById("date").innerHTML 
-    = json.Countries[country].Date
+  if (country > json.Countries.length - 1) {
+    country = json.Countries.length - 1
+    id.innerHTML = json.Countries[country].ID
+    c.innerHTML = json.Countries[country].Country
+    code.innerHTML = json.Countries[country].CountryCode
+    slug.innerHTML = json.Countries[country].Slug
+    ncon.innerHTML = json.Countries[country].NewConfirmed
+    tcon.innerHTML = json.Countries[country].TotalConfirmed
+    ndeath.innerHTML = json.Countries[country].NewDeaths
+    tdeath.innerHTML = json.Countries[country].TotalDeaths
+    nrec.innerHTML = json.Countries[country].NewRecovered
+    trec.innerHTML = json.Countries[country].TotalRecovered
+    d.innerHTML = json.Countries[country].Date
+  }
 }
