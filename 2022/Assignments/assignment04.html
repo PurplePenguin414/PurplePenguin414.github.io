@@ -1,0 +1,99 @@
+<!-- 
+    Filename:    assignment03.html
+    Author:      Megan Gibbs (mlgibbs@svsu.edu)
+    Description: Assignment 03
+ -->
+<!DOCTYPE html>
+<html>
+ <head> 
+  <link rel="stylesheet" href="assignment03.css" /> 
+  <title> Assignment 3 </title> 
+ </head> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<form>
+  <div id="coviddata"></div>
+  <div class="form-group row">
+    <label for="id" class="col-4 col-form-label">Country ID</label> 
+    <div class="col-8">
+      <input id="id" name="id" type="text" class="form-control" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Country" class="col-4 col-form-label">Country</label> 
+    <div class="col-8">
+      <input id="Country" name="Country" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Code" class="col-4 col-form-label">Country Code</label> 
+    <div class="col-8">
+      <input id="Code" name="Code" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Slug" class="col-4 col-form-label">Slug</label> 
+    <div class="col-8">
+      <input id="Slug" name="Slug" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="nConfirmed" class="col-4 col-form-label">New Confirmed</label> 
+    <div class="col-8">
+      <input id="nConfirmed" name="nConfirmed" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="tConfirmed" class="col-4 col-form-label">Total Confirmed</label> 
+    <div class="col-8">
+      <input id="tConfirmed" name="tConfirmed" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="nDeaths" class="col-4 col-form-label">New Deaths</label> 
+    <div class="col-8">
+      <input id="nDeaths" name="nDeaths" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="tDeaths" class="col-4 col-form-label">Total Deaths</label> 
+    <div class="col-8">
+      <input id="tDeaths" name="tDeaths" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="nRecovered" class="col-4 col-form-label">New Recovered</label> 
+    <div class="col-8">
+      <input id="nRecovered" name="nRecovered" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="tRecovered" class="col-4 col-form-label">Total Recovered</label> 
+    <div class="col-8">
+      <input id="tRecovered" name="tRecovered" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="date" class="col-4 col-form-label">Date</label> 
+    <div class="col-8">
+      <input id="date" name="date" type="text" class="form-control">
+    </div>
+  </div> 
+  <div class="form-group row">
+    <div class="offset-4 col-8">
+      <button id="loadjson" type="button">Load JSON</button>
+      <button id="loadpriorcountry" type="button">Prior Country</button>
+      <button id="loadnextcountry" type="button">Next Country</button>
+    </div>
+  </div>
+</form>
+</html>
+
+
+
+
+
+
+
