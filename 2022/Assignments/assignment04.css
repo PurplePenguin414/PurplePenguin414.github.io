@@ -9,5 +9,6 @@ p {
   text-indent: 2.5em;
 }
 form {
-  display: inline-block;
+  display:flex;
+  justify-content: center;
 }
