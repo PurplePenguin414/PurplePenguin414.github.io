@@ -8,3 +8,6 @@ h2{
 p {
   text-indent: 2.5em;
 }
+form {
+  display: inline-block;
+}
