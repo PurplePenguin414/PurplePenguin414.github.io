@@ -8,7 +8,3 @@ h2{
 p {
   text-indent: 2.5em;
 }
-form {
-  display:flex;
-  justify-content: center;
-}
