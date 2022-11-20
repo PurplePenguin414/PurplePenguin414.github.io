@@ -159,21 +159,9 @@ function loadJson() {
   xhttp.send();
 }
 
-//let id = document.getElementById("id");
-//let count = document.getElementById("Country");
-//let code = document.getElementById("Code");
-//let slug = document.getElementById("Slug");
-//let ncon = document.getElementById("nConfirmed");
-//let tcon = document.getElementById("tConfirmed");
-//let ndeath = document.getElementById("nDeaths");
-//let tdeath = document.getElementById("tDeaths");
-//let nrec = document.getElementById("nRecovered");
-//let trec = document.getElementById("tRecovered");
-//let d = document.getElementById("date");
-
 function loadPriorCountry () {
   country--
-  if (country < 0) {
+  if (country < 0) 
     country = 0
     document.getElementById("id").value = json.Countries[country].ID;
     document.getElementById("Country").value = json.Countries[country].Country;
@@ -186,11 +174,10 @@ function loadPriorCountry () {
     document.getElementById("nRecovered").value = json.Countries[country].NewRecovered;
     document.getElementById("tRecovered").value = json.Countries[country].TotalRecovered;
     document.getElementById("date").value = json.Countries[country].Date;
-  }
 }
 function loadNextCountry () {
   country++
-  if (country > json.Countries.length - 1) {
+  if (country > json.Countries.length - 1) 
     country = json.Countries.length - 1
     document.getElementById("id").value = json.Countries[country].ID;
     document.getElementById("Country").value = json.Countries[country].Country;
@@ -203,5 +190,4 @@ function loadNextCountry () {
     document.getElementById("nRecovered").value = json.Countries[country].NewRecovered;
     document.getElementById("tRecovered").value = json.Countries[country].TotalRecovered;
     document.getElementById("date").value = json.Countries[country].Date;
-  }
 }
