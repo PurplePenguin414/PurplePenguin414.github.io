@@ -136,11 +136,11 @@ public class W1Assignment1 {
                 tempData = data[i];
                 if ((tempData.getDate() <= Integer.parseInt(inputs[2])) && (tempData.getDate() >= Integer.parseInt(inputs[1])) && (tempData.getCode() == Integer.parseInt(inputs[3]))) {
                     System.out.println("Data found: " + i);
-                    convertData(data);
+                    convertData(data, i);
                 }else;
             }
         }
-        public static void convertData(StormData[] data) {
+        public static void convertData(StormData[] data, int i) {
         Map<String, String> states = new HashMap<String, String>() {{
             put("AL", "Alabama");
             put("AK", "Alaska");
@@ -205,7 +205,7 @@ public class W1Assignment1 {
             put("LI", "Lightning");
             put("WS","Winter Storm");
         }};
-        for (StormData tempdata : data) {
+        
             int date = tempdata.getDate();
             String stormType = tempdata.getType();
             String state = tempdata.getState();
