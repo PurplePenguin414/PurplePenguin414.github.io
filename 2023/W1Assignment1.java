@@ -18,10 +18,10 @@ public class W1Assignment1 {
 	        // Create an array to store the objects
 	        StormData[] data = new StormData[700000];
 	        int index = 0;
-
+            String filename = "2023/data.txt";
                 
 	        // Try to read the file
-	        try (BufferedReader br = new BufferedReader(new FileReader("W1-Assignment1/data.txt"))) {
+	        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 	            String line = br.readLine();
 	            while (line != null && index <= 700000) {
 	                // Split the line by commas
