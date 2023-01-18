@@ -49,37 +49,41 @@ public class W1Assignment1 {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-
+            boolean input = true;
             numElems = index;
-
-            System.out.print("Search Options: \n D \t List all From this Date \t \t \t \t \t \t \t \t \t \t Format: D,20120301,20121031,26111 \n S \t List all of this Type \t \t \t \t \t \t \t \t \t \t \t Format: S,HA,MI \n T \t List total occurrences of this storm type \t \t \t \t \t \t \t \t Format: T,TO,2014 \n J \t List total of deaths or injuries for given state and year \t \t \t \t \t \t Format: J,OH,2015 \n A \t This will list the number of Storms recorded for the given state that involved at least one Death. \t Format: A,MI ");
-            System.out.println("\n Submit Your Query: ");
-            String userInput = scanner.nextLine();
-            String[] inputs = userInput.split(",");
             
-            if (inputs[0].equals("D") ){
-                Dsearch(data, inputs);
-            }
-            else if (inputs[0].equals("S")) {
-                Ssearch(data, inputs);
-            }
-            else if (inputs[0].equals("T")) {
-                Tsearch(data, inputs);
-            }
-            else if (inputs[0].equals("J")) {
-                Jsearch(data, inputs);
-            }
-            else if (inputs[0].equals("A")){
-                Asearch(data, inputs);
-            }else {
-                System.out.println("Please input a valid selection.");
-            }
+            while (input != false){
+                System.out.print("Search Options: \n D \t List all From this Date \t \t \t \t \t \t \t \t \t \t Format: D,20120301,20121031,26111 \n S \t List all of this Type \t \t \t \t \t \t \t \t \t \t \t Format: S,HA,MI \n T \t List total occurrences of this storm type \t \t \t \t \t \t \t \t Format: T,TO,2014 \n J \t List total of deaths or injuries for given state and year \t \t \t \t \t \t Format: J,OH,2015 \n A \t This will list the number of Storms recorded for the given state that involved at least one Death. \t Format: A,MI ");
+                System.out.println("\n Enter Q to quit \n Submit Your Query: ");
+                String userInput = scanner.nextLine();
+                String[] inputs = userInput.split(",");
+                
+                if (inputs[0].equalsIgnoreCase("D") ){
+                    Dsearch(data, inputs);
+                }
+                else if (inputs[0].equalsIgnoreCase("S")) {
+                    Ssearch(data, inputs);
+                }
+                else if (inputs[0].equalsIgnoreCase("T")) {
+                    Tsearch(data, inputs);
+                }
+                else if (inputs[0].equalsIgnoreCase("J")) {
+                    Jsearch(data, inputs);
+                }
+                else if (inputs[0].equalsIgnoreCase("A")){
+                    Asearch(data, inputs);
+                }
+                else if (inputs[0].equalsIgnoreCase("Q")){
+                    input = false;
+                }else {
+                    System.out.println("Please input a valid selection.");
+                }
 
-	        /* Print out the contents of the array to check that it worked  */
-	        for (int i = 0; i < inputs.length; i++) { 
-	            System.out.println(inputs[i]);
-	        }
-            
+                /* Print out the contents of the array to check that it worked  */
+                for (int i = 0; i < inputs.length; i++) { 
+                    System.out.println(inputs[i]);
+                }
+            }
 	    }
 
         public static void Asearch(StormData[] data, String[] inputs) {
@@ -105,7 +109,7 @@ public class W1Assignment1 {
                 totalI += tempData.getInjuries();
                 }else;
         }
-        System.out.print(totalD + " " + totalI);
+        System.out.println(totalD + " " + totalI);
         }
 
         public static void Tsearch(StormData[] data, String[] inputs) {
@@ -125,7 +129,7 @@ public class W1Assignment1 {
             for (int i = 0; i < numElems; i++) {
                 tempData = data[i];
                 if (tempData.getType().equalsIgnoreCase(inputs[1]) && tempData.getState().equalsIgnoreCase(inputs[2])) {
-                    convertData(data);
+                    convertData(data, i);
                 }else;
             }
         }
@@ -206,12 +210,12 @@ public class W1Assignment1 {
             put("WS","Winter Storm");
         }};
         
-            int date = tempdata.getDate();
-            String stormType = tempdata.getType();
-            String state = tempdata.getState();
-            int countyCode = tempdata.getCode();
-            int deaths = tempdata.getDeaths();
-            int injuries = tempdata.getInjuries();
+            int date = data[i].getDate();
+            String stormType = data[i].getType();
+            String state = data[i].getState();
+            int countyCode = data[i].getCode();
+            int deaths = data[i].getDeaths();
+            int injuries = data[i].getInjuries();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             String dateString = String.valueOf(date);
             Date dateObject = null;
@@ -229,7 +233,7 @@ public class W1Assignment1 {
         }
     }
 
-}
+
 class StormData {
     private int date;
     private String type;
