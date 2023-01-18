@@ -44,7 +44,7 @@ public class W1Assignment1 {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-            System.out.print("Search Options: \n D \t List all From this Date \t Format: D,20120301,20121031,26111 \n S \t List all of this Type \t Format: S,HA,MI \n T \t List total occurrences of this storm type \t Format: T,TO,2014 \n J \t List total of deaths or injuries for given state and year \t Format: J,OH,2015 \n A \t This will list the number of Storms recorded for the given state that involved at least one Death. \t Format: A,MI ");
+            System.out.print("Search Options: \n D \t List all From this Date \t \t \t \t \t \t \t \t \t \t Format: D,20120301,20121031,26111 \n S \t List all of this Type \t \t \t \t \t \t \t \t \t \t \t Format: S,HA,MI \n T \t List total occurrences of this storm type \t \t \t \t \t \t \t \t Format: T,TO,2014 \n J \t List total of deaths or injuries for given state and year \t \t \t \t \t \t Format: J,OH,2015 \n A \t This will list the number of Storms recorded for the given state that involved at least one Death. \t Format: A,MI ");
             System.out.println("\n Submit Your Query: ");
             String userInput = scanner.nextLine();
             String[] inputs = userInput.split(",");
@@ -76,7 +76,7 @@ public class W1Assignment1 {
         public static void Asearch(StormData[] data, String[] inputs) {
             int totalD = 0;
             for( StormData tempData : data){
-                if ( inputs[0].equalsIgnoreCase(tempData.getState()) && tempData.getDeaths() >= 1) {
+                if ( inputs[1].equalsIgnoreCase(tempData.getState()) && tempData.getDeaths() >= 1) {
                     totalD ++;
                 }else;
         }
@@ -87,7 +87,7 @@ public class W1Assignment1 {
             int totalD = 0;
             int totalI = 0;
             for (StormData tempData : data) {
-                if (inputs[1].contentEquals(tempData.getDate()) && inputs[0].equalsIgnoreCase(tempData.getState())) {
+                if (Integer.parseInt(inputs[2]) == tempData.getDate() && inputs[1].equalsIgnoreCase(tempData.getState())) {
                 totalD += tempData.getDeaths();
                 totalI += tempData.getInjuries();
                 }else;
@@ -99,7 +99,7 @@ public class W1Assignment1 {
             int total = 0;
         
             for (StormData tempData : data) {
-                if (tempData.getType().equalsIgnoreCase(inputs[0]) && inputs[1].equalsIgnoreCase(tempData.getDate())) {
+                if (tempData.getType().equalsIgnoreCase(inputs[1]) && Integer.parseInt(inputs[2]) == tempData.getDate()) {
                  total++;
                 }else;
         }
@@ -109,7 +109,7 @@ public class W1Assignment1 {
         public static void Ssearch(StormData[] data, String[] inputs) {
 
             for (StormData tempData : data) {
-                if (tempData.getType().equalsIgnoreCase(inputs[0]) && tempData.getState().equalsIgnoreCase(inputs[1])) {
+                if (tempData.getType().equalsIgnoreCase(inputs[1]) && tempData.getState().equalsIgnoreCase(inputs[2])) {
                     convertData(data);
                 }else;
             }
