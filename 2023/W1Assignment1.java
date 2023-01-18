@@ -13,12 +13,17 @@ import java.util.Map;
 
 
 public class W1Assignment1 {
+
+    static int numElems = 0;
+
     static Scanner scanner = new Scanner(System.in);
 	    public static void main(String[] args) {
 	        // Create an array to store the objects
 	        StormData[] data = new StormData[700000];
 	        int index = 0;
-            String filename = "2023/data.txt";
+            String filename = "data.txt";
+
+
                 
 	        // Try to read the file
 	        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -44,6 +49,9 @@ public class W1Assignment1 {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
+
+            numElems = index;
+
             System.out.print("Search Options: \n D \t List all From this Date \t \t \t \t \t \t \t \t \t \t Format: D,20120301,20121031,26111 \n S \t List all of this Type \t \t \t \t \t \t \t \t \t \t \t Format: S,HA,MI \n T \t List total occurrences of this storm type \t \t \t \t \t \t \t \t Format: T,TO,2014 \n J \t List total of deaths or injuries for given state and year \t \t \t \t \t \t Format: J,OH,2015 \n A \t This will list the number of Storms recorded for the given state that involved at least one Death. \t Format: A,MI ");
             System.out.println("\n Submit Your Query: ");
             String userInput = scanner.nextLine();
@@ -67,26 +75,31 @@ public class W1Assignment1 {
                 System.out.println("Please input a valid selection.");
             }
 
-	        /* Print out the contents of the array to check that it worked */ 
-	        for (int i = 0; i < 4; i++) { 
-	            System.out.println(inputs.toString());
+	        /* Print out the contents of the array to check that it worked  */
+	        for (int i = 0; i < inputs.length; i++) { 
+	            System.out.println(inputs[i]);
 	        }
             
 	    }
+
         public static void Asearch(StormData[] data, String[] inputs) {
             int totalD = 0;
-            for( StormData tempData : data){
+            StormData tempData;
+            for( int i = 0; i < numElems; i++){
+                tempData = data[i];
                 if ( inputs[1].equalsIgnoreCase(tempData.getState()) && tempData.getDeaths() >= 1) {
                     totalD ++;
                 }else;
         }
-        System.out.print(" The number of storms that involved at least one death for the state given is: " + totalD);
+        System.out.println(" The number of storms that involved at least one death for the state given is: " + totalD);
         }
 
         public static void Jsearch(StormData[] data, String[] inputs) {
             int totalD = 0;
             int totalI = 0;
-            for (StormData tempData : data) {
+            StormData tempData;
+            for (int i = 0; i < numElems; i++) {
+                tempData = data[i];
                 if (Integer.parseInt(inputs[2]) == tempData.getDate() && inputs[1].equalsIgnoreCase(tempData.getState())) {
                 totalD += tempData.getDeaths();
                 totalI += tempData.getInjuries();
@@ -97,8 +110,9 @@ public class W1Assignment1 {
 
         public static void Tsearch(StormData[] data, String[] inputs) {
             int total = 0;
-        
-            for (StormData tempData : data) {
+            StormData tempData;
+            for (int i = 0; i < numElems; i++) {
+                tempData = data[i];
                 if (tempData.getType().equalsIgnoreCase(inputs[1]) && Integer.parseInt(inputs[2]) == tempData.getDate()) {
                  total++;
                 }else;
@@ -107,8 +121,9 @@ public class W1Assignment1 {
         }
 
         public static void Ssearch(StormData[] data, String[] inputs) {
-
-            for (StormData tempData : data) {
+            StormData tempData;
+            for (int i = 0; i < numElems; i++) {
+                tempData = data[i];
                 if (tempData.getType().equalsIgnoreCase(inputs[1]) && tempData.getState().equalsIgnoreCase(inputs[2])) {
                     convertData(data);
                 }else;
@@ -116,10 +131,11 @@ public class W1Assignment1 {
         }
 
         public static void Dsearch(StormData[] data, String[] inputs) {
-            
-            for (StormData tempData : data) {
-                if (tempData.getDate() <= Integer.parseInt(inputs[2]) && tempData.getDate() >= Integer.parseInt(inputs[1]) && tempData.getCode() == Integer.parseInt(inputs[3])) {
-                    System.out.println("Data found: ");
+            StormData tempData;
+            for (int i = 0; i < numElems; i++) {
+                tempData = data[i];
+                if ((tempData.getDate() <= Integer.parseInt(inputs[2])) && (tempData.getDate() >= Integer.parseInt(inputs[1])) && (tempData.getCode() == Integer.parseInt(inputs[3]))) {
+                    System.out.println("Data found: " + i);
                     convertData(data);
                 }else;
             }
