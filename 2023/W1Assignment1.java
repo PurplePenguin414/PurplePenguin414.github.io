@@ -99,7 +99,7 @@ public class W1Assignment1 {
             int total = 0;
         
             for (StormData tempData : data) {
-                if (tempData.getType().equalsIgnoreCase(inputs[0]) && inputs[1].contentEquals(tempData.getDate())) {
+                if (tempData.getType().equalsIgnoreCase(inputs[0]) && inputs[1].equalsIgnoreCase(tempData.getDate())) {
                  total++;
                 }else;
         }
