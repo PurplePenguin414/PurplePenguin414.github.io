@@ -104,7 +104,7 @@ public class W1Assignment1 {
             StormData tempData;
             for (int i = 0; i < numElems; i++) {
                 tempData = data[i];
-                if (Integer.parseInt(inputs[2]) == tempData.getDate() && inputs[1].equalsIgnoreCase(tempData.getState())) {
+                if ((Integer.parseInt(inputs[2]) == (tempData.getDate())) && (inputs[1].equalsIgnoreCase(tempData.getState()))) {
                 totalD += tempData.getDeaths();
                 totalI += tempData.getInjuries();
                 }else;
@@ -117,7 +117,7 @@ public class W1Assignment1 {
             StormData tempData;
             for (int i = 0; i < numElems; i++) {
                 tempData = data[i];
-                if (tempData.getType().equalsIgnoreCase(inputs[1]) && Integer.parseInt(inputs[2]) == tempData.getDate()) {
+                if ((tempData.getType().equalsIgnoreCase(inputs[1])) && (Integer.parseInt(inputs[2]) == tempData.getDate())) {
                  total++;
                 }else;
         }
@@ -128,7 +128,7 @@ public class W1Assignment1 {
             StormData tempData;
             for (int i = 0; i < numElems; i++) {
                 tempData = data[i];
-                if (tempData.getType().equalsIgnoreCase(inputs[1]) && tempData.getState().equalsIgnoreCase(inputs[2])) {
+                if ((tempData.getType().equalsIgnoreCase(inputs[1])) && (tempData.getState().equalsIgnoreCase(inputs[2]))) {
                     convertData(data, i);
                 }else;
             }
