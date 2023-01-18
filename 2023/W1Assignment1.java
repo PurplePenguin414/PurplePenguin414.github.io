@@ -73,22 +73,49 @@ public class W1Assignment1 {
 	        }
             
 	    }
-        private static void Asearch(StormData[] data, String[] inputs) {
+        public static void Asearch(StormData[] data, String[] inputs) {
             int totalD = 0;
             for( StormData tempData : data){
-                if (tempData.getState() == inputs[0].toString() && tempData.getDeaths() >= 1) {
+                if ( inputs[0].equalsIgnoreCase(tempData.getState()) && tempData.getDeaths() >= 1) {
                     totalD ++;
                 }else;
         }
         System.out.print(" The number of storms that involved at least one death for the state given is: " + totalD);
         }
-        private static void Jsearch(StormData[] data, String[] inputs) {
+
+        public static void Jsearch(StormData[] data, String[] inputs) {
+            int totalD = 0;
+            int totalI = 0;
+            for (StormData tempData : data) {
+                if (inputs[1].contentEquals(tempData.getDate()) && inputs[0].equalsIgnoreCase(tempData.getState())) {
+                totalD += tempData.getDeaths();
+                totalI += tempData.getInjuries();
+                }else;
         }
-        private static void Tsearch(StormData[] data, String[] inputs) {
+        System.out.print(totalD + " " + totalI);
         }
-        private static void Ssearch(StormData[] data, String[] inputs) {
+
+        public static void Tsearch(StormData[] data, String[] inputs) {
+            int total = 0;
+        
+            for (StormData tempData : data) {
+                if (tempData.getType().equalsIgnoreCase(inputs[0]) && inputs[1].contentEquals(tempData.getDate())) {
+                 total++;
+                }else;
         }
-        private static void Dsearch(StormData[] data, String[] inputs) {
+        System.out.print(total);
+        }
+
+        public static void Ssearch(StormData[] data, String[] inputs) {
+
+            for (StormData tempData : data) {
+                if (tempData.getType().equalsIgnoreCase(inputs[0]) && tempData.getState().equalsIgnoreCase(inputs[1])) {
+                    convertData(data);
+                }else;
+            }
+        }
+
+        public static void Dsearch(StormData[] data, String[] inputs) {
             
             for (StormData tempData : data) {
                 if (tempData.getDate() <= Integer.parseInt(inputs[2]) && tempData.getDate() >= Integer.parseInt(inputs[1]) && tempData.getCode() == Integer.parseInt(inputs[3])) {
