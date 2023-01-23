@@ -1,0 +1,23 @@
+.root {
+    -fx-background-color:cornsilk;
+}
+
+.button {
+   -fx-font-size: 15pt;
+   -fx-font-weight: 800;
+   -fx-background-color:powderblue ;
+   -fx-text-fill:firebrick;
+   -fx-border-color:black;
+   -fx-border-width: 3 3 3 3;
+}
+
+.label {
+   -fx-font-size: 15pt;
+}
+.displayLabel {
+   -fx-font-size: 40pt;
+   -fx-font-weight: bolder;
+   -fx-font-family:monospace;
+   -fx-background-color: transparent;
+   -fx-text-fill:steelblue;
+}
