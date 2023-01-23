@@ -1,4 +1,4 @@
-package assignment1;
+package CS216.Assignment01;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
