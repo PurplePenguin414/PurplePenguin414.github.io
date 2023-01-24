@@ -1,2 +1,2 @@
 # PurplePenguin414.github.io
-CIS 255 Home Page
+student home page that has turned into dsahboard for all classes, documents, and pages personal, school, or work
