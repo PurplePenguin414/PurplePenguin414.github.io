@@ -6,9 +6,9 @@ public class Assignment2 {
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        User[] users = new User[2];
+        User[] users = new User[1];
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             System.out.println("Enter user " + (i+1) + " information:");
             System.out.print("Age: ");
             int age = scanner.nextInt();
@@ -29,7 +29,7 @@ public class Assignment2 {
             users[i] = new User(age, height, weight, gender, activityType, mph, minutes);
         }
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             System.out.println("User " + (i+1) + " information:");
             users[i].printUser();
             System.out.println();
