@@ -1,12 +1,14 @@
 package CS216.Assignmnet02;
 
 public class User {
+    //to string that i never even used
     @Override
     public String toString() {
         return "User [age=" + age + ", height=" + height + ", weight=" + weight + ", gender=" + gender
                 + ", activityType=" + activityType + ", mph=" + mph + ", minutes=" + minutes + ", BMI=" + BMI + ", Base Calorie need=" + BCN + ", BMI classification=" + BMIclass + "]";
     }
 
+    //I always list all variables early to minimum confusion
     private int age;
     private int height;
     private int weight;
@@ -21,6 +23,7 @@ public class User {
     private double minTHR;
     private double maxTHR;
 
+    //User object and all the data that is stored abou the user in its object 
     public User(int age, int height, int weight, String gender, String activityType, double mph, int minutes) {
         this.age = age;
         this.height = height;
@@ -37,6 +40,7 @@ public class User {
         this.maxTHR = findTargetMaxHR();
     }
 
+    //This calculates the users BMI based on the user inforamtion given
     private double calculateBMI() {
         double denom = Math.pow(this.height,2);
         double numer = (this.weight * 703);
@@ -44,6 +48,7 @@ public class User {
         return bmi;
     }
 
+    //This calculates the base calories needed for maintaining weight
     private double calculateBCN(){
         
         double weightinKG = (this.weight * 0.45359237);
@@ -60,6 +65,7 @@ public class User {
         return bnc;
     }
 
+    //this finds the classification of BMI based on the bmi value
     private String findBMIclass() {
         String classBMI = "";
 
@@ -79,6 +85,7 @@ public class User {
         return classBMI;
     }
 
+    //This calculates the calories spent durring workout basd on user data
     private double calorieSpent(){
         
         double cal = 0;
@@ -92,12 +99,15 @@ public class User {
         return cal;
     }
 
+    //This finds the target minimum heart rate based on user data
     private double findTargetMinHR(){
         double maxHr = (217 - (0.85 * this.age));
 
         double minTHR = (0.60 * maxHr);
         return minTHR;
     }
+
+    //This finds the target maximum heart rate based on user data 
     private double findTargetMaxHR(){
         double maxHr = (217 - (0.85 * this.age));
 
@@ -105,6 +115,7 @@ public class User {
         return maxTHR;
     }
 
+    //This is the to string basicly that i use insted of the top one that i never used
     public void printUser() {
         System.out.println("Age: " + this.age);
         System.out.println("Height: " + this.height + " inches");
