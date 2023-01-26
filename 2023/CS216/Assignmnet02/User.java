@@ -113,11 +113,12 @@ public class User {
         System.out.println("Activity Type: " + this.activityType);
         System.out.println("MPH: " + this.mph);
         System.out.println("Minutes: " + this.minutes);
-        System.out.println("BMI: " + String.format("%.2f",this.BMI));
-        System.out.println("Base Calorie needed: " + String.format("%.2f",this.BCN));
-        System.out.println("BMI classification: " + this.BMIclass);
-        System.out.println("Calories Burned: " + String.format("%.2f",this.calories));
-        System.out.println("Minimum Target Heart Rate: " + String.format("%.2f",this.minTHR));
-        System.out.println("Maximum Target Heart Rate: " + String.format("%.2f",this.maxTHR));
+        System.out.println("------------------------------------");
+        System.out.println("Base Calorie needed: \t \t" + String.format("%.2f",this.BCN));
+        System.out.println("BMI: \t \t \t \t" + String.format("%.2f",this.BMI));
+        System.out.println("BMI classification: \t \t" + this.BMIclass);
+        System.out.println("Calories Burned: \t \t" + String.format("%.2f",this.calories));
+        System.out.println("Minimum Target Heart Rate: \t" + String.format("%.2f",this.minTHR));
+        System.out.println("Maximum Target Heart Rate: \t" + String.format("%.2f",this.maxTHR));
     }
 }
