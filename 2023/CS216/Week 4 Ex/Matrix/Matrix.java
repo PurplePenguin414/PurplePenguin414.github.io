@@ -133,6 +133,18 @@ public class Matrix
        
        return result;      
    }
+   
+   public Matrix subtract(Matrix matrix2)
+   {
+       Matrix result = new Matrix(numberRows,numberCols);      
+
+       for (int i = 0; i < numberRows; i++)      
+          for (int j = 0; j < numberCols; j++)  
+             result.elements[i][j] = this.elements[i][j] - matrix2.elements[i][j];
+       
+       return result;      
+   }
+
 
    /**
       Perform matrix transpose of current object
