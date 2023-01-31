@@ -1,0 +1,26 @@
+.root {
+    -fx-background-color:cornsilk;
+}
+
+.button {
+   -fx-font-size: 15pt;
+   -fx-font-weight: 400;
+   -fx-background-color:skyblue ;
+   -fx-text-fill:firebrick;
+   -fx-border-color:black;
+   -fx-border-width: 1 1 1 1;
+}
+
+.mainLabel {
+   -fx-font-size: 24pt;
+   -fx-font-weight: bold;
+   -fx-text-fill:blue;
+   -fx-text-family: "Courier New";
+}
+
+.questionLabel {
+   -fx-font-size: 16pt;
+   -fx-font-weight: normal;
+   -fx-text-fill:darkred;
+   -fx-text-family: "Arial";
+}
