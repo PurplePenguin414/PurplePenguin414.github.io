@@ -18,7 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 
-public class assignment03
+public class assignment03 extends Application
 {
  
    public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class assignment03
    }
    
    @Override
-   public static void start(Stage primaryStage) {
+   public void start(Stage primaryStage) {
        // Create UI components
        Label resultsLabel = new Label("Results:");
        ListView<Player> resultsList = new ListView<>();
@@ -42,14 +42,16 @@ public class assignment03
        Button searchButton = new Button("Search");
        Button addButton = new Button("Add");
        Button deleteButton = new Button("Delete");
-       Button sortButton = new Button("Sort");
+       Button AsortButton = new Button("Ascending Sort");
+       Button DsortButton = new Button("Descending Sort");
        Button randomizeButton = new Button("Randomize");
    
        // Add functionality to buttons
        searchButton.setOnAction(event -> search());
        addButton.setOnAction(event -> add());
        deleteButton.setOnAction(event -> delete());
-       sortButton.setOnAction(event -> sort());
+       AsortButton.setOnAction(event -> Asort());
+       DsortButton.setOnAction(event -> Dsort());
        randomizeButton.setOnAction(event -> randomize());
    
        // Set up layout
@@ -58,40 +60,70 @@ public class assignment03
        grid.setVgap(8);
        grid.setHgap(10);
    
-       GridPane.setConstraints(resultsLabel, 0, 0);
-       GridPane.setConstraints(resultsList, 0, 1, 4, 1);
-       GridPane.setConstraints(nameLabel, 0, 2);
-       GridPane.setConstraints(nameField, 1, 2);
-       GridPane.setConstraints(avgPointsLabel, 2, 2);
-       GridPane.setConstraints(avgPointsField, 3, 2);
-       GridPane.setConstraints(reboundsLabel, 0, 3);
-       GridPane.setConstraints(reboundsField, 1, 3);
-       GridPane.setConstraints(assistsLabel, 2, 3);
-       GridPane.setConstraints(assistsField, 3, 3);
-       GridPane.setConstraints(searchButton, 0, 4);
-       GridPane.setConstraints(addButton, 1, 4);
-       GridPane.setConstraints(deleteButton,2,4);
-       GridPane.setConstraints(sortButton,3,4);
-       }
+       //grid.add(nameLabel, 0, 0); 
+       //grid.add(nameField, 1, 0); 
        
-       public static void search(){
+       grid.add(resultsLabel, 0, 0);
+       grid.add(resultsList, 0, 1, 4, 1);
        
-       }
+       grid.add(nameLabel, 0, 2);
+       grid.add(nameField, 1, 2);
+       grid.add(avgPointsLabel, 2, 2);
+       grid.add(avgPointsField, 3, 2);
        
-       public static void add(){
+       grid.add(reboundsLabel, 0, 3);
+       grid.add(reboundsField, 1, 3);
+       grid.add(assistsLabel, 2, 3);
+       grid.add(assistsField, 3, 3);
        
-       }
+       grid.add(searchButton, 0, 4);
+       grid.add(addButton, 1, 4);
+       grid.add(deleteButton,2,4);
        
-       public static void delete(){
+       grid.add(randomizeButton,1,5);
+       grid.add(AsortButton,2,5);
+       grid.add(DsortButton,3,5);
        
-       }
+       //Creating a scene object 
+      Scene scene = new Scene(grid); 
        
-       public static void sort(){
+      //Setting title to the Stage 
+      primaryStage.setTitle("Player Stat Search"); 
+         
+      //Adding scene to the stage 
+      primaryStage.setScene(scene);
+      
+      //Displaying the contents of the stage 
+      primaryStage.show(); 
+      }
        
-       }
+      public static void search(){
+      
+      String n = " ";
+      
+       //if (nameField.getText() != null){
+       //  n = nameField.getText();
+      // }else;
+      }
        
-       public static void randomize(){
+      public static void add(){
        
-       }
+      }
+       
+      public static void delete(){
+       
+      }
+       
+      public static void Asort(){
+       
+      }
+      
+      public static void Dsort(){
+       
+      }
+       
+      public static void randomize(){
+       
+      }
 }  
 

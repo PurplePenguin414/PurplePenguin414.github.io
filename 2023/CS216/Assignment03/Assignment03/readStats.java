@@ -69,6 +69,8 @@ public class readStats
            System.out.println("File Input Error");
            System.exit(0);
         }
+
+        return playerData;
     }
            
     /**
