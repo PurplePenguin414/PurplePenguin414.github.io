@@ -82,6 +82,7 @@ public class readStats
         return numElems;
     }
 
+    //to string for player
     public String toString()
     {
         String outString = "";

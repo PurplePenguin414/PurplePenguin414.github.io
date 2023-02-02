@@ -100,14 +100,16 @@ public class assignment03 extends Application
 
 
       }
-       
+      //search based on information given 
       public void search(){
-      
+         
+         //set variables to be used temp
          String n = " ";
          double av = 0.0;
          double r = 0.0;
          double as = 0.0;
          
+         //this assigns what was entered to the variables
          if (nameField.getText() != null){
             n = nameField.getText();
          }
@@ -121,6 +123,7 @@ public class assignment03 extends Application
             as = Double.parseDouble(assistsField.getText());
          }else;
          
+         //this should display all that fit the search into resultsList
          for (int i; i < 10; i++){
             if (playerData(i).getName() == n){
                resultsList.setItems(playerData.toString);
@@ -137,14 +140,17 @@ public class assignment03 extends Application
          }
       
       }
-       
+      
+      //This method should add an element
       public static void add(){
       
+         //set variables to be used temp
          String n = " ";
          double av = 0.0;
          double r = 0.0;
          double as = 0.0;
          
+         //this assigns what was entered to the variables
          if (nameField.getText() != null){
             playerData.setName(nameField.getText());
          }
@@ -162,14 +168,17 @@ public class assignment03 extends Application
       public static void delete(){
        
       }
-       
+      
+      //This method does accending sorting
       public static void Asort(){
          
+         //set variables to be used temp
          String n = " ";
          double av = 0.0;
          double r = 0.0;
          double as = 0.0;
       
+         //this assigns what was entered to the variables
          if (nameField.getText() != null){
             n = nameField.getText();
          }
@@ -183,19 +192,23 @@ public class assignment03 extends Application
             as = Double.parseDouble(assistsField.getText());
          }else;
       
+         //this sorts the array and displayes based on what was given for ppg in accending order
          Arrays.sort(Players,(p1, p2) -> p1.getPpg);
          for (int i; i < numElems; i++){
             resultsList.setItems(playerData.toString);
          }
       }
       
+      //this method does deccending sorting
       public static void Dsort(){
-    
+      
+      //set variables to be used temp
       String n = " ";
       double av = 0.0;
       double r = 0.0;
       double as = 0.0;
    
+      //this assigns what was entered to the variables
       if (nameField.getText() != null){
          n = nameField.getText();
       }
@@ -209,6 +222,7 @@ public class assignment03 extends Application
          as = Double.parseDouble(assistsField.getText());
       }else;
       
+      //this sorts the array and displayes based on what was given for ppg in decending order
       Arrays.sort(Players, (a,b) -> b - a);
       for (int i; i < numElems; i++){
             resultsList.setItems(playerData.toString);
