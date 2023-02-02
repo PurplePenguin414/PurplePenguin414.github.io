@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 
 public class assignment03 extends Application
 {
- 
+   readStats playerList;
    public static void main(String[] args) {
      //private Player playerData[];
      launch(args);
@@ -28,6 +28,11 @@ public class assignment03 extends Application
    
    @Override
    public void start(Stage primaryStage) {
+
+       readStats playerList = new readStats();
+
+       System.out.println(playerList.toString());
+
        // Create UI components
        Label resultsLabel = new Label("Results:");
        ListView<Player> resultsList = new ListView<>();
@@ -94,7 +99,9 @@ public class assignment03 extends Application
       primaryStage.setScene(scene);
       
       //Displaying the contents of the stage 
-      primaryStage.show(); 
+      primaryStage.show();
+
+
       }
        
       public static void search(){

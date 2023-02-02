@@ -22,7 +22,7 @@ public class readStats
     * Constructor
     * @pre     (1) File exists; (2) Number of file elements <= MAX_ARRAY_SIZE    
     */    
-    public loadPlayer()
+    public readStats()
     {
         // Load arrays from file
         try
@@ -50,9 +50,9 @@ public class readStats
 
                 // Tokenize line and save data
                 name  = dataTokens.nextToken();   
-                ppg   = double.parseInt(dataTokens.nextToken());  
-                reb   = double.parseInt(dataTokens.nextToken());  
-                ast   = double.parseInt(dataTokens.nextToken());
+                ppg   = Double.parseDouble(dataTokens.nextToken());
+                reb   = Double.parseDouble(dataTokens.nextToken());
+                ast   = Double.parseDouble(dataTokens.nextToken());
                 
                 // Construct object and add to array of objects
                 Player addPlayer = new Player(name, ppg, reb, ast);
@@ -70,7 +70,7 @@ public class readStats
            System.exit(0);
         }
 
-        return playerData;
+       // return playerData;
     }
            
     /**
@@ -80,5 +80,15 @@ public class readStats
     public int getNumElems()
     {
         return numElems;
-    }    
+    }
+
+    public String toString()
+    {
+        String outString = "";
+        for (int i = 0; i < numElems; i++)
+            outString += playerData[i].toString();
+
+        return outString;
+    }
+}
     
