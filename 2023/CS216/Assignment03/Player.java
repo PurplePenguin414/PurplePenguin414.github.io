@@ -29,7 +29,7 @@ public class Player
    { ast = a; }
    
    // Get Methods
-   public String setName()
+   public String getName()
    { return name; }
    public double getReb()
    { return reb; }
