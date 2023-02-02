@@ -34,22 +34,22 @@ public class assignment03 extends Application
       System.out.println(playerList.toString());
 
       // Create UI components
-      final Label resultsLabel = new Label("Results:");
-      final ListView<Player> resultsList = new ListView<>();
-      final Label nameLabel = new Label("Name:");
-      final TextField nameField = new TextField();
-      final Label avgPointsLabel = new Label("Avg Points:");
-      final TextField avgPointsField = new TextField();
-      final Label reboundsLabel = new Label("Rebounds:");
-      final TextField reboundsField = new TextField();
-      final Label assistsLabel = new Label("Assists:");
-      final TextField assistsField = new TextField();
-      final Button searchButton = new Button("Search");
-      final Button addButton = new Button("Add");
-      final Button deleteButton = new Button("Delete");
-      final Button AsortButton = new Button("Ascending Sort");
-      final Button DsortButton = new Button("Descending Sort");
-      final Button randomizeButton = new Button("Randomize");
+      Label resultsLabel = new Label("Results:");
+      ListView<Player> resultsList = new ListView<>();
+      Label nameLabel = new Label("Name:");
+      TextField nameField = new TextField();
+      Label avgPointsLabel = new Label("Avg Points:");
+      TextField avgPointsField = new TextField();
+      Label reboundsLabel = new Label("Rebounds:");
+      TextField reboundsField = new TextField();
+      Label assistsLabel = new Label("Assists:");
+      TextField assistsField = new TextField();
+      Button searchButton = new Button("Search");
+      Button addButton = new Button("Add");
+      Button deleteButton = new Button("Delete");
+      Button AsortButton = new Button("Ascending Sort");
+      Button DsortButton = new Button("Descending Sort");
+      Button randomizeButton = new Button("Randomize");
    
       // Add functionality to buttons
       searchButton.setOnAction(event -> search());
