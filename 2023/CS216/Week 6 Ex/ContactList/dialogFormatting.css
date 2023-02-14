@@ -1,0 +1,8 @@
+.myDialog{
+}
+
+.myDialog > *.label.content{
+    -fx-font-family: monospaced;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}

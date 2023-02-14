@@ -1,0 +1,4 @@
+Barak_Palin 260
+Sarah_Obama 500
+Joe_McCain   80
+John_Biden  420
