@@ -1,0 +1,11 @@
+.root {
+    -fx-background-color:aliceblue;
+}
+
+.headingLabel {
+   -fx-font-size: 15px;
+   -fx-font-weight: bolder;
+   -fx-text-fill: teal;
+   -fx-text-family: "Verdana";
+}
+
