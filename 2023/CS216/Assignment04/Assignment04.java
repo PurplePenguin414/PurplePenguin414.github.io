@@ -26,10 +26,10 @@ public class Assignment04 extends Application
     private final int SCENE_WIDTH = 900;             // Pixel dimensions of application window
     private final int SCENE_HEIGHT = 600;
 
-    private final int NUM_ROWS = 20;                 // Grid dimensions within window
-    private final int NUM_COLS = 30;
+    private final int NUM_ROWS = 7;                 // Grid dimensions within window
+    private final int NUM_COLS = 7;
 
-    private final double ANIMATION_FRAME_RATE = 500; // 500 milliseconds or 2/second
+    private final double ANIMATION_FRAME_RATE = 5000; // 5000 milliseconds or 5 seconds
 
     private Random randomNumGenerator;                 // Define random generator classwide
 
@@ -77,17 +77,7 @@ public class Assignment04 extends Application
         // Set number of cycles (infinite) and play simulation.
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
-
-        // Handle any mouse click
-        mainGridArea.setOnMousePressed(event ->
-        {
-            // Get the mouse cursor's coordinates.
-            double x = event.getSceneX();
-            double y = event.getSceneY();
-            manageMouseClickOnGrid(x, y);
-        });
-    }
-
+   }
     // ===========================================================================
     // ===========================================================================
 
@@ -99,7 +89,7 @@ public class Assignment04 extends Application
         theGridText       = new Text[NUM_ROWS][NUM_COLS];
         clickedOnGrid     = new boolean[NUM_ROWS][NUM_COLS];
         
-        Font labelFont = Font.font("Arial", 20);
+        Font labelFont = Font.font("Arial", 30);
 
         // Loop through entire grid row-by-row and initilize.  For each cell, instantiate
         // a Rectangle object for background color and a Text object for a foreground label.
@@ -115,30 +105,13 @@ public class Assignment04 extends Application
                 mainGridArea.getChildren().add(theGridRectangles[i][j]);
 
                 // Set up Text foreground.  Add to drawing pane.
-                theGridText[i][j] = new Text("?");
+                theGridText[i][j] = new Text(" ");
                 theGridText[i][j].setFont(labelFont);
                 mainGridArea.getChildren().add(theGridText[i][j]);
             }
     }
 
-    // ---------------------------------------------------------------------------
-    // Perform tasks for a given mouse click. Receive pixel coordinates of
-    // click and first convert to determine the grid clicked.  Then, make
-    // required change(s) - for this simulation, grid is marked and the
-    // text overlay is changed to an "X".
-    public void manageMouseClickOnGrid(double x, double y)
-    {
-        // Convert pixel coordinates into row/column grid coordinates
-        int row = getRowClicked(y);
-        int column = getColumnClicked(x);
-
-        // Change character of Text object to "X" and mark cell clicked.
-        theGridText[row][column].setText("X");
-        clickedOnGrid[row][column] = true;
-    }
-
-    // ---------------------------------------------------------------------------
-    //
+    
     public void updateGridForCycle()
     {
         for (int i = 0; i < NUM_ROWS; i++)
@@ -150,21 +123,15 @@ public class Assignment04 extends Application
 
                 theGridRectangles[i][j].setStroke(Color.BLACK);    // Draw grid boundary
 
-                // If a grid has been clicked, lock the background color to white and the
-                // text color to black.  Otherwise, change to random colors for remaining
-                // grid elements unclicked.
-                if (clickedOnGrid[i][j] == true)
-                {
-                    theGridRectangles[i][j].setFill(Color.WHITE);
-                    theGridText[i][j].setStroke(Color.BLACK);
-                } else
-                {
+                // Change to random colors for remaining
+                // grid elements.
+               
                     Color newColor = getRandomColor();
                     theGridRectangles[i][j].setFill(newColor);
 
                     newColor = getRandomColor();
                     theGridText[i][j].setStroke(newColor);
-                }
+                
 
                 // Add Text object at calculated center of grid
                 theGridText[i][j].setX(getCenteredText_X(theGridText[i][j],j));
@@ -207,12 +174,12 @@ public class Assignment04 extends Application
     // ---------------------------------------------------------------------------
     // Various set/get actions required for working grid
 
-    public int getRowClicked(double x)
+    public int getRowBurned(double x)
     {
         return (int) Math.floor(x / SCENE_HEIGHT * NUM_ROWS);
     }
 
-    public int getColumnClicked(double y)
+    public int getColumnBurned(double y)
     {
         return (int) Math.floor(y / SCENE_WIDTH * NUM_COLS);
     }
