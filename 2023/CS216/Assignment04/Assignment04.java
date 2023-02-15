@@ -164,10 +164,10 @@ public class Assignment04 extends Application
     // Generates a random color by random R-G-B values.  255^3 possible outcomes.
     public Color getRandomColor()
     {
-        int newRed = randomNumGenerator.nextInt(255);
+        int fire = (255119000);
         int newGreen = randomNumGenerator.nextInt(255);
         int newBlue = randomNumGenerator.nextInt(255);
-        Color randomColor = Color.rgb(newRed, newGreen, newBlue);
+        Color randomColor = Color.rgb(fire);
         return randomColor;
     }
 
