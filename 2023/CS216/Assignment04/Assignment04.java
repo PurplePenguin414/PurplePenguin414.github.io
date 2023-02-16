@@ -162,7 +162,10 @@ public class Assignment04 extends Application
 
             }
          }
+         // increase the count of itterations
          count++;
+         
+         //set numburned to 0 so we can count if all are burned
             numBurned = 0;
             for (int i = 0; i < NUM_ROWS; i++){
                for (int j = 0; j < NUM_COLS; j++){
@@ -172,6 +175,7 @@ public class Assignment04 extends Application
                }
             }
             
+            //if all are burned show how many itterations it took to do this
             if (numBurned == 49){
                dead = false;
                System.out.println("The number of itterations until the board was burned was " + count);
