@@ -1,8 +1,8 @@
 package CS216.Assignment04;
 
 // Delta College - CST 283 - Gibbs
-// This program executes a 
-// 
+// This program executes a application to simulate a fire. the grid will start green and transition every 5 secconds to
+// assign the new color of the grid until the whole grid is burned
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -41,6 +41,8 @@ public class Assignment04 extends Application
     private boolean BurntGrid[][];        // 2-D marker array to retain clicked grid elements
     
     private int count = 0;             //itterations count
+    
+    private String wind = getRandomWind();
     
     private int numBurned = 0;            //burned square count
     
@@ -99,12 +101,11 @@ public class Assignment04 extends Application
 
         // Loop through entire grid row-by-row and initilize.  For each cell, instantiate
         // a Rectangle object for background color and a Text object for a foreground label.
-        for (int i = 0; i < NUM_ROWS; i++)
+        for (int i = 0; i < NUM_ROWS; i++){
             for (int j = 0; j < NUM_COLS; j++)
             {
                 // Set up Rectangle background.  Add to drawing pane.
-                Rectangle cell = new Rectangle(getLeftCellEdge(j), getTopCellEdge(i),
-                        getCellWidth(), getCellHeight());
+                Rectangle cell = new Rectangle(getLeftCellEdge(j), getTopCellEdge(i), getCellWidth(), getCellHeight());
                 cell.setFill(Color.rgb(52, 140, 49));
                 cell.setStroke(Color.BLACK);
                 theGridRectangles[i][j] = cell;
@@ -115,6 +116,7 @@ public class Assignment04 extends Application
                 theGridText[i][j].setFont(labelFont);
                 mainGridArea.getChildren().add(theGridText[i][j]);
             }
+         }
     }
 
     
@@ -178,7 +180,8 @@ public class Assignment04 extends Application
             //if all are burned show how many itterations it took to do this
             if (numBurned == 49){
                dead = false;
-               System.out.println("The number of itterations until the board was burned was " + count);
+               System.out.println("\nThe number of itterations until the board was burned was " + count);
+               System.out.println("The wind direction was " + wind);
                System.exit(0);
             }else;
             
@@ -214,6 +217,26 @@ public class Assignment04 extends Application
          return burnt;
         }else{
          return grass;
+        }
+    }
+    
+    // ---------------------------------------------------------------------------
+    // Generates a random wind direction by random number selection.
+    public String getRandomWind()
+    {
+        String north = "N";
+        String south = "S";
+        String east = "E";
+        String west = "W";
+        int ranNum = new Random().nextInt(4);
+        if (ranNum == 1){
+         return north;
+        }else if (ranNum == 2){
+         return south;
+        }else if (ranNum == 3){
+         return east;
+        }else{
+         return west;
         }
     }
 
