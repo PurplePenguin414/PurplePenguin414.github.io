@@ -40,9 +40,9 @@ public class Assignment04 extends Application
 
     private boolean BurntGrid[][];        // 2-D marker array to retain clicked grid elements
     
-    private int count = 0;
+    private int count = 0;             //itterations count
     
-    private int numBurned = 0;
+    private int numBurned = 0;            //burned square count
     
     private boolean dead = false;
 
