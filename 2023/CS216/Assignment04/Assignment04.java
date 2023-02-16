@@ -38,7 +38,13 @@ public class Assignment04 extends Application
     private Rectangle theGridRectangles[][];  // 2-D array of grid elements for background color
     private Text theGridText[][];             // 2-D array of grid elements for foreground text
 
-    private boolean clickedOnGrid[][];        // 2-D marker array to retain clicked grid elements
+    private boolean BurntGrid[][];        // 2-D marker array to retain clicked grid elements
+    
+    private int count = 0;
+    
+    private int numBurned = 0;
+    
+    private boolean dead = false;
 
     // ---------------------------------------------------------------------------
     public static void main(String[] args)
@@ -87,7 +93,7 @@ public class Assignment04 extends Application
         // Instantiate all required 2-D arrays
         theGridRectangles = new Rectangle[NUM_ROWS][NUM_COLS];
         theGridText       = new Text[NUM_ROWS][NUM_COLS];
-        clickedOnGrid     = new boolean[NUM_ROWS][NUM_COLS];
+        BurntGrid     = new boolean[NUM_ROWS][NUM_COLS];
         
         Font labelFont = Font.font("Arial", 30);
 
@@ -99,7 +105,7 @@ public class Assignment04 extends Application
                 // Set up Rectangle background.  Add to drawing pane.
                 Rectangle cell = new Rectangle(getLeftCellEdge(j), getTopCellEdge(i),
                         getCellWidth(), getCellHeight());
-                cell.setFill(Color.TRANSPARENT);
+                cell.setFill(Color.rgb(52, 140, 49));
                 cell.setStroke(Color.BLACK);
                 theGridRectangles[i][j] = cell;
                 mainGridArea.getChildren().add(theGridRectangles[i][j]);
@@ -114,25 +120,36 @@ public class Assignment04 extends Application
     
     public void updateGridForCycle()
     {
-        for (int i = 0; i < NUM_ROWS; i++)
+        for (int i = 0; i < NUM_ROWS; i++){
             for (int j = 0; j < NUM_COLS; j++)
             {
-                // Remove rectangle and text objects from current grid.
-                mainGridArea.getChildren().remove(theGridRectangles[i][j]);
-                mainGridArea.getChildren().remove(theGridText[i][j]);
+               // Remove rectangle and text objects from current grid.
+                  mainGridArea.getChildren().remove(theGridRectangles[i][j]);
+                  mainGridArea.getChildren().remove(theGridText[i][j]);
+   
+                  theGridRectangles[i][j].setStroke(Color.BLACK);    // Draw grid boundary
+                  
+               if (theGridRectangles[i][j].getFill().equals(Color.rgb(254, 222, 23))){
+                  // Convert pixel coordinates into row/column grid coordinates
+                  int row = getRowBurned(i);
+                  int column = getColumnBurned(j);
 
-                theGridRectangles[i][j].setStroke(Color.BLACK);    // Draw grid boundary
-
-                // Change to random colors for remaining
-                // grid elements.
+                  // mark cell burned
+                  BurntGrid[row][column] = true;
+                  
+                  
+               }else{
                
+                  // Change to random colors for remaining
+                  // grid elements.
                     Color newColor = getRandomColor();
                     theGridRectangles[i][j].setFill(newColor);
 
                     newColor = getRandomColor();
                     theGridText[i][j].setStroke(newColor);
                 
-
+               }
+               
                 // Add Text object at calculated center of grid
                 theGridText[i][j].setX(getCenteredText_X(theGridText[i][j],j));
                 theGridText[i][j].setY(getCenteredText_Y(theGridText[i][j],i));
@@ -140,8 +157,27 @@ public class Assignment04 extends Application
                 // Add rectangle and text objects back to drawing area.
                 mainGridArea.getChildren().add(theGridRectangles[i][j]);
                 mainGridArea.getChildren().add(theGridText[i][j]);
+                
+                
 
             }
+         }
+         count++;
+            numBurned = 0;
+            for (int i = 0; i < NUM_ROWS; i++){
+               for (int j = 0; j < NUM_COLS; j++){
+                  if (theGridRectangles[i][j].getFill().equals(Color.rgb(254, 222, 23))){
+                     numBurned++;              
+                  }else;
+               }
+            }
+            
+            if (numBurned == 49){
+               dead = false;
+               System.out.println("The number of itterations until the board was burned was " + count);
+               System.exit(0);
+            }else;
+            
     }
 
     // ---------------------------------------------------------------------------
@@ -161,14 +197,20 @@ public class Assignment04 extends Application
     }
 
     // ---------------------------------------------------------------------------
-    // Generates a random color by random R-G-B values.  255^3 possible outcomes.
+    // Generates a random color by random number selection.
     public Color getRandomColor()
     {
-        int fire = (255119000);
-        int newGreen = randomNumGenerator.nextInt(255);
-        int newBlue = randomNumGenerator.nextInt(255);
-        Color randomColor = Color.rgb(fire);
-        return randomColor;
+        Color fire = Color.rgb(255,119,0);
+        Color grass = Color.rgb(52, 140, 49);
+        Color burnt = Color.rgb(254, 222, 23);
+        int randomNum = new Random().nextInt(3);
+        if (randomNum == 1){
+         return fire;
+        }else if (randomNum == 2){
+         return burnt;
+        }else{
+         return grass;
+        }
     }
 
     // ---------------------------------------------------------------------------
