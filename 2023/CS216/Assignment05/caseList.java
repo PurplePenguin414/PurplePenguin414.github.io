@@ -12,47 +12,31 @@ public class caseList {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 
-        String fileName = "assignment05/data.txt";
+        String fileName = "2023/CS216/Assignment05/accused.txt";
         Case[] dataArray = parseFile(fileName);
         System.out.println("Case Loaded");
 
-        System.out.print("Search Options: \n D \t List all From this Date \n S \t List all of this Type \n T \t List total occurrences of this storm type \n J \t List total of deaths or injuries for given state and year \n A \t List total number of storms that involved at least one death.");
-        System.out.println("\n Select your Search:");
-        String userInput = scanner.nextLine();
-        if (Objects.equals(userInput, "D")){
-            Dsearch(dataArray);
-        }
-        else if (Objects.equals(userInput, "S")) {
-            Ssearch(dataArray);
-        }
-        else if (Objects.equals(userInput, "T")) {
-            Tsearch(dataArray);
-        }
-        else if (Objects.equals(userInput, "J")) {
-            Jsearch(dataArray);
-        }
-        else if (Objects.equals(userInput, "A")) {
-            Asearch(dataArray);
-        }else {
-            System.out.println("Please select an option from above.");
-        }
+        System.out.println("The Accused List is Provided Here: ");
 
+
+        
     }
+
+
 
     public static Case[] parseFile(String fileName) {
         Case[] dataArray = new Case[688049];
         int index = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
-            while ((line = br.readLine()) != null && dataArray.length <= 688048 && (line = br.readLine()) != " D") {
+            while ((line = br.readLine()) != null ) {
                 String[] values = line.split(",");
                 Case data = new Case();
-                data.field1 = Integer.parseInt(values[0]);
-                data.field2 = values[1];
-                data.field3 = values[2];
-                data.field4 = Integer.parseInt(values[3]);
-                data.field5 = Integer.parseInt(values[4]);
-                data.field6 = Integer.parseInt(values[5]);
+                data.ssn = values[0];
+                data.code = values[1];
+                data.Ccode = Integer.parseInt(values[2]);
+                data.date1 = values[3];
+                data.date2 = values[4];
                 dataArray[index] = data;
                 index++;
             }
@@ -61,113 +45,63 @@ public class caseList {
         }
         return dataArray;
     }
-
-
-    public static void Dsearch(Case[] dataArray) {
-        System.out.print("You Selected to search by county. This will list all store events from the first date given to the second date given \n");
-
-        System.out.println("Enter Max Date in format 'yearMonthDay':");
-        String maxDate = scanner.nextLine();
-        System.out.println("Enter Min Date in format 'yearMonthDay':");
-        String minDate = scanner.nextLine();
-        System.out.println("Enter county code:");
-        String cCode = scanner.nextLine();
-
-        for (Case data : dataArray) {
-            if (data.field1 <= Integer.parseInt(maxDate) && data.field1 >= Integer.parseInt(minDate) && data.field4 == Integer.parseInt(cCode)) {
-                System.out.println("Case found: " + data.toString());
-            }else{
-                System.out.println("No data found");
-            }
-        }
-    }
-    public static void Ssearch(Case[] dataArray) {
-        System.out.print("You Selected to search by Storm Type and State. This will list all Storm events from the state given that match the type given.");
-        System.out.print("\n Valid Storm Types are: \n RF \t Heavy Rain or Flooding \n HA \t Hail \n WI \t Strong Winds \n CO \t Frozen Precipitation or Extreme Cold \n TO \t Tornado \n LI \t Lightning \n WS \t Winter Storm or Significant Snow ");
-
-        System.out.println("Enter Storm Type:");
-        String type = scanner.nextLine();
-        System.out.println("Enter State using Postal Abbreviations:");
-        String state = scanner.nextLine();
-
-        for (Case data : dataArray) {
-            if (Objects.equals(data.field2, type) && Objects.equals(data.field3, state)) {
-                System.out.println("Case found: " + data.toString());
-            }else{
-                System.out.println("No data found");
-            }
-        }
-    }
-    public static void Tsearch(Case[] dataArray) {
-        System.out.print("You Selected to search by Storm Type. This will list the number of Storm events that match the type given.");
-        System.out.print("\n Valid Storm Types are: \n RF \t Heavy Rain or Flooding \n HA \t Hail \n WI \t Strong Winds \n CO \t Frozen Precipitation or Extreme Cold \n TO \t Tornado \n LI \t Lightning \n WS \t Winter Storm or Significant Snow ");
-
-        System.out.println("Enter Storm Type:");
-        String type = scanner.nextLine();
-        int total = 0;
-        for (Case data : dataArray) {
-            if (Objects.equals(data.field2, type)) {
-                 total++;
-            }else{
-                System.out.println("No data found");
-            }
-        }
-        System.out.print(total);
-    }
-    public static void Jsearch(Case[] dataArray) {
-        System.out.print("You Selected to search by State and Year. This will list the number of Deaths and Injuries from the year and state given.");
-
-        System.out.println("Enter State using Postal Abbreviations:");
-        String state = scanner.nextLine();
-        System.out.println("Enter Year:");
-        String year = scanner.nextLine();
-
-        int totalD = 0;
-        int totalI = 0;
-        for (Case data : dataArray) {
-            if (data.field1 == Integer.parseInt(year) && Objects.equals(data.field3, state)) {
-                totalD += data.field5;
-                totalI += data.field6;
-            }else{
-                System.out.println("No data found");
-            }
-        }
-        System.out.print(totalD + " " + totalI);
-    }
-    public static void Asearch(Case[] dataArray) {
-        System.out.print("You Selected to search by State Death toll. This will list the number of Storms recorded for the given state that involved at least one Death.");
-
-        System.out.println("Enter State using Postal Abbreviations:");
-        String state = scanner.nextLine();
-
-        int totalD = 0;
-        for (Case data : dataArray) {
-            if (Objects.equals(data.field3, state) && data.field5 >= 1) {
-                totalD ++;
-            }else{
-                System.out.println("No data found");
-            }
-    }
-    System.out.print(" The number of storms that involved at least one death for the state given is: " + totalD);
-    }
 }
 class Case {
-    int field1;
-    String field2;
-    String field3;
-    int field4;
-    int field5;
-    int field6;
+    String ssn;
+    String code;
+    int Ccode;
+    String date1;
+    String date2;
+
+    public String getSSN() {
+        return ssn;
+    }
+
+    public void setSSN(String ssn) {
+        this.ssn = ssn;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public int getCcode() {
+        return Ccode;
+    }
+
+    public void setCcode(int Ccode) {
+        this.Ccode = Ccode;
+    }
+
+    public String getDate1() {
+        return date1;
+    }
+
+    public void setDate1(String date1) {
+        this.date1 = date1;
+    }
+    
+    public String getDate2() {
+        return date2;
+    }
+
+    public void setDate2(String date2) {
+        this.date2 = date2;
+    }
 
     @Override
     public String toString() {
         return "Case{" +
-                "field1=" + field1 +
-                ", field2=" + field2 +
-                ", field3=" + field3 +
-                ", field4=" + field4 +
-                ", field5='" + field5 + '\'' +
-                ", field6='" + field6 + '\'' +
+                "Social of Accused = " + ssn +
+                ", Crime Code = " + code +
+                ", County = " + Ccode +
+                ", Date of Crime = " + date1 +
+                ", Court Date = " + date2 +
                 '}';
     }
 }
+

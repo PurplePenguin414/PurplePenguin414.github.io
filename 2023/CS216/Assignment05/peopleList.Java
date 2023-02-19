@@ -48,6 +48,25 @@ public class peopleList {
                 
 }
 
+public static People[] parseFile(String fileName) {
+    People[] dataArray = new People[700000];
+    int index = 0;
+    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        String line;
+        while ((line = br.readLine()) != null ) {
+            String[] values = line.split(",");
+            People data = new People();
+            data.ssn = values[0];
+            data.last = values[1];
+            data.first = values[2];
+            dataArray[index] = data;
+            index++;
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return dataArray;
+}
 
 class People {
     private String ssn;
