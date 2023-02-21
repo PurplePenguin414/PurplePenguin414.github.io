@@ -1,4 +1,4 @@
-package CS216.Assignment05;
+package CS216.Other;
 
 
 import java.io.BufferedReader;
@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 
-public class CaseList {
+public class caseList {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 
@@ -38,7 +38,7 @@ public class CaseList {
                 data.code = values[0];
                 data.ssn = values[1];
                 if (data.ssn.equals(People.ssn)){
-                    data.ssn = (People.first + " " + People.last);
+                    data.ssn = People.name;
                 }else;
                 data.Ccode = Integer.parseInt(values[2]);
                 data.date1 = values[3];
@@ -52,31 +52,12 @@ public class CaseList {
         return dataArray;
     }
 }
-
 class Case {
     String ssn;
     String code;
     int Ccode;
     String date1;
     String date2;
-
-    public Case()
-    {
-        ssn = " ";
-        code = " ";
-        Ccode = 0;
-        date1 = " ";
-        date2 = " ";
-    }
-
-    public Case(String s, String c, int C, String d1, String d2)
-    {
-        ssn = s;
-        code = c;
-        Ccode = C;
-        date1 = d1;
-        date2 = d2;
-    }
 
     public String getSSN() {
         return ssn;

@@ -1,7 +1,8 @@
+package CS216.Assignment05;
 public class People {
-    private String ssn;
-    private String last;
-    private String first;
+    static String ssn;
+    static String last;
+    static String first;
 
     public People()
     {
@@ -22,7 +23,7 @@ public class People {
     }
 
     public void setSocial(String ssn) {
-        this.ssn = ssn;
+        People.ssn = ssn;
     }
 
     public String getLastName() {
@@ -30,7 +31,7 @@ public class People {
     }
 
     public void setLastName(String last) {
-        this.last = last;
+        People.last = last;
     }
 
     public String getFirstName() {
@@ -38,6 +39,6 @@ public class People {
     }
 
     public void setFirstName(String first) {
-        this.first = first;
+        People.first = first;
     }
 }

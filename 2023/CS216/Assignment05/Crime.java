@@ -1,3 +1,4 @@
+package CS216.Assignment05;
 public class Crime {
     private String code;
     private String description;
@@ -41,5 +42,5 @@ public class Crime {
         this.level = level;
     }
 
-    
+
 }
