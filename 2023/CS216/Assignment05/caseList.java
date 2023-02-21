@@ -95,13 +95,12 @@ class Case {
 
     @Override
     public String toString() {
-        return "Case{" +
-                "Social of Accused = " + ssn +
-                ", Crime Code = " + code +
-                ", County = " + Ccode +
-                ", Date of Crime = " + date1 +
-                ", Court Date = " + date2 +
-                '}';
+        return "Case -----------------------" +
+                ssn +
+                "Charge: " + code +
+                "Location: " + Ccode +
+                "Date of Arrest: " + date1 +
+                "Court Date: " + date2;
     }
 }
 

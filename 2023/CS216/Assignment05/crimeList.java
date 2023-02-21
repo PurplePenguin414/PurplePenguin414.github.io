@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 
 public class crimeList {
-
-         static int numElems = 0;
+    
+        static int numElems = 0;
     
         static Scanner scanner = new Scanner(System.in);
 
@@ -20,8 +20,6 @@ public class crimeList {
         Crime[] data = new Crime[700000];
         int index = 0;
         String filename = "2023/CS216/Assignment05/crimeCodeListMI.txt";
-
-
             
         // Try to read the file
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -45,8 +43,8 @@ public class crimeList {
             e.printStackTrace();
         }
         numElems = index;
-    
 }
+
 
 public static Crime[] parseFile(String fileName) {
     Crime[] dataArray = new Crime[700000];
