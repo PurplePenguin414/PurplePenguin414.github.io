@@ -1,4 +1,4 @@
-package CS216.Other;
+package CS216.Other.assignment5attempt;
 
 
 import java.io.BufferedReader;

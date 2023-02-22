@@ -1,8 +1,8 @@
 package CS216.Assignment05;
 public class Crime {
-    private String code;
-    private String description;
-    private String level;
+    String code;
+    String description;
+    String level;
 
     public Crime()
     {
@@ -40,6 +40,15 @@ public class Crime {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public static String codeSearch(String code2, Crime[] crimeArray) {
+        for (Crime crime : crimeArray) {  
+            if (code2.equals(crime.code))
+                code2 = crime.description;
+            else code2 = null;
+        }
+        return code2;
     }
 
 

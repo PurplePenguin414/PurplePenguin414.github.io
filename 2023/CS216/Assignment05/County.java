@@ -1,20 +1,20 @@
 package CS216.Assignment05;
 public class County {
 
-    private int Ccode;
-    private String name;
-    private String latitude;
-    private String longitude;
+    String Ccode;
+    String name;
+    String latitude;
+    String longitude;
 
     public County()
     {
-        Ccode = 0;
+        Ccode = " ";
         name = " ";
         latitude = " ";
         longitude = " ";
     }
 
-    public County(int c, String n, String la, String lo)
+    public County(String c, String n, String la, String lo)
     {
         Ccode = c;
         name = n;
@@ -22,11 +22,11 @@ public class County {
         longitude = lo;
     }
 
-    public int getCcode() {
+    public String getCcode() {
         return Ccode;
     }
 
-    public void setCode(int Ccode) {
+    public void setCode(String Ccode) {
         this.Ccode = Ccode;
     }
 
@@ -52,5 +52,14 @@ public class County {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public static String ccodeSearch(String ccode2, County[] MIArray) {
+        for (County county : MIArray) {  
+            if (ccode2.equals(county.Ccode))
+                ccode2 = county.name;
+            else ccode2 = null;
+        }
+        return ccode2;
     }
 }

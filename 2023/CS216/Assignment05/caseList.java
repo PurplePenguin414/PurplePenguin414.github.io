@@ -13,10 +13,20 @@ public class CaseList {
     public static void main(String[] args) {
 
         String fileName = "2023/CS216/Assignment05/accused.txt";
-        Case[] dataArray = parseFile(fileName);
+        String peoplefile = "2023/CS216/Assignment05/people.txt";
+        String MIfile = "2023/CS216/Assignment05/micounties.txt";
+        String crimefile = "2023/CS216/Assignment05/crimeCodeListMI.txt";
+
+        Case[] dataArray = parseCaseFile(fileName);
+        People[] peopleArray = People.parsePeopleFile(peoplefile);
+        County[] MIArray = parseCountyFile(MIfile);
+        Crime[] crimeArray = parseCrimeFile(crimefile);
+
         System.out.println("Cases Loaded");
 
         System.out.println("The Accused List is Provided Here: ");
+
+        //cleanData(dataArray, peopleArray, MIArray, crimeArray);
 
         for (Case data : dataArray) {
 
@@ -27,8 +37,22 @@ public class CaseList {
 
 
 
-    public static Case[] parseFile(String fileName) {
-        Case[] dataArray = new Case[688049];
+    private static void cleanData(Case[] dataArray, People[] peopleArray, County[] MIArray, Crime[] crimeArray) {
+        for (Case data : dataArray) {
+            if(data.ssn != null){
+                data.ssn = (People.snnSearch(data.ssn, peopleArray));
+            }else if (data.Ccode != null){
+                data.Ccode = (County.ccodeSearch(data.Ccode, MIArray));
+            }else if (data.code != null){
+                data.code = (Crime.codeSearch(data.code, crimeArray));
+            }else;
+        }
+    }
+
+
+
+    public static Case[] parseCaseFile(String fileName) {
+        Case[] dataArray = new Case[100];
         int index = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -37,10 +61,7 @@ public class CaseList {
                 Case data = new Case();
                 data.code = values[0];
                 data.ssn = values[1];
-                if (data.ssn.equals(People.ssn)){
-                    data.ssn = (People.first + " " + People.last);
-                }else;
-                data.Ccode = Integer.parseInt(values[2]);
+                data.Ccode = values[2];
                 data.date1 = values[3];
                 data.date2 = values[4];
                 dataArray[index] = data;
@@ -51,12 +72,56 @@ public class CaseList {
         }
         return dataArray;
     }
+
+    
+
+    public static Crime[] parseCrimeFile(String crimefile) {
+        Crime[] crimeArray = new Crime[700000];
+        int index = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(crimefile))) {
+            String line;
+            while ((line = br.readLine()) != null ) {
+                String[] values = line.split(",");
+                Crime data = new Crime();
+                data.code = values[0];
+                data.description = values[1];
+                data.level = values[2];
+                crimeArray[index] = data;
+                index++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return crimeArray;
+    }
+
+    public static County[] parseCountyFile(String MIfile) {
+        County[] MIArray = new County[700000];
+        int index = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(MIfile))) {
+            String line;
+            while ((line = br.readLine()) != null ) {
+                String[] values = line.split(",");
+                County data = new County();
+                data.Ccode = values[0];
+                data.name = values[1];
+                data.latitude = values[2];
+                data.longitude = values[3];
+                MIArray[index] = data;
+                index++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return MIArray;
+    }
+
 }
 
 class Case {
     String ssn;
     String code;
-    int Ccode;
+    String Ccode;
     String date1;
     String date2;
 
@@ -64,12 +129,12 @@ class Case {
     {
         ssn = " ";
         code = " ";
-        Ccode = 0;
+        Ccode = " ";
         date1 = " ";
         date2 = " ";
     }
 
-    public Case(String s, String c, int C, String d1, String d2)
+    public Case(String s, String c, String C, String d1, String d2)
     {
         ssn = s;
         code = c;
@@ -94,11 +159,11 @@ class Case {
         this.code = code;
     }
 
-    public int getCcode() {
+    public String getCcode() {
         return Ccode;
     }
 
-    public void setCcode(int Ccode) {
+    public void setCcode(String Ccode) {
         this.Ccode = Ccode;
     }
 
@@ -120,7 +185,7 @@ class Case {
 
     @Override
     public String toString() {
-        return "-----------------------\n" + "Case # \n" +
+        return "\n-----------------------\n" + "Case # \n" +
                 ssn +
                 "\nCharge: " + code +
                 "\nLocation: " + Ccode +
