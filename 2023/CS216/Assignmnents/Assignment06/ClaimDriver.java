@@ -16,7 +16,7 @@ import javafx.scene.Scene;
 public class ClaimDriver extends Application
 {
     private TextArea outputTextArea;
-    private static ClaimDriver theClaim;
+    private static InsuranceClaim Claim;
     private String outputReport;
     private double VIEW_HEIGHT = 400;
     private double VIEW_WIDTH  = 500;
@@ -30,10 +30,10 @@ public class ClaimDriver extends Application
     public void start(Stage primaryStage)
     {
         // Process payroll via object
-        theClaim = new ClaimDriver();
-        theClaim.prepareClaim();
-        theClaim.processClaim();
-        outputReport = theClaim.toString();
+        Claim = new InsuranceClaim();
+        Claim.prepareClaim();
+        //theClaim.processClaim();
+        outputReport = Claim.toString();
         
         // Send output to text area
         // Set up overall scene with text area.
