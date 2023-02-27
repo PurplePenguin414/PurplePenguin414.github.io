@@ -9,20 +9,21 @@ package CS216.Assignmnents.Assignment06;
 import java.util.Scanner;
 import java.io.*;
 import java.sql.Date;
+import java.text.ParseException;
 
 public class InsuranceClaim 
 {
     public final int MAX_CLAIMS = 50;
     public final String FILENAME1 = "2023/CS216/Assignmnents/Assignment06/insuranceclaims.txt";
     
-    Claim claimList[];    // List of Claim objects
+    Claim InsuranceClaim;    // List of Claim objects
     int numElems;           // Number of claims detected in file
    
     // ----------------------------------------------------------------
     // Constructor:  Load data from file into list of Worker objects
     public InsuranceClaim() 
     {        
-        claimList = new Claim[MAX_CLAIMS];
+        InsuranceClaim = new Claim();
         
         String name, date, type, med, network;
         double cost, insurancePay, customerPay, rate;
@@ -49,8 +50,8 @@ public class InsuranceClaim
                     network = inputFileScanner.next();
                     cost = inputFileScanner.nextDouble();
 
-                    MedicalClaim newClaim = new MedicalClaim(name, date, cost, type, network); 
-                    claimList[i] = newClaim;
+                    MedicalClaim claim = new MedicalClaim(name, date, cost, type, network); 
+                    claimList[i] = claim;
                 }
                 
                 // Dental Claim detected - create object and add to list 
@@ -58,8 +59,8 @@ public class InsuranceClaim
                 {
                     type = inputFileScanner.next();
                     cost  = inputFileScanner.nextDouble();
-                    DentalClaim newClaim = new DentalClaim(name, date, type, cost); 
-                    claimList[i] = newClaim;                                      
+                    DentalClaim claim = new DentalClaim(name, date, type, cost); 
+                    claimList[i] = claim;                                      
                 }    
                 
                 // Perscription Claim detected - create object and add to list 
@@ -67,8 +68,8 @@ public class InsuranceClaim
                 {
                     med = inputFileScanner.next();
                     cost  = inputFileScanner.nextDouble();
-                    PerscriptionClaim newClaim = new PerscriptionClaim(name, date, med, cost); 
-                    claimList[i] = newClaim;                                      
+                    PerscriptionClaim claim = new PerscriptionClaim(name, date, med, cost); 
+                    claimList[i] = claim.;                                      
                 }  
                 i++;
                 
