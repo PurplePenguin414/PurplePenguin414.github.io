@@ -1,0 +1,7 @@
+PE,Physical Exam
+HO,Hospital admittance
+SU,Surgery
+IJ,Injury treatment
+PT,Physical therapy
+GE,General Medical Issue
+LA,Lab Work
