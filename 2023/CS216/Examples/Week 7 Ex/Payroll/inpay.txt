@@ -1,0 +1,13 @@
+Doe        101456 H 20  6.75
+Jackson    101949 S 66573
+Johnson    100321 H 45 23.50
+Lincoln    101987 H 39 15.76
+Washington 100357 H 50 18.19
+Grant      100995 S 42100
+Smith      102003 H 30 12.75
+Klingler   101119 H 50 29.22
+Lee        100774 S 55430
+McClellon  100836 S 38994
+Fuller     100003 H 40 19.00
+Bush       101285 H 60 29.95
+
