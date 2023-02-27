@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)https://prismmedicalgroup.followmyhealth.com/areas/patientaccess/ScannedDocumentUpload.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        function prepareSubmit(scannedDocumentId, scannedDocumentDocumentName, scannedDocumentDate, scannedDocumentProvider) {
+            document.getElementById("scannedDocumentId").value = scannedDocumentId;
+            document.getElementById("scannedDocumentName").value = scannedDocumentDocumentName;
+            document.getElementById("recordedDate").value = scannedDocumentDate;
+            document.getElementById("providerName").value = scannedDocumentProvider;
+        }
+    </script>
+<link id="90b62914616723d69e8e5b2ad4230a65" href="chrome-extension://mloajfnmjckfjbeeofcdaecbelnblden/contentScripts/speech.css" rel="stylesheet" type="text/css"><link id="99d7f5ba0e43f2a2a6393e184a7154d3" href="chrome-extension://mloajfnmjckfjbeeofcdaecbelnblden/contentScripts/rewordify.css" rel="stylesheet" type="text/css"><link id="1ffa79cf5ac7dd4734f51410a17d4d7d" href="chrome-extension://mloajfnmjckfjbeeofcdaecbelnblden/contentScripts/defineWord.css" rel="stylesheet" type="text/css"><link id="64775eb8f770eff6d8a2ec3ca6df3820" href="chrome-extension://mloajfnmjckfjbeeofcdaecbelnblden/contentScripts/overlay.css" rel="stylesheet" type="text/css"></head>
+<body>
+    <form id="TheForm" action="https://prismmedicalgroup.followmyhealth.com/api/patientaccess/ScannedDocuments?session={0}" method="post" enctype="multipart/form-data">
+        <input type="hidden" id="scannedDocumentId" name="scannedDocumentId">
+        <input type="hidden" id="scannedDocumentName" name="scannedDocumentName">
+        <input type="hidden" id="recordedDate" name="recordedDate">
+        <input type="hidden" id="providerName" name="providerName">
+        <input type="hidden" name="uploadMethod" value="iframe">
+        <div id="FilesContainer">
+        </div>
+    </form>
+
+
+</body></html>
