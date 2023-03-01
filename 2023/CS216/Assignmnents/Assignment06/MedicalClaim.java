@@ -1,20 +1,11 @@
 package CS216.Assignmnents.Assignment06;
 
-// Delta College - CST 283 - Klingler 
-// This file define a class to manage data and information for an employee.
 
+public class medicalClaim extends claim {
 
-public abstract class MedicalClaim 
-{
-    public final String FILENAME2 = "2023/CS216/Assignmnents/Assignment06/medicalCategories.txt";
+    private double cost, insurancePay, customerPay;
+    private String network, service;
 
-    protected String name;
-    protected String date;
-    protected double cost;
-    protected String type;
-    protected String network;
-
-    // Declare constants necessary for salary and tax calculation
     final String IN_NETWORK = "N";
     final String OUT_NETWORK = "O";
     final String SURGERY = "SU";
@@ -25,86 +16,47 @@ public abstract class MedicalClaim
     final double OUT_RATE = 0.60;
 
 
-    private double insurancePay;
-    private double customerPay;
-
-
     // No-Arg constructor - initialize to "dummy" values
-    public MedicalClaim() 
+    public medicalClaim() 
     {
-        name = "";
-        date = "";
-        cost = 0.0;
         type = "";
+        date = 0;
+        cost = 0.0;
+        service = "";
         network = "";
     }
 
-    // Parameterized constructor - initialize to specific values
-    public MedicalClaim(String n, String d, Double c, String t, String net) 
+    public medicalClaim(String t, int d, double c, String s, String n, double cp, double ip) 
     {
-        name = n;
-        date = d;
-        cost = c;
-        type = t;
-        network = net;
+        super(t,d,c,ip,cp);   // Pass type, date, cost along to superclass constructor
+        insurancePay = ip; 
+        customerPay = cp;  
     }
 
-    // Get/Set Methods
-    public void setName(String n) {
-        name = n;
-    }
+    // Accessors/mutators
+    public void setInsurancePay(double ip) 
+    { insurancePay = ip; }
+    public double getInsurancePay() 
+    {  return insurancePay; }
 
-    public void setDate(String d) {
-        date = d;
-    }
+    // Accessors/mutators
+    public void setCustomerPay(double cp) 
+    { customerPay = cp; }
+    public double getCustomerPay() 
+    {  return customerPay; }
 
-    void setCost(Double c) {
-        cost = c;
-    }
-
-    void setType(String t) {
-        type = t;
-    }
-
-    void setNetwork(String net) {
-        network = net;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public double getCost() {
-        return cost;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getNetwork() {
-        return network;
-    }
-
-    // Method to calculate tax - determines tax and net pay.  Sets
-    // them to class variables.
-    // Precondition:  Gross pas yas been determined
-    public void calcPay() {
-        // Get and store tax
-        if (network.equals(IN_NETWORK) && type.equals(SURGERY)) {
+    
+    double calcInsurancePay() {
+        if (network.equals(IN_NETWORK) && service.equals(SURGERY)) {
             insurancePay = IN_SURG_RATE * cost;
             customerPay = cost - insurancePay;
-        } else if (network.equals(OUT_NETWORK) && type.equals(SURGERY)) {
+        } else if (network.equals(OUT_NETWORK) && service.equals(SURGERY)) {
             insurancePay = OUT_SURG_RATE * cost;
             customerPay = cost - insurancePay;
-        } else if (network.equals(IN_NETWORK) && type.equals(HOSPITAL)) {
+        } else if (network.equals(IN_NETWORK) && service.equals(HOSPITAL)) {
             insurancePay = IN_SURG_RATE * cost;
             customerPay = cost - insurancePay;
-        }else if (network.equals(OUT_NETWORK) && type.equals(HOSPITAL)) {
+        }else if (network.equals(OUT_NETWORK) && service.equals(HOSPITAL)) {
             insurancePay = OUT_SURG_RATE * cost;
             customerPay = cost - insurancePay;
         }else {
@@ -117,29 +69,8 @@ public abstract class MedicalClaim
             }
         }
 
-        // Get and store net pay
-        Claim.insurancePay = insurancePay;
-        Claim.customerPay = customerPay;
-
-    }
-
-    // Abstract method to calculate tax - determines tax and net pay.  Sets
-    // them to class variables.
-    // Precondition:  Gross pas yas been determined
-    abstract double calcTotalPay(); 
-    
-    // Abstract method to calculate tax - determines tax and net pay.  Sets
-    // them to class variables.
-    // Precondition:  Gross pas yas been determined
-    public double calcTax()
-    {
-        return 0;
+        // Get and store insurance payment amount
+        return (insurancePay);
     }
     
-    // Method to write basic employee info to console output
-    public String toString() 
-    {
-        return "";
-    }
-
 }

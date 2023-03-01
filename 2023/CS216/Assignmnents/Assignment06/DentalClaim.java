@@ -1,47 +1,42 @@
 package CS216.Assignmnents.Assignment06;
-
 // Delta College - CST 283 - Klingler 
 // This file define a class to manage data and information for an employee.
 
-public abstract class DentalClaim 
+
+public class dentalClaim extends claim
 {
-    protected String name;
-    protected String date;
-    protected double cost;
-    protected String procedure;
+    protected String type, service;
+    protected int date;
+    private double cost, customerPay, insurancePay;
 
     // Declare constants necessary for salary and tax calculation
     final String EXAM = "E";
     final double EXAM_RATE = 0.95;
     final double OTHER_RATE = 0.80;
 
-    private double insurancePay;
-    private double customerPay;
-
     // No-Arg constructor - initialize to "dummy" values
-    public DentalClaim() 
+    public dentalClaim() 
     {
-        name = "";
-        date = "";
+        type = "";
+        date = 0;
         cost = 0.0;
-        procedure = "";
+        service = "";
     }
 
     // Parameterized constructor - initialize to specific values
-    public DentalClaim(String n, String d, Double c, String p) 
+    public dentalClaim(String t, int d, String s, double c, double cp, double ip) 
     {
-        name = n;
-        date = d;
-        cost = c;
-        procedure = p;
+        super(t,d,s,c,cp,ip);   // Pass type, date, cost along to superclass constructor
+        insurancePay = ip; 
+        customerPay = cp;
     }
 
     // Get/Set Methods
-    public void setName(String n) {
-        name = n;
+    public void setType(String n) {
+        type = n;
     }
 
-    public void setDate(String d) {
+    public void setDate(int d) {
         date = d;
     }
 
@@ -49,15 +44,15 @@ public abstract class DentalClaim
         cost = c;
     }
 
-    void setProcedure(String p) {
-        procedure = p;
+    void setMed(String m) {
+        med = m;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public String getDate() {
+    public int getDate() {
         return date;
     }
 
@@ -65,46 +60,25 @@ public abstract class DentalClaim
         return cost;
     }
 
-    public String getProcedure() {
-        return procedure;
+    public String getMed() {
+        return med;
     }
 
-    // Method to calculate tax - determines tax and net pay.  Sets
-    // them to class variables.
-    // Precondition:  Gross pas yas been determined
-    public void calcPay() {
-        // Get and store tax
-        if (procedure.equals(EXAM)) {
-            insurancePay = EXAM_RATE * cost;
-            customerPay = cost - insurancePay;
-        } else {
+    
+    double calcInsurancePay() {
+        if (med.startsWith(GEN)) {
             insurancePay = OTHER_RATE * cost;
             customerPay = cost - insurancePay;
+        } else {
+            insurancePay = cost - GEN_PRICE;
+            customerPay = GEN_PRICE;
         }
 
-        // Get and store net pay
-        Claim.insurancePay = insurancePay;
-        Claim.customerPay = customerPay;
-
+        // Get and store insurance payment amount
+        return (insurancePay);
     }
 
-    // Abstract method to calculate tax - determines tax and net pay.  Sets
-    // them to class variables.
-    // Precondition:  Gross pas yas been determined
-    abstract double calcGrossPay(); 
-    
-    // Abstract method to calculate tax - determines tax and net pay.  Sets
-    // them to class variables.
-    // Precondition:  Gross pas yas been determined
-    public double calcTax()
-    {
-        return 0;
-    }
-    
-    // Method to write basic employee info to console output
-    public String toString() 
-    {
-        return "";
-    }
+
+
 
 }

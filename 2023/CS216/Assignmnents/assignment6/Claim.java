@@ -1,13 +1,15 @@
-package CS216.Assignmnents.Assignment06;
+package CS216.Assignmnents.assignment6;
 
 // Delta College - CST 283 - Klingler 
 // This file define a class to manage data and information for an employee.
 
-public abstract class claim {
-
-    private String type;
-    private int date;
-    private double cost, insurancePay, customerPay;
+public abstract class Claim 
+{
+    protected String name;
+    protected String date;
+    protected double cost;
+    protected static double insurancePay;
+    protected static double customerPay;
 
     // Declare constants necessary for salary and tax calculation
     final double MAX_HOURS_PER_WEEK = 40.0;
@@ -18,19 +20,19 @@ public abstract class claim {
     final double TAX_TIER_2 = 600.0;
 
     // No-Arg constructor - initialize to "dummy" values
-    public claim() 
+    public Claim() 
     {
-        type = "";
-        date = 0;
+        name = "";
+        date = "";
         cost = 0.0;
         insurancePay = 0.0;
         customerPay = 0.0;
     }
 
     // Parameterized constructor - initialize to specific values
-    public claim(String t, int d, Double c, Double ip, Double cp) 
+    public Claim(String n, String d, Double c, Double ip, Double cp) 
     {
-        type = t;
+        name = n;
         date = d;
         cost = c;
         insurancePay = ip;
@@ -38,11 +40,11 @@ public abstract class claim {
     }
 
     // Get/Set Methods
-    public void setType(String t) {
-        type = t;
+    public void setName(String n) {
+        name = n;
     }
 
-    public void setDate(int d) {
+    public void setDate(String d) {
         date = d;
     }
 
@@ -50,7 +52,7 @@ public abstract class claim {
         cost = c;
     }
 
-    void setInsurancePay(Double ip) {
+    static void setInsurancePay(Double ip) {
         insurancePay = ip;
     }
 
@@ -58,11 +60,11 @@ public abstract class claim {
         customerPay = cp;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -81,7 +83,7 @@ public abstract class claim {
     // Abstract method to calculate tax - determines tax and net pay.  Sets
     // them to class variables.
     // Precondition:  Gross pas yas been determined
-    abstract double calcInsurancePay(); 
+    abstract double calcPay(); 
     
     // Abstract method to calculate tax - determines tax and net pay.  Sets
     // them to class variables.

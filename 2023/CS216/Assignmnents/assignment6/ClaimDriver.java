@@ -1,4 +1,4 @@
-package CS216.Assignmnents.Assignment06;
+package CS216.Assignmnents.assignment6;
 
 // Delta College - CST 283 - Klingler 
 // This program processes payroll by instantiating an object of the

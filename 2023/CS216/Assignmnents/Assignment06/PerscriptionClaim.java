@@ -1,47 +1,41 @@
 package CS216.Assignmnents.Assignment06;
-
 // Delta College - CST 283 - Klingler 
 // This file define a class to manage data and information for an employee.
 
-public abstract class PerscriptionClaim 
+public class perscriptionClaim extends claim
 {
-    protected String name;
-    protected String date;
-    protected double cost;
-    protected String med;
+    protected String type, med;
+    protected int date;
+    protected double cost, customerPay, insurancePay;
 
     // Declare constants necessary for salary and tax calculation
     final String GEN = "G_";
     final double GEN_PRICE = 20;
     final double OTHER_RATE = 0.95;
 
-    private double insurancePay;
-    private double customerPay;
-
     // No-Arg constructor - initialize to "dummy" values
-    public PerscriptionClaim() 
+    public perscriptionClaim() 
     {
-        name = "";
-        date = "";
+        type = "";
+        date = 0;
         cost = 0.0;
         med = "";
     }
 
     // Parameterized constructor - initialize to specific values
-    public PerscriptionClaim(String n, String d, Double c, String m) 
+    public perscriptionClaim(String t, int d, Double c, String m, double cp, double ip) 
     {
-        name = n;
-        date = d;
-        cost = c;
-        med = m;
+        super(t,d,c,cp,ip);   // Pass type, date, cost along to superclass constructor
+        insurancePay = ip; 
+        customerPay = cp;
     }
 
     // Get/Set Methods
-    public void setName(String n) {
-        name = n;
+    public void setType(String n) {
+        type = n;
     }
 
-    public void setDate(String d) {
+    public void setDate(int d) {
         date = d;
     }
 
@@ -53,11 +47,11 @@ public abstract class PerscriptionClaim
         med = m;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public String getDate() {
+    public int getDate() {
         return date;
     }
 
@@ -69,11 +63,8 @@ public abstract class PerscriptionClaim
         return med;
     }
 
-    // Method to calculate tax - determines tax and net pay.  Sets
-    // them to class variables.
-    // Precondition:  Gross pas yas been determined
-    public void calcTaxNet() {
-        // Get and store tax
+    
+    double calcInsurancePay() {
         if (med.startsWith(GEN)) {
             insurancePay = OTHER_RATE * cost;
             customerPay = cost - insurancePay;
@@ -82,29 +73,8 @@ public abstract class PerscriptionClaim
             customerPay = GEN_PRICE;
         }
 
-        // Get and store net pay
-        Claim.insurancePay = insurancePay;
-        Claim.customerPay = customerPay;
-
-    }
-
-    // Abstract method to calculate tax - determines tax and net pay.  Sets
-    // them to class variables.
-    // Precondition:  Gross pas yas been determined
-    abstract double calcGrossPay(); 
-    
-    // Abstract method to calculate tax - determines tax and net pay.  Sets
-    // them to class variables.
-    // Precondition:  Gross pas yas been determined
-    public double calcTax()
-    {
-        return 0;
-    }
-    
-    // Method to write basic employee info to console output
-    public String toString() 
-    {
-        return "";
+        // Get and store insurance payment amount
+        return (insurancePay);
     }
 
 

@@ -8,69 +8,68 @@ package CS216.Assignmnents.Assignment06;
 
 import java.util.Scanner;
 import java.io.*;
-import java.sql.Date;
-import java.text.ParseException;
 
-public class InsuranceClaim 
-{
-    public final int MAX_CLAIMS = 50;
-    public final String FILENAME1 = "2023/CS216/Assignmnents/Assignment06/insuranceclaims.txt";
+public class insuranceClaim {
+
+    public final int MAX_ICLAIMS = 50;
+    public final String ICLAIMS_FILE = "2023/CS216/Assignmnents/Assignment06/insuranceclaims.txt";
     
-    Claim InsuranceClaim;    // List of Claim objects
-    int numElems;           // Number of claims detected in file
+    claim claimList[];    // List of claim objects
+    int numElems;         // Number of claims detected in file
    
     // ----------------------------------------------------------------
     // Constructor:  Load data from file into list of Worker objects
-    public InsuranceClaim() 
+    public insuranceClaim() 
     {        
-        InsuranceClaim = new Claim();
+        claimList = new claim[MAX_ICLAIMS];
         
-        String name, date, type, med, network;
-        double cost, insurancePay, customerPay, rate;
+        String type, service, network, med;
+        int date;
+        double cost, insurancePay, customerPay;     
 
         // Open file.  Process in batch format line-by-line
         try
         {
             Scanner inputFileScanner;
             File inputfile;
-            inputfile = new File(FILENAME1);  
+            inputfile = new File(ICLAIMS_FILE);  
             inputFileScanner = new Scanner(inputfile);   
             
             int i = 0;
             while (inputFileScanner.hasNext())
             {
                 // Read first data tokens - name, id, employee type
-                name = inputFileScanner.next();                 
-                date   = inputFileScanner.next(); 
+                type = inputFileScanner.next();                 
+                date   = inputFileScanner.nextInt();  
                 
-                // Medical Claim detected - create object and add to list 
-                if (name.equals("M")) 
+                // Medical claim detected - create object and add to list 
+                if (type.equals("M")) 
                 {
-                    type = inputFileScanner.next();
+                    service = inputFileScanner.next();
                     network = inputFileScanner.next();
                     cost = inputFileScanner.nextDouble();
 
-                    MedicalClaim claim = new MedicalClaim(name, date, cost, type, network); 
+                    medicalClaim claim = new medicalClaim(type,date,cost,service,network,customerPay,insurancePay); 
                     claimList[i] = claim;
                 }
                 
-                // Dental Claim detected - create object and add to list 
-                if (name.equals("D")) 
-                {
-                    type = inputFileScanner.next();
-                    cost  = inputFileScanner.nextDouble();
-                    DentalClaim claim = new DentalClaim(name, date, type, cost); 
-                    claimList[i] = claim;                                      
-                }    
-                
-                // Perscription Claim detected - create object and add to list 
-                if (name.equals("P")) 
+                // Perscription claim detected - create object and add to list 
+                if (type.equals("P")) 
                 {
                     med = inputFileScanner.next();
                     cost  = inputFileScanner.nextDouble();
-                    PerscriptionClaim claim = new PerscriptionClaim(name, date, med, cost); 
-                    claimList[i] = claim.;                                      
-                }  
+                    perscriptionClaim claim = new perscriptionClaim(type, date, cost, med, customerPay, insurancePay); 
+                    claimList[i] = claim;                                      
+                } 
+
+                // Dental claim detected - create object and add to list 
+                if (type.equals("D")) 
+                {
+                    service = inputFileScanner.next();
+                    cost  = inputFileScanner.nextDouble();
+                    dentalClaim claim = new dentalClaim(type, date, service, cost, customerPay, insurancePay); 
+                    claimList[i] = claim;                                      
+                }              
                 i++;
                 
             }
@@ -100,30 +99,30 @@ public class InsuranceClaim
     // Prepare a formatted payroll report as one string object
     public String toString()
     {
-        // Initializes totals
-        String code, date, type, procedure, med, network;
-        double cost, insurancePay, customerPay;
+         // Initializes totals
+         String type, date, service, med, network;
+         double cost, insurancePay, customerPay;
+          
+         // Set up output string - initialize with table headings
+         String outString = "Type    Date    Service    Medication    Cost    In/Out of Netowrk    Insurance Payment    Customer Payment\n";
          
-        // Set up output string - initialize with table headings
-        String outString = "Type    Date    Service    Medication    Cost    In/Out of Netowrk    Insurance Payment    Customer Payment\n";
-        
-        // Loop through all payroll data and format data for each element
-        for (int i = 0; i < numElems; i++)
-        {
-            
-            // Format line for output
-            outString += String.format("%-12s", claimList[i].getCode());
-            outString += String.format("%8d",   claimList[i].getDate());
-            outString += String.format("%9.2f", claimList[i].getService());
-            outString += String.format("%9.2f", claimList[i].getMed());
-            outString += String.format("%9.2f", claimList[i].getCost());
-            outString += String.format("%9.2f", claimList[i].getNetwork());
-            outString += String.format("%9.2f", claimList[i].getInsurancePay());
-            outString += String.format("%9.2f", claimList[i].getCustomerPay());
-            outString += "\n"; 
-        } 
-                
-        return outString;
-    }
+         // Loop through all payroll data and format data for each element
+         for (int i = 0; i < numElems; i++)
+         {
+             
+             // Format line for output
+             outString += String.format("%-12s", claimList[i].getType());
+             outString += String.format("%8d",   claimList[i].getDate());
+             outString += String.format("%9.2f", claimList[i].getService());
+             outString += String.format("%9.2f", claimList[i].getMed());
+             outString += String.format("%9.2f", claimList[i].getCost());
+             outString += String.format("%9.2f", claimList[i].getNetwork());
+             outString += String.format("%9.2f", claimList[i].getInsurancePay());
+             outString += String.format("%9.2f", claimList[i].getCustomerPay());
+             outString += "\n"; 
+         } 
+                 
+         return outString;
+     }
 
 }
