@@ -97,9 +97,6 @@ public class insuranceClaim {
     // Prepare a formatted claim report as one string object
     public String toString()
     {
-         // Initializes totals
-         String type, date, service, med, network;
-         double cost, insurancePay, customerPay;
           
          // Set up output string - initialize with table headings
          String outString = "Type    Date    Service    Cost    Insurance Payment    Customer Payment\n";
