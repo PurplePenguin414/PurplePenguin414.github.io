@@ -26,7 +26,7 @@ public class dentalClaim extends claim
     // Parameterized constructor - initialize to specific values
     public dentalClaim(String t, int d, String s, double c, double cp, double ip) 
     {
-        super(t,d,s,c,cp,ip);   // Pass type, date, cost along to superclass constructor
+        super(t,d,c,cp,ip);   // Pass type, date, cost along to superclass constructor
         insurancePay = ip; 
         customerPay = cp;
     }
@@ -45,7 +45,7 @@ public class dentalClaim extends claim
     }
 
     void setMed(String m) {
-        med = m;
+        service = m;
     }
 
     public String getType() {
@@ -61,24 +61,21 @@ public class dentalClaim extends claim
     }
 
     public String getMed() {
-        return med;
+        return service;
     }
 
     
     double calcInsurancePay() {
-        if (med.startsWith(GEN)) {
-            insurancePay = OTHER_RATE * cost;
+        if (service.equals(EXAM)) {
+            insurancePay = EXAM_RATE * cost;
             customerPay = cost - insurancePay;
         } else {
-            insurancePay = cost - GEN_PRICE;
-            customerPay = GEN_PRICE;
+            insurancePay = OTHER_RATE * cost;
+            customerPay = cost - insurancePay;
         }
 
         // Get and store insurance payment amount
         return (insurancePay);
     }
-
-
-
 
 }

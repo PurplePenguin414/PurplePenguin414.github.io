@@ -19,6 +19,7 @@ public class medicalClaim extends claim {
     // No-Arg constructor - initialize to "dummy" values
     public medicalClaim() 
     {
+        super();
         type = "";
         date = 0;
         cost = 0.0;
@@ -34,16 +35,46 @@ public class medicalClaim extends claim {
     }
 
     // Accessors/mutators
-    public void setInsurancePay(double ip) 
-    { insurancePay = ip; }
-    public double getInsurancePay() 
-    {  return insurancePay; }
+    // Get/Set Methods
+    public void setType(String t) {
+        type = t;
+    }
 
-    // Accessors/mutators
-    public void setCustomerPay(double cp) 
-    { customerPay = cp; }
-    public double getCustomerPay() 
-    {  return customerPay; }
+    public void setDate(int d) {
+        date = d;
+    }
+
+    void setCost(Double c) {
+        cost = c;
+    }
+
+    void setService(String s) {
+        service = s;
+    }
+
+    void setNetwork(String net) {
+        network = net;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getDate() {
+        return date;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public String getService() {
+        return type;
+    }
+
+    public String getNetwork() {
+        return network;
+    }
 
     
     double calcInsurancePay() {

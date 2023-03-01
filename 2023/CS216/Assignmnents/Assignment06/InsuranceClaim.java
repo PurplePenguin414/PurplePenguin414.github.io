@@ -17,15 +17,16 @@ public class insuranceClaim {
     claim claimList[];    // List of claim objects
     int numElems;         // Number of claims detected in file
    
+    String type, service, network;
+    int date;
+    double cost, insurancePay, customerPay; 
     // ----------------------------------------------------------------
     // Constructor:  Load data from file into list of Worker objects
     public insuranceClaim() 
     {        
         claimList = new claim[MAX_ICLAIMS];
         
-        String type, service, network, med;
-        int date;
-        double cost, insurancePay, customerPay;     
+            
 
         // Open file.  Process in batch format line-by-line
         try
@@ -56,9 +57,9 @@ public class insuranceClaim {
                 // Perscription claim detected - create object and add to list 
                 if (type.equals("P")) 
                 {
-                    med = inputFileScanner.next();
+                    service = inputFileScanner.next();
                     cost  = inputFileScanner.nextDouble();
-                    perscriptionClaim claim = new perscriptionClaim(type, date, cost, med, customerPay, insurancePay); 
+                    perscriptionClaim claim = new perscriptionClaim(type, date, cost, service, customerPay, insurancePay); 
                     claimList[i] = claim;                                      
                 } 
 
@@ -104,7 +105,7 @@ public class insuranceClaim {
          double cost, insurancePay, customerPay;
           
          // Set up output string - initialize with table headings
-         String outString = "Type    Date    Service    Medication    Cost    In/Out of Netowrk    Insurance Payment    Customer Payment\n";
+         String outString = "Type    Date    Service    Cost    Insurance Payment    Customer Payment\n";
          
          // Loop through all payroll data and format data for each element
          for (int i = 0; i < numElems; i++)
@@ -114,9 +115,7 @@ public class insuranceClaim {
              outString += String.format("%-12s", claimList[i].getType());
              outString += String.format("%8d",   claimList[i].getDate());
              outString += String.format("%9.2f", claimList[i].getService());
-             outString += String.format("%9.2f", claimList[i].getMed());
              outString += String.format("%9.2f", claimList[i].getCost());
-             outString += String.format("%9.2f", claimList[i].getNetwork());
              outString += String.format("%9.2f", claimList[i].getInsurancePay());
              outString += String.format("%9.2f", claimList[i].getCustomerPay());
              outString += "\n"; 

@@ -5,8 +5,8 @@ package CS216.Assignmnents.Assignment06;
 
 public abstract class claim {
 
-    private String type;
-    private int date;
+    protected String type, service;
+    protected int date;
     private double cost, insurancePay, customerPay;
 
     // Declare constants necessary for salary and tax calculation
@@ -23,6 +23,7 @@ public abstract class claim {
         type = "";
         date = 0;
         cost = 0.0;
+        service = "";
         insurancePay = 0.0;
         customerPay = 0.0;
     }
@@ -58,6 +59,10 @@ public abstract class claim {
         customerPay = cp;
     }
 
+    void setService(String s) {
+        service = s;
+    }
+
     public String getType() {
         return type;
     }
@@ -78,23 +83,24 @@ public abstract class claim {
         return customerPay;
     }
 
+    public String getService() {
+        return type;
+    }
+
     // Abstract method to calculate tax - determines tax and net pay.  Sets
     // them to class variables.
     // Precondition:  Gross pas yas been determined
     abstract double calcInsurancePay(); 
     
-    // Abstract method to calculate tax - determines tax and net pay.  Sets
-    // them to class variables.
-    // Precondition:  Gross pas yas been determined
-    public double calcTax()
-    {
-        return 0;
-    }
     
     // Method to write basic employee info to console output
     public String toString() 
     {
         return "";
+    }
+
+    public void calcPay() {
+        customerPay = cost - insurancePay;
     }
 
 
