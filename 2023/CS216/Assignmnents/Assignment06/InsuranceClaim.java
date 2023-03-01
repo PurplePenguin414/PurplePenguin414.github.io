@@ -1,10 +1,9 @@
 package CS216.Assignmnents.Assignment06;
 
-// Delta College - CST 283 - Klingler 
-// This class manages a list of Worker objects that randomly include
-// salaried and hourly workers.  It calculates total payroll and tax amounts
-// for both salaried and hourly employees.  The final payroll report
-// is sorted by descending net pay.
+// Delta College - CST 283 - Gibbs 
+// This class manages a list of claim objects that randomly include
+// dental, medical and perscription visits.  It calculates total payment and
+// compiles The final claims report.
 
 import java.util.Scanner;
 import java.io.*;
@@ -21,7 +20,7 @@ public class insuranceClaim {
     int date;
     double cost, insurancePay, customerPay; 
     // ----------------------------------------------------------------
-    // Constructor:  Load data from file into list of Worker objects
+    // Constructor:  Load data from file into list of claim objects
     public insuranceClaim() 
     {        
         claimList = new claim[MAX_ICLAIMS];
@@ -39,7 +38,7 @@ public class insuranceClaim {
             int i = 0;
             while (inputFileScanner.hasNext())
             {
-                // Read first data tokens - name, id, employee type
+                // Read first data tokens - type of claim, date
                 type = inputFileScanner.next();                 
                 date   = inputFileScanner.nextInt();  
                 
@@ -86,8 +85,6 @@ public class insuranceClaim {
     }
     
     // ----------------------------------------------------------------
-    // Calculate gross pay, tax, and net pay for all Worker objects
-    // in list.
     public void prepareClaim()
     {
         for (int i = 0; i < numElems; i++)
@@ -97,7 +94,7 @@ public class insuranceClaim {
     }
 
     // ----------------------------------------------------------------
-    // Prepare a formatted payroll report as one string object
+    // Prepare a formatted claim report as one string object
     public String toString()
     {
          // Initializes totals

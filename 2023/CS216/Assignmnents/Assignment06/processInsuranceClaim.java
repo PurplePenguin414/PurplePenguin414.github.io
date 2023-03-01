@@ -1,5 +1,5 @@
 package CS216.Assignmnents.Assignment06;
-// Delta College - CST 283 - Klingler 
+// Delta College - CST 283 - Gibbs 
 // This program processes insurance claim by instantiating an object of the
 // insuranceClaim class.
 

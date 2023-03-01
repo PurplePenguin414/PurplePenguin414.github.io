@@ -1,6 +1,6 @@
 package CS216.Assignmnents.Assignment06;
-// Delta College - CST 283 - Klingler 
-// This file define a class to manage data and information for an employee.
+// Delta College - CST 283 - Gibbs 
+// This file define a class to manage data and information for a claim specific to a dental visit.
 
 
 public class dentalClaim extends claim
@@ -9,7 +9,7 @@ public class dentalClaim extends claim
     protected int date;
     private double cost, customerPay, insurancePay;
 
-    // Declare constants necessary for salary and tax calculation
+    // Declare constants necessary for determining exams and payment %
     final String EXAM = "E";
     final double EXAM_RATE = 0.95;
     final double OTHER_RATE = 0.80;

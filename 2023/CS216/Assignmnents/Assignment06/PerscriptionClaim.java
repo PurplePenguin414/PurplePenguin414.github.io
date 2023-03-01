@@ -1,6 +1,7 @@
 package CS216.Assignmnents.Assignment06;
-// Delta College - CST 283 - Klingler 
-// This file define a class to manage data and information for an employee.
+
+// Delta College - CST 283 - Gibbs 
+// This file define a class to manage data and information for a claim specific to a perscription.
 
 public class perscriptionClaim extends claim
 {
@@ -8,7 +9,7 @@ public class perscriptionClaim extends claim
     protected int date;
     protected double cost, customerPay, insurancePay;
 
-    // Declare constants necessary for salary and tax calculation
+    // Declare constants necessary for determining generic and payment %
     final String GEN = "G_";
     final double GEN_PRICE = 20;
     final double OTHER_RATE = 0.95;
@@ -25,7 +26,7 @@ public class perscriptionClaim extends claim
     // Parameterized constructor - initialize to specific values
     public perscriptionClaim(String t, int d, Double c, String m, double cp, double ip) 
     {
-        super(t,d,c,cp,ip);   // Pass type, date, cost along to superclass constructor
+        super(t,d,c,cp,ip);   // Pass type, date, costs along to superclass constructor
         insurancePay = ip; 
         customerPay = cp;
     }
