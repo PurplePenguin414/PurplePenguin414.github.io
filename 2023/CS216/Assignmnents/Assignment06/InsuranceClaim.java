@@ -24,8 +24,6 @@ public class insuranceClaim {
     public insuranceClaim() 
     {        
         claimList = new claim[MAX_ICLAIMS];
-        
-            
 
         // Open file.  Process in batch format line-by-line
         try
