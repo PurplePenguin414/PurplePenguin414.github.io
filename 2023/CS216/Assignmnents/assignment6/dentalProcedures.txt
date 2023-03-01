@@ -1,7 +1,0 @@
-F Fillings
-C Dental crowns 
-T Tooth extractions
-E Delta Exam
-X Dental X-rays
-B Bridgework
-R Root canal
