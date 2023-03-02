@@ -106,7 +106,7 @@ public class insuranceClaim {
              // Format line for output
              outString += String.format("%-12s", claimList[i].getType());
              outString += String.format("%8d",   claimList[i].getDate());
-             outString += String.format("%9.2f", claimList[i].getService());
+             outString += String.format("%-12s", claimList[i].getService());
              outString += String.format("%9.2f", claimList[i].getCost());
              outString += String.format("%9.2f", claimList[i].getInsurancePay());
              outString += String.format("%9.2f", claimList[i].getCustomerPay());
