@@ -1,0 +1,26 @@
+A,Like to go to movies
+B,Love drinking coffee
+C,Am a big hockey fan
+D,Like to build things
+E,Have a dog
+F,Do not have a cat
+G,Enjoy working with technology
+H,Like to hang out in bars
+I,Drive a pick-up
+J,Have a bachelor's degree
+K,Like to take day hikes
+L,Enjoy skiing
+M,Love to learn new things
+N,Have a bachelor's degree
+O,Have a master's degree
+P,Like to entertain guests at home
+Q,Enjoy solving math problems
+R,Love to code
+S,Like watching movies on Netflix
+T,Enjoy flying to new destinations
+U,Like visiting national parks
+V,Am always curious about how science works
+W,Regularly listen to podcasts
+X,Dislike long commutes to work
+Y,Enjoy watching clouds go by
+Z,Believe Delta College is the best educational experience ever
