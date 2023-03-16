@@ -1,0 +1,84 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Assignment1",
+            "request": "launch",
+            "mainClass": "CS216.Assignmnents.Assignment01.Assignment1",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "W1Assignment1",
+            "request": "launch",
+            "mainClass": "CS216.Assignmnents.Assignment01.W1Assignment1",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "Assignment2",
+            "request": "launch",
+            "mainClass": "CS216.Assignmnents.Assignment02.Assignment2",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "assignment03",
+            "request": "launch",
+            "mainClass": "CS216.Assignmnents.Assignment03.assignment03",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "Assignment04",
+            "request": "launch",
+            "mainClass": "CS216.Assignmnents.Assignment04.Assignment04",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "CaseList",
+            "request": "launch",
+            "mainClass": "CS216.Assignmnents.Assignment05.CaseList",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "processInsuranceClaim",
+            "request": "launch",
+            "mainClass": "CS216.Assignmnents.Assignment06.processInsuranceClaim",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "WriterVersionControl",
+            "request": "launch",
+            "mainClass": "CS216.Assignmnents.Assignment07.WriterVersionControl",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "SnowDriver",
+            "request": "launch",
+            "mainClass": "CS216.Other.SnowDriver",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "caseList",
+            "request": "launch",
+            "mainClass": "CS216.Other.assignment5attempt.caseList",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        }
+    ]
+}
