@@ -9,7 +9,7 @@ public class PeopleList extends People {
     public static PeopleList[] People;
     String peoplefile = "2023/CS216/Other/Exam2Prep/people.txt";
 
-    public static People[] parsePeopleFile(String peopleFile) {
+    public static PeopleList[] parsePeopleFile(String peopleFile) {
         // Create an array to store the objects
         PeopleList[] People = new PeopleList[700000];
         int numElems2 = 0;
@@ -23,13 +23,13 @@ public class PeopleList extends People {
                 String[] values = line.split(",");
 
                 // Create a new People object and set its properties
-                People tempdata = new People();
-                ((PeopleList) tempdata).setSocial(values[0]);
-                ((PeopleList) tempdata).setLastName(values[1]);
-                ((PeopleList) tempdata).setFirstName(values[2]);
+                PeopleList tempdata = new PeopleList();
+                (tempdata).setSocial(values[0]);
+                (tempdata).setLastName(values[1]);
+                (tempdata).setFirstName(values[2]);
 
                 // Add the object to the array
-                People[index2] = (PeopleList) tempdata;
+                People[index2] = tempdata;
                 line = br.readLine();
                 index2++;
             }
@@ -71,10 +71,10 @@ public class PeopleList extends People {
 
 
     public static String snnSearch(String ssn, PeopleList[] People) {
-        for (PeopleList Person : People) {
-            if (Person != null){
-                if (ssn.equals(Person.ssn))
-                    ssn = Person.first + " " + Person.last + " (" + Person.ssn + ") ";
+        for (PeopleList data : People) {
+            if (data != null){
+                if (ssn.equals(data.ssn))
+                    ssn = data.first + " " + data.last + " (" + data.ssn + ") ";
                 else ssn = null;
             }else;
                 
