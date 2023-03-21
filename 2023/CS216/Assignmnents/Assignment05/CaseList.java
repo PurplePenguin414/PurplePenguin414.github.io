@@ -1,4 +1,4 @@
-package CS216.Assignment05;
+package CS216.Assignmnents.Assignment05;
 
 
 import java.io.BufferedReader;
@@ -12,10 +12,10 @@ public class CaseList {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 
-        String fileName = "2023/CS216/Assignment05/accused.txt";
-        String peoplefile = "2023/CS216/Assignment05/people.txt";
-        String MIfile = "2023/CS216/Assignment05/micounties.txt";
-        String crimefile = "2023/CS216/Assignment05/crimeCodeListMI.txt";
+        String fileName = "2023/CS216/Assignmnents/Assignment05/accused.txt";
+        String peoplefile = "2023/CS216/Assignmnents/Assignment05/people.txt";
+        String MIfile = "2023/CS216/Assignmnents/Assignment05/micounties.txt";
+        String crimefile = "2023/CS216/Assignmnents/Assignment05/crimeCodeListMI.txt";
 
         Case[] dataArray = parseCaseFile(fileName);
         People[] peopleArray = People.parsePeopleFile(peoplefile);
