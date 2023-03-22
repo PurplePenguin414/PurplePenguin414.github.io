@@ -6,7 +6,22 @@ import java.io.IOException;
 
 public class CaseList extends Case{
 
-    
+    static String fileAccused = "2023/CS216/Other/Exam2Prep/accused.txt";
+    static Case[] CaseList = parseCaseFile(fileAccused);
+
+    public static void main(String[] args)
+    {
+        //cleanData(CaseList, PeopleList.People, CountyList.County, CrimeList.Crime);
+        System.out.println("Cases Loaded");
+        System.out.println("The Accused List is Provided Here: \nData found: ");
+        for (Case data : CaseList) {
+            if (data != null){
+                System.out.println(data.toString());
+            }else;
+        }
+
+    }
+
 
     public static Case[] parseCaseFile(String fileAccused) {
 
