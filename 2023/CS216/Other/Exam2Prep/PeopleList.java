@@ -7,7 +7,7 @@ import java.io.IOException;
 public class PeopleList extends People {
 
     public static PeopleList[] People;
-    String peoplefile = "2023/CS216/Other/Exam2Prep/people.txt";
+    
 
     public static PeopleList[] parsePeopleFile(String peopleFile) {
         // Create an array to store the objects

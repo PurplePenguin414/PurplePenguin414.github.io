@@ -7,7 +7,10 @@ import java.io.IOException;
 public class CrimeList extends Crime{
 
     static String crimefile = "2023/CS216/Other/Exam2Prep/crimeCodeListMI.txt";
+    static String peoplefile = "2023/CS216/Other/Exam2Prep/people.txt";
+
     static CrimeList[] Crime= parseCrimeFile(crimefile);
+    static PeopleList[] People= PeopleList.parsePeopleFile(peoplefile);
 
     public static CrimeList[] parseCrimeFile(String crimefile) {
         CrimeList[] Crime= new CrimeList[700000];

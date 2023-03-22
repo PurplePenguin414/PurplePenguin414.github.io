@@ -7,8 +7,11 @@ import java.io.IOException;
 public class CaseList extends Case{
 
     static String fileAccused = "2023/CS216/Other/Exam2Prep/accused.txt";
-    static Case[] CaseList = parseCaseFile(fileAccused);
+    static String peoplefile = "2023/CS216/Other/Exam2Prep/people.txt";
 
+    static Case[] CaseList = parseCaseFile(fileAccused);
+    static PeopleList[] People = PeopleList.parsePeopleFile(peoplefile);
+    
     public static void main(String[] args)
     {
         cleanData(CaseList, PeopleList.People, CountyList.County, CrimeList.Crime);
@@ -104,7 +107,7 @@ public class CaseList extends Case{
 
     private static void cleanData(Case[] caseList2, PeopleList[] People, CountyList[] County, CrimeList[] Crime) {
         for (Case data : CaseList) {
-            if(data.ssn != null && PeopleList.People != null){
+            if(data.ssn != null){
                 data.ssn = (PeopleList.snnSearch(data.ssn, People));
             }else if (data.Ccode != null){
                 data.Ccode = (CountyList.ccodeSearch(data.Ccode, County));
