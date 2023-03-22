@@ -6,8 +6,7 @@ import java.io.IOException;
 
 public class CaseList extends Case{
 
-    static String fileAccused = "2023/CS216/Other/Exam2Prep/accused.txt";
-    static Case[] CaseList = parseCaseFile(fileAccused);
+    
 
     public static Case[] parseCaseFile(String fileAccused) {
 

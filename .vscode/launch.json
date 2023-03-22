@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CaseDriver",
+            "request": "launch",
+            "mainClass": "CS216.Other.Exam2Prep.CaseDriver",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
             "name": "CaseList",
             "request": "launch",
             "mainClass": "CS216.Other.Exam2Prep.CaseList",
