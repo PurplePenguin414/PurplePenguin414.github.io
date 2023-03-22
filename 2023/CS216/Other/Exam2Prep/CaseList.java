@@ -11,7 +11,7 @@ public class CaseList extends Case{
 
     public static void main(String[] args)
     {
-        //cleanData(CaseList, PeopleList.People, CountyList.County, CrimeList.Crime);
+        cleanData(CaseList, PeopleList.People, CountyList.County, CrimeList.Crime);
         System.out.println("Cases Loaded");
         System.out.println("The Accused List is Provided Here: \nData found: ");
         for (Case data : CaseList) {
@@ -24,20 +24,26 @@ public class CaseList extends Case{
 
 
     public static Case[] parseCaseFile(String fileAccused) {
-
+        // Create an array to store the objects
         Case[] CaseList = new Case[100];
         int index = 0;
 
+        // Try to read the file
         try (BufferedReader br = new BufferedReader(new FileReader(fileAccused))) {
             String line;
             while ((line = br.readLine()) != null ) {
+                // Split the line by commas
                 String[] values = line.split(",");
+
+                // Create a new Case object and set its properties
                 Case data = new Case();
                 data.code = values[0];
                 data.ssn = values[1];
                 data.Ccode = values[2];
                 data.date1 = values[3];
                 data.date2 = values[4];
+
+                // Add the object to the array
                 CaseList[index] = data;
                 index++;
             }

@@ -31,11 +31,13 @@ public class Case {
 
     @Override
     public String toString() {
-        return "\n-----------------------\n" + 
-        ssn +
-        "\nCharge: " + code +
-        "\nLocation: " + Ccode +
-        "\nDate of Arrest: " + date1 +
-        "\nCourt Date: " + date2;
+        return(
+            "\n-----------------------\n" + 
+            ssn +
+            "\nCharge: " + code +
+            "\nLocation: " + Ccode +
+            "\nDate of Arrest: " + date1 +
+            "\nCourt Date: " + date2
+        );
     }
 }

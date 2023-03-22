@@ -12,33 +12,32 @@ public class PeopleList extends People {
     public static PeopleList[] parsePeopleFile(String peopleFile) {
         // Create an array to store the objects
         PeopleList[] People = new PeopleList[700000];
-        int numElems2 = 0;
         int index2 = 0;
 
         // Try to read the file
         try (BufferedReader br = new BufferedReader(new FileReader(peopleFile))) {
-            String line = br.readLine();
-            while (line != null && index2 <= 700000) {
+            String line;
+            while ((line = br.readLine()) != null ) {
                 // Split the line by commas
                 String[] values = line.split(",");
 
                 // Create a new People object and set its properties
                 PeopleList tempdata = new PeopleList();
-                (tempdata).setSocial(values[0]);
-                (tempdata).setLastName(values[1]);
-                (tempdata).setFirstName(values[2]);
+                tempdata.ssn = values[0];
+                tempdata.last = values[1];
+                tempdata.first = values[2];
 
                 // Add the object to the array
                 People[index2] = tempdata;
-                line = br.readLine();
                 index2++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        numElems2 = index2;
+        
         return People;
     }
+
 
     public String getSocial() {
         return ssn;
