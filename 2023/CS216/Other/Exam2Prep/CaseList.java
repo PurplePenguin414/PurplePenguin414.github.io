@@ -104,7 +104,7 @@ public class CaseList extends Case{
 
     private static void cleanData(Case[] caseList2, PeopleList[] People, CountyList[] County, CrimeList[] Crime) {
         for (Case data : CaseList) {
-            if(data.ssn != null){
+            if(data.ssn != null && PeopleList.People != null){
                 data.ssn = (PeopleList.snnSearch(data.ssn, People));
             }else if (data.Ccode != null){
                 data.Ccode = (CountyList.ccodeSearch(data.Ccode, County));
