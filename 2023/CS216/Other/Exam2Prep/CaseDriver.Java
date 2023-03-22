@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class CaseDriver extends People, Case, County, Crime{
+public class CaseDriver {
 
     public static void main(String[] args)
     {
