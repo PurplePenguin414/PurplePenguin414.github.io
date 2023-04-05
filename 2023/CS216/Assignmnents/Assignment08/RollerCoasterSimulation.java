@@ -61,7 +61,7 @@ public class RollerCoasterSimulation extends Application {
         layout.addRow(3, startSimulationButton);
 
         // Create the scene
-        Scene scene = new Scene(layout, 800, 800);
+        Scene scene = new Scene(layout, 800, 500);
 
         // Set the stage title and show the scene
         primaryStage.setTitle("Roller Coaster Simulation");
