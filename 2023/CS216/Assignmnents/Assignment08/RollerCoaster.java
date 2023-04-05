@@ -1,10 +1,8 @@
 import javax.swing.JOptionPane;
 import java.util.*;
 
-public class RollerCoaster 
+public RollerCoaster 
 {
-   public static void main(String args[]) 
-   {
         // initialize variables and constants
         int rideTime = 240; // seconds
         int unloadTime = 20; // seconds

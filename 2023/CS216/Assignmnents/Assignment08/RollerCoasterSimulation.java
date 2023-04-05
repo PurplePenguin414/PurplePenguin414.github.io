@@ -29,16 +29,16 @@ public class RollerCoasterSimulation extends Application {
 
         // Create the radio buttons to select the number of cars
         numCarsGroup = new ToggleGroup();
-        RadioButton twelveCarsRadio = new RadioButton("12");
+        RadioButton twelveCarsRadio = new RadioButton("1");
         twelveCarsRadio.setToggleGroup(numCarsGroup);
         twelveCarsRadio.setSelected(true);
-        RadioButton twentyFourCarsRadio = new RadioButton("24");
+        RadioButton twentyFourCarsRadio = new RadioButton("2");
         twentyFourCarsRadio.setToggleGroup(numCarsGroup);
-        RadioButton thirtySixCarsRadio = new RadioButton("36");
+        RadioButton thirtySixCarsRadio = new RadioButton("3");
         thirtySixCarsRadio.setToggleGroup(numCarsGroup);
-        RadioButton fortyEightCarsRadio = new RadioButton("48");
+        RadioButton fortyEightCarsRadio = new RadioButton("4");
         fortyEightCarsRadio.setToggleGroup(numCarsGroup);
-        RadioButton sixtyCarsRadio = new RadioButton("60");
+        RadioButton sixtyCarsRadio = new RadioButton("5");
         sixtyCarsRadio.setToggleGroup(numCarsGroup);
 
         // Create the text area to display the simulation results
@@ -61,7 +61,7 @@ public class RollerCoasterSimulation extends Application {
         layout.addRow(3, startSimulationButton);
 
         // Create the scene
-        Scene scene = new Scene(layout, 500, 500);
+        Scene scene = new Scene(layout, 800, 800);
 
         // Set the stage title and show the scene
         primaryStage.setTitle("Roller Coaster Simulation");
@@ -70,7 +70,71 @@ public class RollerCoasterSimulation extends Application {
     }
 
     private void startSimulation() {
-        // TODO: Implement simulation logic here
+        // initialize variables and constants
+        int rideTime = 240; // seconds
+        int unloadTime = 20; // seconds
+        int loadTime = 30; // seconds
+        int carsToAdd = 12; // default value
+        int maxCars = 60;
+        int ridersPerCar = 12;
+        int queueSize = 0;
+        int totalTimeWaited = 0;
+        int totalRiders = 0;
+        int simulationTime = 0;
+        int simulationDuration = 16 * 60 * 60; // 16 hours in seconds
+        int rideCapacity = 0;
+        int totalWaitTime =0;
+        int avgWaitTime =0;
+        double arrivalProb = 0.0;
+        // get the selected number of cars to add from the GUI
+        // and set the capacity of the ride accordingly
+        // code to get selected number of cars from GUI
+        RadioButton selectedRadioButton = (RadioButton) numCarsGroup.getSelectedToggle();
+        String toogleGroupValue = selectedRadioButton.getText();
+        carsToAdd = Integer.parseInt(toogleGroupValue);
+        rideCapacity = carsToAdd * ridersPerCar;
+        // set up a timer to simulate the ride queue
+        while (simulationTime < simulationDuration) {
+            // calculate the probability that a rider arrives during this second
+            arrivalProb = ((int)arrivalFrequencySlider.getValue()); // code to calculate probability based on rider arrival frequency from GUI
+            
+            queueSize = (simulationDuration/(int)arrivalProb);
+            // a new rider has arrived            
+        
+            // check if there are riders waiting in the queue and the ride is available
+            if (queueSize > 0 && queueSize >= rideCapacity) {
+                // the ride is full and ready to go
+                // remove riders from the queue and add them to the ride
+                queueSize -= rideCapacity;
+                totalRiders += rideCapacity;
+        
+                // calculate the time each rider waited in line
+                totalWaitTime = ((queueSize + rideCapacity) * (loadTime + unloadTime));
+                avgWaitTime += (totalWaitTime / totalRiders);
+        
+                // simulate the ride
+                simulationTime += rideTime;
+        
+                // unload the riders from the ride
+                simulationTime += unloadTime;
+        
+                // load new riders onto the ride
+                simulationTime += rideCapacity * loadTime;
+            } else {
+                // the ride is not full or there are no riders waiting
+                simulationTime++;
+            }
+        }
+        
+        // calculate the average rider wait time
+        avgWaitTime = (totalTimeWaited / totalRiders);
+        
+        // display the simulation results in the GUI
+        resultsTextArea.setText(
+           resultsTextArea.getText() + "\nArrival: " + arrivalProb + "\nCapasity: " + 
+           rideCapacity + "\nTotal Wait time: " + totalWaitTime + "\nTotal riders: " + totalRiders + "\nAvg Wait time: " + avgWaitTime + "\n _______________________"
+        );
+        // including the summary of simulation settings and average rider wait time
     }
 
     public static void main(String[] args) {
