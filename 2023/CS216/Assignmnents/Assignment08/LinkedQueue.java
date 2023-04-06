@@ -1,4 +1,4 @@
-// Delta College - CST 283 - Klingler & Gaddis Text                  
+// Delta College - CST 283 - gibbs                  
 // A generic linked queue class.
 
 class LinkedQueue<ItemType>

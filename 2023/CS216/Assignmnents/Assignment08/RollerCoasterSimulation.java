@@ -113,20 +113,20 @@ public class RollerCoasterSimulation extends Application {
 
                // a new rider has arrived            
                if (rand.nextDouble() <= arrivalProb) 
-               {   
-                   wait = simulationTime; 
-                   getOn.enqueue(wait);                       
-                   totalRiders++;
+               {    
+                   getOn.enqueue(simulationTime);                       
+                   totalRiders += rideCapacity;
                    simulationTime += (loadTime + unloadTime + rideTime);
                }else
-                  queueSize = 0;
+                  simulationTime++;
                
                
                if (!getOn.isEmpty())                    // If people waiting to ride
                 {
                     getOff.enqueue(simulationTime);         // Get time from queue
-                    offtime = simulationTime - wait;        // Calculate wait time in queue
-                    totalWaitTime += offtime;               // Sum total wait time 
+                    ontime = getOn.dequeue();
+                    wait = simulationTime - ontime;      // Calculate wait time in queue
+                    totalWaitTime += wait;               // Sum total wait time 
                 }else
                   queueSize = 0;
             }
