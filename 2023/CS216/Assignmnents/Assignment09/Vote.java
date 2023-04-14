@@ -1,14 +1,16 @@
-public class Vote {
+public class Vote extends LinkedList{
 
-    int voterID;
-    boolean theVote;
+     int voterID;
+     boolean theVote;
 
     public Vote(){
         voterID = 0;
+        theVote = false;
     }
 
-    public Vote(boolean theVote){
-        theVote = this.theVote;
+    public Vote(int id,boolean theVote){
+        this.voterID = id;
+        this.theVote = theVote;
     }
 
     public int getID() {
@@ -23,8 +25,8 @@ public class Vote {
         return theVote;
     }
 
-    public void setVote(Boolean theVote) {
-        this.theVote = theVote;
+    public void setVote(boolean b) {
+        this.theVote = b;
     }
 
     @Override
