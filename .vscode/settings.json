@@ -1,5 +1,6 @@
 {
     "editor.fontSize": 18,
     "maven.view": "hierarchical",
-    "javafx.libPath": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\javafx-sdk-19.0.2.1\\lib\""
+    "javafx.libPath": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\javafx-sdk-19.0.2.1\\lib\"",
+    "java.debug.settings.onBuildFailureProceed": true
 }
