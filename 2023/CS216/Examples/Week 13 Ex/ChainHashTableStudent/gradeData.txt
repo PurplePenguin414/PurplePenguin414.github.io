@@ -1,0 +1,13 @@
+10101 Lincoln    3.43
+10256 Washington 2.92
+10134 Bush       2.51
+12345 Kennedy    3.99
+11297 Roosevelt  3.12
+11002 Clinton    3.12
+10297 Fuller     4.00
+10334 Lewis      2.22
+11102 Clark      3.76
+10201 Gates      0.11
+12397 Reagon     2.89
+17756 Obama      2.11
+11189 Carter     3.25
