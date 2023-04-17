@@ -8,11 +8,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.Stack;
 
-import ca.mcgill.cs.stg.solitaire.cards.Card;
-import ca.mcgill.cs.stg.solitaire.cards.CardStack;
-import ca.mcgill.cs.stg.solitaire.cards.Deck;
-import ca.mcgill.cs.stg.solitaire.cards.Rank;
-
 /**
  * Represents seven piles of cards that fan downwards, where cards
  * must be stacked in alternating suit colors, and where cards can 
@@ -20,7 +15,7 @@ import ca.mcgill.cs.stg.solitaire.cards.Rank;
  */
 class Tableau
 {
-	private final Map<TableauPile, CardStack> aPiles = new HashMap<>();
+	private final Map<Pile, DeckStack> aPiles = new HashMap<>();
 	private final Set<Card> aVisible = new HashSet<>();
 	
 	/**
@@ -28,9 +23,9 @@ class Tableau
 	 */
 	Tableau()
 	{
-		for( TableauPile index : TableauPile.values() )
+		for( Pile index : Pile.values() )
 		{
-			aPiles.put(index, new CardStack());
+			aPiles.put(index, new DeckStack());
 		}
 	}
 	
@@ -44,13 +39,13 @@ class Tableau
 	{   
 		assert pDeck != null; 
 		aVisible.clear();
-		for( int i = 0; i < TableauPile.values().length; i++ )
+		for( int i = 0; i < Pile.values().length; i++ )
 		{
-			aPiles.get(TableauPile.values()[i]).clear();
+			aPiles.get(Pile.values()[i]).clear();
 			for( int j = 0; j < i+1; j++ )
 			{
 				Card card = pDeck.draw();
-				aPiles.get(TableauPile.values()[i]).push(card);
+				aPiles.get(Pile.values()[i]).push(card);
 				if( j == i )
 				{
 					aVisible.add(card);
@@ -69,10 +64,10 @@ class Tableau
 	 * @return True if the move is legal
 	 * @pre pCard != null && pPile != null
 	 */
-	boolean canMoveTo(Card pCard, TableauPile pPile )
+	boolean canMoveTo(Card pCard, Pile pPile )
 	{
 		assert pCard != null && pPile != null;
-		CardStack pile = aPiles.get(pPile);
+		DeckStack pile = aPiles.get(pPile);
 		if( pile.isEmpty() )
 		{
 			return pCard.getRank() == Rank.KING;
@@ -104,16 +99,16 @@ class Tableau
 	 * @return A copy of the at pPile.
 	 * @pre pPile != null
 	 */
-	CardStack getPile(TableauPile pPile)
+	DeckStack getPile(Pile pPile)
 	{
 		assert pPile != null;
-		return new CardStack(aPiles.get(pPile));
+		return new DeckStack(aPiles.get(pPile));
 	}
 	
-	private TableauPile getPile(Card pCard)
+	private Pile getPile(Card pCard)
 	{
 		assert contains(pCard);
-		for( TableauPile pile : TableauPile.values() )
+		for( Pile pile : Pile.values() )
 		{
 			if( contains(pCard, pile))
 			{
@@ -164,7 +159,7 @@ class Tableau
 	 * @param pDestination The intended destination of the card.
      * @pre this is a legal move
 	 */
-	void moveWithin(Card pCard, TableauPile pOrigin, TableauPile pDestination )
+	void moveWithin(Card pCard, Pile pOrigin, Pile pDestination )
 	{
 		assert pCard != null && pOrigin != null && pDestination != null;
 		assert contains(pCard, pOrigin);
@@ -191,10 +186,10 @@ class Tableau
 	 * @return A copy of the requested sequence.
 	 * @pre pCard != null && pPile != null
 	 */
-	CardStack getSequence(Card pCard, TableauPile pPile)
+	DeckStack getSequence(Card pCard, Pile pPile)
 	{
 		assert pCard != null && pPile != null;
-		CardStack stack = aPiles.get(pPile);
+		DeckStack stack = aPiles.get(pPile);
 		List<Card> lReturn = new ArrayList<>();
 		boolean aSeen = false;
 		for( Card card : stack )
@@ -208,7 +203,7 @@ class Tableau
 				lReturn.add(card);
 			}
 		}
-		return new CardStack(lReturn);
+		return new DeckStack(lReturn);
 	}
 	
 	/**
@@ -216,7 +211,7 @@ class Tableau
 	 * @param pIndex The index of the requested pile.
 	 * @pre pIndex != null && !isEmpty(pIndex)
 	 */
-	void showTop(TableauPile pIndex)
+	void showTop(Pile pIndex)
 	{
 		assert !aPiles.get(pIndex).isEmpty();
 		aVisible.add(aPiles.get(pIndex).peek());
@@ -227,7 +222,7 @@ class Tableau
 	 * @param pIndex The index of the requested stack.
 	 * @pre pIndex != null && !isEmpty(pIndex)
 	 */
-	void hideTop(TableauPile pIndex)
+	void hideTop(Pile pIndex)
 	{
 		assert !aPiles.get(pIndex).isEmpty();
 		aVisible.remove(aPiles.get(pIndex).peek());
@@ -239,7 +234,7 @@ class Tableau
 	 * @return True if pIndex contains pCard
 	 * @pre pCard != null && pIndex != null
 	 */
-	boolean contains(Card pCard, TableauPile pIndex)
+	boolean contains(Card pCard, Pile pIndex)
 	{
 		assert pCard != null && pIndex != null;
 		for( Card card : aPiles.get(pIndex))
@@ -260,7 +255,7 @@ class Tableau
 	boolean contains(Card pCard)
 	{
 		assert pCard != null;
-		for( TableauPile index : TableauPile.values())
+		for( Pile index : Pile.values())
 		{
 			if( contains(pCard, index))
 			{
@@ -307,7 +302,7 @@ class Tableau
 	 * @param pIndex The index of the pile to pop.
 	 * @pre !isEmpty(pIndex)
 	 */
-	void pop(TableauPile pIndex)
+	void pop(Pile pIndex)
 	{
 		assert !aPiles.get(pIndex).isEmpty();
 		aVisible.remove(aPiles.get(pIndex).pop());
@@ -320,7 +315,7 @@ class Tableau
 	 * @param pIndex The index of the destination stack.
 	 * @pre pCard != null && pIndex != null;
 	 */
-	void push(Card pCard, TableauPile pIndex)
+	void push(Card pCard, Pile pIndex)
 	{
 		assert pCard != null && pIndex != null;
 		aPiles.get(pIndex).push(pCard);
