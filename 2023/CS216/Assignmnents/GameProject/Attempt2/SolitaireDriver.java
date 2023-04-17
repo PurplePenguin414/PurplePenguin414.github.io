@@ -1,19 +1,18 @@
 package Attempt2;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Stack;
 
-import java.util.*;
+import ca.mcgill.cs.stg.solitaire.cards.Card;
+import ca.mcgill.cs.stg.solitaire.cards.CardStack;
+import ca.mcgill.cs.stg.solitaire.cards.Deck;
+import ca.mcgill.cs.stg.solitaire.cards.Rank;
 
-import Attempt2.Card;
-import Attempt2.DeckStack;
-import Attempt2.Deck;
-import Attempt2.Rank;
-
-/**
- * The different piles of the tableau.
- */
-enum TableauPile implements Location
-{ 
-	FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH, SEVENTH 
-}
 /**
  * Represents seven piles of cards that fan downwards, where cards
  * must be stacked in alternating suit colors, and where cards can 
@@ -21,7 +20,7 @@ enum TableauPile implements Location
  */
 class Tableau
 {
-	private final Map<TableauPile, DeckStack> aPiles = new HashMap<>();
+	private final Map<TableauPile, CardStack> aPiles = new HashMap<>();
 	private final Set<Card> aVisible = new HashSet<>();
 	
 	/**
@@ -31,7 +30,7 @@ class Tableau
 	{
 		for( TableauPile index : TableauPile.values() )
 		{
-			aPiles.put(index, new DeckStack());
+			aPiles.put(index, new CardStack());
 		}
 	}
 	
@@ -73,7 +72,7 @@ class Tableau
 	boolean canMoveTo(Card pCard, TableauPile pPile )
 	{
 		assert pCard != null && pPile != null;
-		DeckStack pile = aPiles.get(pPile);
+		CardStack pile = aPiles.get(pPile);
 		if( pile.isEmpty() )
 		{
 			return pCard.getRank() == Rank.KING;
@@ -105,10 +104,10 @@ class Tableau
 	 * @return A copy of the at pPile.
 	 * @pre pPile != null
 	 */
-	DeckStack getPile(TableauPile pPile)
+	CardStack getPile(TableauPile pPile)
 	{
 		assert pPile != null;
-		return new DeckStack(aPiles.get(pPile));
+		return new CardStack(aPiles.get(pPile));
 	}
 	
 	private TableauPile getPile(Card pCard)
@@ -192,10 +191,10 @@ class Tableau
 	 * @return A copy of the requested sequence.
 	 * @pre pCard != null && pPile != null
 	 */
-	DeckStack getSequence(Card pCard, TableauPile pPile)
+	CardStack getSequence(Card pCard, TableauPile pPile)
 	{
 		assert pCard != null && pPile != null;
-		DeckStack stack = aPiles.get(pPile);
+		CardStack stack = aPiles.get(pPile);
 		List<Card> lReturn = new ArrayList<>();
 		boolean aSeen = false;
 		for( Card card : stack )
@@ -209,7 +208,7 @@ class Tableau
 				lReturn.add(card);
 			}
 		}
-		return new DeckStack(lReturn);
+		return new CardStack(lReturn);
 	}
 	
 	/**
