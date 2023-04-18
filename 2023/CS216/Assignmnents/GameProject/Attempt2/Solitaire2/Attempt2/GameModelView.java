@@ -31,7 +31,7 @@ public interface GameModelView
 	 * @param pIndex The position of the stack to return.
 	 * @return A copy of the stack at position pIndex
 	 */
-	DeckStack getTableauPile(TableauPile pIndex);
+	DeckStack getPile(Pile pIndex);
 	
 	/**
 	 * @param pCard A card to test for visibility.

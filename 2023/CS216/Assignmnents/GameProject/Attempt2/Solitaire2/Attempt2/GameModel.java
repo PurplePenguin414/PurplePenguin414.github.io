@@ -14,7 +14,7 @@ import java.util.Stack;
  * where completed suits are accumulated, and the tableau, which consists of
  * seven piles where cards fan down in sequences of alternating suit colors.
  */
-public final class GameModel implements GameModelView
+public final class GameModel implements GameModelView, getPile
 {
 	private static final Move NULL_MOVE = new Move()
 	{

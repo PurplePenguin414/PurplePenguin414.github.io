@@ -72,7 +72,7 @@ public class CardPileView extends StackPane implements GameModelListener
 		getChildren().clear();
 		
 		int offset = 0;
-		CardStack stack = aModel.getTableauPile(aIndex);
+		DeckStack stack = aModel.getPile((Pile)aIndex);
 		if( stack.isEmpty() ) // this essentially acts as a spacer
 		{
 			ImageView image = new ImageView(CardImages.getBack());
