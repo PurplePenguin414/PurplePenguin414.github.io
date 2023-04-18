@@ -42,10 +42,10 @@ public class CardPileView extends StackPane implements GameModelListener
 	private static final int Y_OFFSET = 17;
 	private static final ClipboardContent CLIPBOARD_CONTENT = new ClipboardContent();
 
-	private TableauPile aIndex;
+	private Pile aIndex;
 	private final GameModel aModel;
 	
-	CardPileView(GameModel pModel, TableauPile pIndex)
+	CardPileView(GameModel pModel, Pile pIndex)
 	{
     	aModel = pModel;
 		aIndex = pIndex;
@@ -72,7 +72,7 @@ public class CardPileView extends StackPane implements GameModelListener
 		getChildren().clear();
 		
 		int offset = 0;
-		DeckStack stack = aModel.getPile((Pile)aIndex);
+		DeckStack stack = aModel.getPile(aIndex);
 		if( stack.isEmpty() ) // this essentially acts as a spacer
 		{
 			ImageView image = new ImageView(CardImages.getBack());

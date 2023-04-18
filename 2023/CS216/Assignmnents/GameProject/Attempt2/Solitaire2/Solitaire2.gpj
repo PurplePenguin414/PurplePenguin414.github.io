@@ -12,7 +12,7 @@ s#i0
 s#k0
 s#j0
 s#l0
-!764;g
+!732;g
 %\011Attempt2%sFoundationPile.java
 %\011Attempt2%sPlayingStrategy.java
 %\011Attempt2%sDrag.java
@@ -33,12 +33,11 @@ s#l0
 %\011Attempt2%sDiscardPileView.java
 %\011Attempt2%sGameModel.java
 %\011Attempt2%sSuitStack.java
-%\011Attempt2%sTableauPile.java
 %\011Attempt2%sCardPileView.java
 %\011Attempt2%sDeckStack.java
 %\011Attempt2%sGameModelListener.java
 %\011Attempt2%sLocation.java
-!764;f
+!732;f
 %\011Attempt2%sFoundationPile.java
 %\011Attempt2%sPlayingStrategy.java
 %\011Attempt2%sDrag.java
@@ -59,7 +58,6 @@ s#l0
 %\011Attempt2%sDiscardPileView.java
 %\011Attempt2%sGameModel.java
 %\011Attempt2%sSuitStack.java
-%\011Attempt2%sTableauPile.java
 %\011Attempt2%sCardPileView.java
 %\011Attempt2%sDeckStack.java
 %\011Attempt2%sGameModelListener.java

@@ -59,7 +59,7 @@ public class SolitaireDriver extends Application
         	root.add(new SuitStack(model, index), 3+index.ordinal(), 0);
         }
       
-        for( TableauPile index : TableauPile.values() )
+        for( Pile index : Pile.values() )
         {
         	root.add(new CardPileView(model, index), index.ordinal(), 1);
         }

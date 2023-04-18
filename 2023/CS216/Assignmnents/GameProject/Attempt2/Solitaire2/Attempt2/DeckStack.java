@@ -64,7 +64,7 @@ public class DeckStack implements Iterable<Card>
 	public Card peek()
 	{
 		assert !isEmpty();
-		return aCards.get(aCards.size()-1);
+		return aCards.get((aCards.size())-1);
 	}
 	
 	/**
