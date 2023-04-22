@@ -1,4 +1,7 @@
 package BlackJack;
+
+// Delta College - CST 283 - Gibbs
+
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,7 +30,8 @@ public class Card extends Parent {
         final Image image;
 
         Suit() {
-            this.image = new Image(Card.class.getResourceAsStream("cardIMGS/".concat(name().toLowerCase()).concat(".png")),
+            this.image = new Image(
+                    Card.class.getResourceAsStream("cardIMGS/".concat(name().toLowerCase()).concat(".png")),
                     32, 32, true, true);
         }
     }
@@ -37,6 +41,7 @@ public class Card extends Parent {
         JACK(10), QUEEN(10), KING(10), ACE(11);
 
         final int value;
+
         Rank(int value) {
             this.value = value;
         }
@@ -55,6 +60,7 @@ public class Card extends Parent {
         this.rank = rank;
         this.value = rank.value;
 
+        // Building the cards as images
         Rectangle bg = new Rectangle(CARD_WIDTH, CARD_HEIGHT);
         bg.setArcWidth(20);
         bg.setArcHeight(20);

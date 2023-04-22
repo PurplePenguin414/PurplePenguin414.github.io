@@ -1,5 +1,7 @@
 package BlackJack;
 
+// Delta College - CST 283 - Gibbs
+
 import BlackJack.Card.Rank;
 import BlackJack.Card.Suit;
 
@@ -23,23 +25,23 @@ public class Deck {
             }
         }
     }
-    
+
     public final void refill(int d) {
         int i = 0;
-        while(d!=1){
-           for (Suit suit : Suit.values()) {
-               for (Rank rank : Rank.values()) {
-                   cards[i++] = new Card(suit, rank);
-               }
-           }
-           d--;
+        while (d != 1) {
+            for (Suit suit : Suit.values()) {
+                for (Rank rank : Rank.values()) {
+                    cards[i++] = new Card(suit, rank);
+                }
+            }
+            d--;
         }
     }
 
     public Card drawCard() {
         Card card = null;
         while (card == null) {
-            int index = (int)(Math.random()*cards.length);
+            int index = (int) (Math.random() * cards.length);
             card = cards[index];
             cards[index] = null;
         }

@@ -1,5 +1,7 @@
 package BlackJack;
 
+// Delta College - CST 283 - Gibbs
+
 import javafx.application.Application;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -24,25 +26,29 @@ import BlackJack.Card.Suit;
 
 /**
  * Game's logic and UI
- *
  */
 public class BlackjackApp extends Application {
 
+    // integers for gui counter updates
     public int user = 0;
     public int comp = 0;
     public int numdecks = 1;
 
+    // establishing the text feilds and Decks
     private Deck deck = new Deck();
     private Hand dealer, player;
     private Text message = new Text();
     private Text money = new Text();
     private Text decks = new Text();
 
+    // to determine if we can continue playing
     private SimpleBooleanProperty playable = new SimpleBooleanProperty(false);
 
+    // the two boxes that hold the playing cards
     private HBox dealerCards = new HBox(20);
     private HBox playerCards = new HBox(20);
 
+    // this creates card elements and sets up scene
     private Parent createContent() {
 
         dealer = new Hand(dealerCards.getChildren());
@@ -66,16 +72,16 @@ public class BlackjackApp extends Application {
         rightBG.setArcHeight(50);
         rightBG.setFill(Color.ORANGE);
 
-        // LEFT
+        // LEFT side box
         VBox leftVBox = new VBox(50);
         leftVBox.setAlignment(Pos.TOP_CENTER);
 
-        Text dealerScore = new Text("Dealer: ");
-        Text playerScore = new Text("Player: ");
+        Text dealerScore = new Text("Dealer has  ");
+        Text playerScore = new Text("Player has ");
 
         leftVBox.getChildren().addAll(dealerScore, dealerCards, message, playerCards, playerScore);
 
-        // RIGHT
+        // RIGHT side box
 
         VBox rightVBox = new VBox(20);
         rightVBox.setAlignment(Pos.CENTER);
@@ -86,17 +92,20 @@ public class BlackjackApp extends Application {
         Button btnPlay = new Button("PLAY");
         Button btnHit = new Button("HIT");
         Button btnStand = new Button("STAND");
-        
+
         Button btn1d = new Button("1 Deck");
         Button btn2d = new Button("2 Decks");
         Button btn3d = new Button("3 Decks");
-        
+
+        // Box for the deck buttons
         HBox buttonsDBox = new HBox(15, btn1d, btn2d, btn3d);
         buttonsDBox.setAlignment(Pos.CENTER);
 
+        // box for the hit and stand button
         HBox buttonsHBox = new HBox(15, btnHit, btnStand);
         buttonsHBox.setAlignment(Pos.CENTER);
 
+        // add to scene
         rightVBox.getChildren().addAll(buttonsDBox, decks, btnPlay, money, buttonsHBox);
 
         // ADD BOTH STACKS TO ROOT LAYOUT
@@ -113,6 +122,7 @@ public class BlackjackApp extends Application {
         playerScore.textProperty().bind(new SimpleStringProperty("Player: ").concat(player.valueProperty().asString()));
         dealerScore.textProperty().bind(new SimpleStringProperty("Dealer: ").concat(dealer.valueProperty().asString()));
 
+        // listens for end game
         player.valueProperty().addListener((obs, old, newValue) -> {
             if (newValue.intValue() >= 21) {
                 endGame();
@@ -127,26 +137,30 @@ public class BlackjackApp extends Application {
 
         // INIT BUTTONS
 
+        // deck buttons
         btn1d.setOnAction(event -> {
             numdecks = 1;
         });
-        
+
         btn2d.setOnAction(event -> {
             numdecks = 2;
         });
-        
+
         btn3d.setOnAction(event -> {
             numdecks = 3;
         });
 
+        // new game button
         btnPlay.setOnAction(event -> {
             startNewGame();
         });
 
+        // hit button
         btnHit.setOnAction(event -> {
             player.takeCard(deck.drawCard());
         });
 
+        // stand button
         btnStand.setOnAction(event -> {
             while (dealer.valueProperty().get() < 17) {
                 dealer.takeCard(deck.drawCard());
@@ -162,7 +176,8 @@ public class BlackjackApp extends Application {
         playable.set(true);
         message.setText("");
         decks.setText("Decks being used: " + numdecks);
-        
+
+        // call both incase a number of decks not selected
         deck.refill();
         deck.refill(numdecks);
 
@@ -186,10 +201,11 @@ public class BlackjackApp extends Application {
         if (dealerValue == 21 || playerValue > 21 || dealerValue == playerValue
                 || (dealerValue < 21 && dealerValue > playerValue)) {
             winner = "DEALER";
+            // add to computer score
             comp++;
-        }
-        else if (playerValue == 21 || dealerValue > 21 || playerValue > dealerValue) {
+        } else if (playerValue == 21 || dealerValue > 21 || playerValue > dealerValue) {
             winner = "PLAYER";
+            // add to player score
             user++;
         }
 
