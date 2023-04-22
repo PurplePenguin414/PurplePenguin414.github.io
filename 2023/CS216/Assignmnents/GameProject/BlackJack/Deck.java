@@ -5,8 +5,7 @@ import BlackJack.Card.Suit;
 
 /**
  * Standard 52 card deck
- *
- * @author Almas
+ * added for each deck specified
  */
 public class Deck {
 
@@ -22,6 +21,18 @@ public class Deck {
             for (Rank rank : Rank.values()) {
                 cards[i++] = new Card(suit, rank);
             }
+        }
+    }
+    
+    public final void refill(int d) {
+        int i = 0;
+        while(d!=1){
+           for (Suit suit : Suit.values()) {
+               for (Rank rank : Rank.values()) {
+                   cards[i++] = new Card(suit, rank);
+               }
+           }
+           d--;
         }
     }
 

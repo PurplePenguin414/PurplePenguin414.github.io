@@ -19,7 +19,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
+import BlackJack.Card.Rank;
+import BlackJack.Card.Suit;
 
 /**
  * Game's logic and UI
@@ -27,9 +28,15 @@ import javafx.stage.Stage;
  */
 public class BlackjackApp extends Application {
 
+    public int user = 0;
+    public int comp = 0;
+    public int numdecks = 1;
+
     private Deck deck = new Deck();
     private Hand dealer, player;
     private Text message = new Text();
+    private Text money = new Text();
+    private Text decks = new Text();
 
     private SimpleBooleanProperty playable = new SimpleBooleanProperty(false);
 
@@ -37,6 +44,7 @@ public class BlackjackApp extends Application {
     private HBox playerCards = new HBox(20);
 
     private Parent createContent() {
+
         dealer = new Hand(dealerCards.getChildren());
         player = new Hand(playerCards.getChildren());
 
@@ -71,20 +79,25 @@ public class BlackjackApp extends Application {
 
         VBox rightVBox = new VBox(20);
         rightVBox.setAlignment(Pos.CENTER);
+        money.setText("Score: " + user + " Wins & " + comp + " Losses");
 
-        final TextField bet = new TextField("BET");
-        bet.setDisable(true);
-        bet.setMaxWidth(50);
-        Text money = new Text("MONEY");
+        decks.setText("Decks being used: " + numdecks);
 
         Button btnPlay = new Button("PLAY");
         Button btnHit = new Button("HIT");
         Button btnStand = new Button("STAND");
+        
+        Button btn1d = new Button("1 Deck");
+        Button btn2d = new Button("2 Decks");
+        Button btn3d = new Button("3 Decks");
+        
+        HBox buttonsDBox = new HBox(15, btn1d, btn2d, btn3d);
+        buttonsDBox.setAlignment(Pos.CENTER);
 
         HBox buttonsHBox = new HBox(15, btnHit, btnStand);
         buttonsHBox.setAlignment(Pos.CENTER);
 
-        rightVBox.getChildren().addAll(bet, btnPlay, money, buttonsHBox);
+        rightVBox.getChildren().addAll(buttonsDBox, decks, btnPlay, money, buttonsHBox);
 
         // ADD BOTH STACKS TO ROOT LAYOUT
 
@@ -114,6 +127,18 @@ public class BlackjackApp extends Application {
 
         // INIT BUTTONS
 
+        btn1d.setOnAction(event -> {
+            numdecks = 1;
+        });
+        
+        btn2d.setOnAction(event -> {
+            numdecks = 2;
+        });
+        
+        btn3d.setOnAction(event -> {
+            numdecks = 3;
+        });
+
         btnPlay.setOnAction(event -> {
             startNewGame();
         });
@@ -136,8 +161,10 @@ public class BlackjackApp extends Application {
     private void startNewGame() {
         playable.set(true);
         message.setText("");
-
+        decks.setText("Decks being used: " + numdecks);
+        
         deck.refill();
+        deck.refill(numdecks);
 
         dealer.reset();
         player.reset();
@@ -159,12 +186,15 @@ public class BlackjackApp extends Application {
         if (dealerValue == 21 || playerValue > 21 || dealerValue == playerValue
                 || (dealerValue < 21 && dealerValue > playerValue)) {
             winner = "DEALER";
+            comp++;
         }
         else if (playerValue == 21 || dealerValue > 21 || playerValue > dealerValue) {
             winner = "PLAYER";
+            user++;
         }
 
         message.setText(winner + " WON");
+        money.setText("Score: " + user + " Wins & " + comp + " Losses");
     }
 
     @Override
