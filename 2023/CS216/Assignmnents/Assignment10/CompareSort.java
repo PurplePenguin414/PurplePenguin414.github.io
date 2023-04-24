@@ -16,9 +16,11 @@ public class CompareSort {
         int[] arrayr = null;
         int[] postm = null;
 
-        String fileNamei = "/Assignment10/files/inverse.txt";
-        String fileNamea = "/Assignment10/files/almost.txt";
-        String fileNamer = "/Assignment10/files/random.txt";
+        int temp = 0;
+
+        String fileNamei = "/2023/CS216/Assignmnents/Assignment10/files/inverse.txt";
+        String fileNamea = "/2023/CS216/Assignmnents/Assignment10/files/almost.txt";
+        String fileNamer = "/2023/CS216/Assignmnents/Assignment10/files/random.txt";
 
         try{
             File ifile = new File(fileNamei);
@@ -29,7 +31,8 @@ public class CompareSort {
             Scanner scanneri = new Scanner(ifile);
             int iline = 0;
             while (scanneri.hasNextLine()) {
-                arrayi[iline] = scanneri.nextInt();
+                temp = scanneri.nextInt();
+                arrayi[iline] = temp;
                 iline++;
             }
             
