@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CompareSort",
+            "request": "launch",
+            "mainClass": "CompareSort",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
             "name": "TestList4",
             "request": "launch",
             "mainClass": "TestList4",

@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 // This static class defines a "home" for the following n^2 sorting algorithms:
 // - Bubble sort
 // - Selection sort
@@ -5,7 +8,376 @@
 
 public class CompareSort {
 
+    public static void main(String[] args) 
+    {
+        // Declare array
+        int[] arrayi = null;
+        int[] arraya = null;
+        int[] arrayr = null;
+        int[] postm = null;
 
+        String fileNamei = "/Assignment10/files/inverse.txt";
+        String fileNamea = "/Assignment10/files/almost.txt";
+        String fileNamer = "/Assignment10/files/random.txt";
+
+        try{
+            File ifile = new File(fileNamei);
+            File afile = new File(fileNamea);
+            File rfile = new File(fileNamer);
+
+            //ifile used to populate arrayi
+            Scanner scanneri = new Scanner(ifile);
+            int iline = 0;
+            while (scanneri.hasNextLine()) {
+                arrayi[iline] = scanneri.nextInt();
+                iline++;
+            }
+            
+            //afile used to populate arrayia
+            Scanner scannera = new Scanner(afile);
+            int aline = 0;
+            while (scannera.hasNextLine()) {
+                arraya[aline] = scannera.nextInt();
+                aline++;
+            }
+
+            //rfile used to populate arrayr
+            Scanner scannerr = new Scanner(rfile);
+            int rline = 0;
+            while (scannerr.hasNextLine()) {
+                arrayr[rline] = scannerr.nextInt();
+                rline++;
+            }
+
+            // Close the Scanners
+            scannerr.close();
+            scannera.close();
+            scanneri.close();
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Selection SORT");
+        //SELECTION SORT OF ARRAYI---------------------------------------------------------------------------
+        
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        selectionSort(arrayi);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+        //SELECTION SORT OF ARRAYR---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        selectionSort(arrayr);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        //SELECTION SORT OF ARRAYA---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        selectionSort(arraya);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        System.out.println("BUBBLE SORT");
+        //BUBBLE SORT OF ARRAYI---------------------------------------------------------------------------
+        
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        bubbleSort(arrayi);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+        //BUBBLE SORT OF ARRAYR---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        bubbleSort(arrayr);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        //BUBBLE SORT OF ARRAYA---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        bubbleSort(arraya);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        System.out.println("Insertion SORT");
+        //Insertion SORT OF ARRAYI---------------------------------------------------------------------------
+        
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        insertionSort(arrayi);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        //Insertion SORT OF ARRAYR---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        insertionSort(arrayr);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        //Insertion SORT OF ARRAYA---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        insertionSort(arraya);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+
+        System.out.println("SHORT BUBBLE SORT");
+        
+        //SHORT BUBBLE SORT OF ARRAYI---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        shortBubbleSort(arrayi);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        //SHORT BUBBLE SORT OF ARRAYr---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        shortBubbleSort(arrayr);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+        
+        //SHORT BUBBLE SORT OF ARRAYa---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        shortBubbleSort(arraya);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        System.out.println("HEAP SORT");
+        //HEAP SORT OF ARRAYI---------------------------------------------------------------------------
+        
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        heapSort(arrayi);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        //HEAP SORT OF ARRAYR---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        heapSort(arrayr);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        //HEAP SORT OF ARRAYA---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        heapSort(arraya);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        System.out.println("Quick SORT");
+        //Quick SORT OF ARRAYI---------------------------------------------------------------------------
+        
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        quickSort(arrayi);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayi) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+        //Quick SORT OF ARRAYR---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        quickSort(arrayr);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arrayr) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        //Quick SORT OF ARRAYA---------------------------------------------------------------------------
+        // Display before
+        System.out.println("Original order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+        
+        // Sort the array
+        quickSort(arraya);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : arraya) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");
+
+        System.out.println("Merge SORT");
+        //SELECTION SORT OF ARRAYI---------------------------------------------------------------------------
+        
+        // Merge before
+        System.out.println("Original order: ");
+        for (int element : arrayi){
+            System.out.print(element + " ");}
+        for (int element : arrayr){
+            System.out.print(element + " ");}
+        for (int element : arraya){
+            System.out.print(element + " ");}
+        
+        // Sort the array
+        postm = mergeSort(arrayi, arraya, arrayr);
+
+        // Display after
+        System.out.println("\nSorted order: ");
+        for (int element : postm) 
+            System.out.print(element + " ");
+
+        System.out.println("\n\n");  
+    }
 
     // Bubble sort on an array of integers (ascending)
     public static void bubbleSort(int[] array) 
@@ -111,33 +483,7 @@ public class CompareSort {
     }
 
     // This application demonstrates the bubble sort that allows early completion
-// when a sorted list is detected.
-
-public class ShortBubbleTest
-{
-    public static void main(String[] args) 
-    {
-        System.out.println("SHORT BUBBLE SORT");
-        
-        // Declare array
-        int[] array1 = {5, 1, 3, 9, 6, 4, 2, 8, 7};
-
-        // Display before
-        System.out.println("Original order: ");
-        for (int element : array1) 
-            System.out.print(element + " ");
-
-        // Sort the array
-        shortBubbleSort(array1);
-
-        // Display after
-        System.out.println("\nSorted order: ");
-        for (int element : array1) 
-            System.out.print(element + " ");
-
-        System.out.println("\n\n");
-    }
-
+    // when a sorted list is detected.
     // This method performs the bubble sort (ascending) on an array
     // of integers.  It completes the algorithm when the list is sorted.
     public static void shortBubbleSort(int[] array) 
@@ -165,14 +511,11 @@ public class ShortBubbleTest
          // Continue if a swap occurred that pass
        } while (swap); 
     }
-}
 
 // This static class defines a "home" for the following nlog2n sorting algorithms:
 // - Heap sort
 // - Quick sort
 
-public class SortingNlog2N 
-{
     // ======================================================================
     //    HEAP SORT
     // ======================================================================
@@ -227,7 +570,6 @@ public class SortingNlog2N
             }
         }
     }
-    
     
     // ======================================================================
     //    QUICK SORT
@@ -321,6 +663,65 @@ public class SortingNlog2N
         elements[fromIndex] = elements[toIndex];
         elements[toIndex] = temp;
     }
-}
-
+    // ======================================================================
+    // A merge function for the arrays.
+    public static int[] mergeSort(int[] arr1, int[] arr2, int[] arr3) {
+        int[] mergedArr = new int[arr1.length + arr2.length + arr3.length];
+        int i = 0, j = 0, k = 0, l = 0;
+    
+        while (i < arr1.length && j < arr2.length && k < arr3.length) {
+            if (arr1[i] < arr2[j]) {
+                if (arr1[i] < arr3[k]) {
+                    mergedArr[l++] = arr1[i++];
+                } else {
+                    mergedArr[l++] = arr3[k++];
+                }
+            } else {
+                if (arr2[j] < arr3[k]) {
+                    mergedArr[l++] = arr2[j++];
+                } else {
+                    mergedArr[l++] = arr3[k++];
+                }
+            }
+        }
+    
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] < arr2[j]) {
+                mergedArr[l++] = arr1[i++];
+            } else {
+                mergedArr[l++] = arr2[j++];
+            }
+        }
+    
+        while (j < arr2.length && k < arr3.length) {
+            if (arr2[j] < arr3[k]) {
+                mergedArr[l++] = arr2[j++];
+            } else {
+                mergedArr[l++] = arr3[k++];
+            }
+        }
+    
+        while (i < arr1.length && k < arr3.length) {
+            if (arr1[i] < arr3[k]) {
+                mergedArr[l++] = arr1[i++];
+            } else {
+                mergedArr[l++] = arr3[k++];
+            }
+        }
+    
+        while (i < arr1.length) {
+            mergedArr[l++] = arr1[i++];
+        }
+    
+        while (j < arr2.length) {
+            mergedArr[l++] = arr2[j++];
+        }
+    
+        while (k < arr3.length) {
+            mergedArr[l++] = arr3[k++];
+        }
+    
+        return mergedArr;
+    }
+    
 }
