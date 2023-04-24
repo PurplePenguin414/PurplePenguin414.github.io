@@ -1,26 +1,44 @@
 import java.util.*;
 import java.io.*;
 
-// This static class defines a "home" for the following n^2 sorting algorithms:
-// - Bubble sort
-// - Selection sort
-// - Insertion sort
+// This static class defines a "home" for the many sorting algorithms that we are trying to count 
+// Comparisons and swaps within. The main method handles file reading and all output
 
 public class CompareSort {
 
+    static int Selectioncounts = 0;
+    static int Bubblecounts = 0;
+    static int Insertioncounts = 0;
+    static int SBubblecounts = 0;
+    static int Heapcounts = 0;
+    static int Quickcounts = 0;
+    static int Mergecounts = 0;
+
+    static int Selectionswaps = 0;
+    static int Bubbleswaps = 0;
+    static int Insertionswaps = 0;
+    static int SBubbleswaps = 0;
+    static int Heapswaps = 0;
+    static int Quickswaps = 0;
+    static int Mergeswaps = 0;
+
+    //Main Method
     public static void main(String[] args) 
     {
         // Declare array
-        int[] arrayi = null;
-        int[] arraya = null;
-        int[] arrayr = null;
-        int[] postm = null;
+        int[] arrayi = new int[101];
+        int[] arrayiog = new int[101];
+        int[] arraya = new int[101];
+        int[] arrayaog = new int[101];
+        int[] arrayr = new int[101];
+        int[] arrayrog = new int[101];
+        int[] postm = new int[101];
 
         int temp = 0;
 
-        String fileNamei = "/2023/CS216/Assignmnents/Assignment10/files/inverse.txt";
-        String fileNamea = "/2023/CS216/Assignmnents/Assignment10/files/almost.txt";
-        String fileNamer = "/2023/CS216/Assignmnents/Assignment10/files/random.txt";
+        String fileNamei = "2023/CS216/Assignmnents/Assignment10/files/inverse.txt";
+        String fileNamea = "2023/CS216/Assignmnents/Assignment10/files/almost.txt";
+        String fileNamer = "2023/CS216/Assignmnents/Assignment10/files/random.txt";
 
         try{
             File ifile = new File(fileNamei);
@@ -32,41 +50,51 @@ public class CompareSort {
             int iline = 0;
             while (scanneri.hasNextLine()) {
                 temp = scanneri.nextInt();
-                arrayi[iline] = temp;
+                arrayiog[iline] = temp;
                 iline++;
             }
+            // Close the Scanner
+            scanneri.close();
             
             //afile used to populate arrayia
             Scanner scannera = new Scanner(afile);
             int aline = 0;
             while (scannera.hasNextLine()) {
-                arraya[aline] = scannera.nextInt();
+                temp = scannera.nextInt();
+                arrayaog[aline] = temp;
                 aline++;
             }
+            // Close the Scanner
+            scannera.close();
 
             //rfile used to populate arrayr
             Scanner scannerr = new Scanner(rfile);
             int rline = 0;
             while (scannerr.hasNextLine()) {
-                arrayr[rline] = scannerr.nextInt();
+                temp = scannerr.nextInt();
+                arrayrog[rline] = temp;
                 rline++;
             }
-
-            // Close the Scanners
+            // Close the Scanner
             scannerr.close();
-            scannera.close();
-            scanneri.close();
 
         }catch (Exception e) {
             e.printStackTrace();
         }
 
+        for (int element : arrayiog) 
+            arrayi[element] = arrayiog[element];
+        for (int element : arrayrog) 
+            arrayr[element] = arrayrog[element];
+        for (int element : arrayaog) 
+            arraya[element] = arrayaog[element];
+
         System.out.println("Selection SORT");
         //SELECTION SORT OF ARRAYI---------------------------------------------------------------------------
         
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayi) 
+        System.out.println("Array I\nOriginal order: ");
+        for (int element : arrayiog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -80,8 +108,8 @@ public class CompareSort {
         System.out.println("\n\n");
         //SELECTION SORT OF ARRAYR---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayr) 
+        System.out.println("Array R\nOriginal order: ");
+        for (int element : arrayrog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -96,8 +124,8 @@ public class CompareSort {
 
         //SELECTION SORT OF ARRAYA---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arraya) 
+        System.out.println("Array A\nOriginal order: ");
+        for (int element : arrayaog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -114,8 +142,8 @@ public class CompareSort {
         //BUBBLE SORT OF ARRAYI---------------------------------------------------------------------------
         
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayi) 
+        System.out.println("Array I\nOriginal order: ");
+        for (int element : arrayiog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -129,8 +157,8 @@ public class CompareSort {
         System.out.println("\n\n");
         //BUBBLE SORT OF ARRAYR---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayr) 
+        System.out.println("Array R\nOriginal order: ");
+        for (int element : arrayrog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -145,8 +173,8 @@ public class CompareSort {
 
         //BUBBLE SORT OF ARRAYA---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arraya) 
+        System.out.println("Array A\nOriginal order: ");
+        for (int element : arrayaog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -163,8 +191,8 @@ public class CompareSort {
         //Insertion SORT OF ARRAYI---------------------------------------------------------------------------
         
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayi) 
+        System.out.println("Array I\nOriginal order: ");
+        for (int element : arrayiog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -179,8 +207,8 @@ public class CompareSort {
 
         //Insertion SORT OF ARRAYR---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayr) 
+        System.out.println("Array R\nOriginal order: ");
+        for (int element : arrayrog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -195,8 +223,8 @@ public class CompareSort {
 
         //Insertion SORT OF ARRAYA---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arraya) 
+        System.out.println("Array A\nOriginal order: ");
+        for (int element : arrayaog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -214,8 +242,8 @@ public class CompareSort {
         
         //SHORT BUBBLE SORT OF ARRAYI---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayi) 
+        System.out.println("Array I\nOriginal order: ");
+        for (int element : arrayiog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -230,8 +258,8 @@ public class CompareSort {
 
         //SHORT BUBBLE SORT OF ARRAYr---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayr) 
+        System.out.println("Array R\nOriginal order: ");
+        for (int element : arrayrog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -246,8 +274,8 @@ public class CompareSort {
         
         //SHORT BUBBLE SORT OF ARRAYa---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arraya) 
+        System.out.println("Array A\nOriginal order: ");
+        for (int element : arrayaog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -264,8 +292,8 @@ public class CompareSort {
         //HEAP SORT OF ARRAYI---------------------------------------------------------------------------
         
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayi) 
+        System.out.println("Array I\nOriginal order: ");
+        for (int element : arrayiog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -280,8 +308,8 @@ public class CompareSort {
 
         //HEAP SORT OF ARRAYR---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayr) 
+        System.out.println("Array R\nOriginal order: ");
+        for (int element : arrayrog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -296,8 +324,8 @@ public class CompareSort {
 
         //HEAP SORT OF ARRAYA---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arraya) 
+        System.out.println("Array A\nOriginal order: ");
+        for (int element : arrayaog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -314,8 +342,8 @@ public class CompareSort {
         //Quick SORT OF ARRAYI---------------------------------------------------------------------------
         
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayi) 
+        System.out.println("Array I\nOriginal order: ");
+        for (int element : arrayiog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -329,8 +357,8 @@ public class CompareSort {
         System.out.println("\n\n");
         //Quick SORT OF ARRAYR---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arrayr) 
+        System.out.println("Array R\nOriginal order: ");
+        for (int element : arrayrog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -345,8 +373,8 @@ public class CompareSort {
 
         //Quick SORT OF ARRAYA---------------------------------------------------------------------------
         // Display before
-        System.out.println("Original order: ");
-        for (int element : arraya) 
+        System.out.println("Array A\nOriginal order: ");
+        for (int element : arrayaog) 
             System.out.print(element + " ");
         
         // Sort the array
@@ -364,11 +392,11 @@ public class CompareSort {
         
         // Merge before
         System.out.println("Original order: ");
-        for (int element : arrayi){
+        for (int element : arrayiog){
             System.out.print(element + " ");}
-        for (int element : arrayr){
+        for (int element : arrayrog){
             System.out.print(element + " ");}
-        for (int element : arraya){
+        for (int element : arrayaog){
             System.out.print(element + " ");}
         
         // Sort the array
@@ -379,8 +407,19 @@ public class CompareSort {
         for (int element : postm) 
             System.out.print(element + " ");
 
-        System.out.println("\n\n");  
+        System.out.println("\n\n"); 
+        
+        System.out.println("\nSelection Sort \tCounts | Swaps : "+ Selectioncounts + "\t" + Selectionswaps + 
+        "\nBubble Sort \tCounts | Swaps : "+ Bubblecounts + "\t" + Bubbleswaps + 
+        "\nInsertion Sort \tCounts | Swaps : " + Insertioncounts + "\t" + Insertionswaps + 
+        "\nShort Bubble Sort \tCounts | Swaps : " + SBubblecounts + "\t" + SBubbleswaps + 
+        "\nHeap Sort \tCounts | Swaps : " + Heapcounts + "\t" + Heapswaps + 
+        "\nQuick Sort \tCounts | Swaps : " + Quickcounts + "\t" + Quickswaps + 
+        "\nMerge Sort \tCounts | Swaps : " + Mergecounts + "\t" + Mergeswaps); 
     }
+
+    //** ---------------------- THIS IS THE SORTING METHODS ---------------------------- **/
+
 
     // Bubble sort on an array of integers (ascending)
     public static void bubbleSort(int[] array) 
@@ -403,12 +442,14 @@ public class CompareSort {
             for (index = 0; index <= lastPos - 1; index++) 
             {
                 // Compare an element with its neighbor.
+                Bubblecounts++;
                 if (array[index] > array[index + 1]) 
                 {
+                    Bubbleswaps++;
                     // Swap the two elements.
                     temp = array[index];
                     array[index] = array[index + 1];
-                    array[index + 1] = temp;
+                    array[index + 1] = temp;                 
                 }
             }
         }
@@ -437,6 +478,7 @@ public class CompareSort {
             // value in the scannable area. 
             for (index = startScan + 1; index < array.length; index++) 
             {
+                Selectioncounts++;
                 if (array[index] < minValue) 
                 {
                     minValue = array[index];
@@ -448,6 +490,7 @@ public class CompareSort {
             // with the first element in the scannable area.
             array[minIndex] = array[startScan];
             array[startScan] = minValue;
+            Selectionswaps++;
         }
     }
     
@@ -475,12 +518,14 @@ public class CompareSort {
             // into its proper position within the sorted part.
             while (scan > 0 && array[scan - 1] > unsortedValue) 
             {
+                Insertioncounts++;
                 array[scan] = array[scan - 1];
                 scan--;
             }
 
             // Insert the unsorted value in its proper position
             // within the sorted subset.
+            Insertionswaps++;
             array[scan] = unsortedValue;
         }
     }
@@ -501,12 +546,14 @@ public class CompareSort {
            swap = false;                    // Assume no swap this pass
            for (int count = 0; count < end; count++)
            {
+            SBubblecounts++;
               if (array[count] > array[count + 1])
               {
                  temp = array[count];
                  array[count] = array[count + 1];
                  array[count + 1] = temp;
-                 swap = true;               // Mark that swap occured  
+                 SBubbleswaps++; 
+                 swap = true;            // Mark that swap occured  
               }
            }     
            end--;    // Move stopping point up
@@ -538,6 +585,7 @@ public class CompareSort {
         // Sort the array
         for (index = numValues - 1; index >= 1; index--) 
         {
+            Heapswaps++;
             swap(array, 0, index);
             reheapDown(array, 0, index - 1);
         }
@@ -559,15 +607,18 @@ public class CompareSort {
         
         if (leftChild <= bottom) 
         {
+            Heapcounts++;
             if (leftChild == bottom) 
                 maxChild = leftChild;
-            else if (elements[leftChild] <= elements[rightChild]) 
+            else if (elements[leftChild] <= elements[rightChild]){ 
                 maxChild = rightChild;
-            else 
+                Heapcounts++;
+            }else 
                 maxChild = leftChild;
 
             if (elements[root] < elements[maxChild]) 
             {
+                Heapswaps++;
                 swap(elements, root, maxChild);
                 reheapDown(elements, maxChild, bottom);
             }
@@ -631,6 +682,7 @@ public class CompareSort {
         // Swap the middle element with the first element.
         // This moves the pivot value to the start of 
         // the list.
+        Quickswaps++;
         swap(array, start, mid);
 
         // Save the pivot value for comparisons.
@@ -643,15 +695,18 @@ public class CompareSort {
         // Scan the entire list and move any values that
         // are less than the pivot value to the left
         // sub list.
-        for (int scan = start + 1; scan <= end; scan++) 
+        for (int scan = start + 1; scan <= end; scan++) {
+            Quickcounts++;
             if (array[scan] < pivotValue) 
             {
                 endOfLeftList++;
+                Quickswaps++;
                 swap(array, endOfLeftList, scan);
             }
-
+        }
         // Move the pivot value to end of the
         // left sub list.
+        Quickswaps++;
         swap(array, start, endOfLeftList);
 
         // Return the subscript of the pivot value.
@@ -669,26 +724,36 @@ public class CompareSort {
     // ======================================================================
     // A merge function for the arrays.
     public static int[] mergeSort(int[] arr1, int[] arr2, int[] arr3) {
+        //creates a new array of the maximum size of the merged array. 
         int[] mergedArr = new int[arr1.length + arr2.length + arr3.length];
         int i = 0, j = 0, k = 0, l = 0;
-    
+        
+        //checks if i, j, and k are less than their respective array lengths and compares the values at the corresponding indexs
         while (i < arr1.length && j < arr2.length && k < arr3.length) {
+            Mergecounts++;
             if (arr1[i] < arr2[j]) {
+                Mergecounts++;
                 if (arr1[i] < arr3[k]) {
                     mergedArr[l++] = arr1[i++];
+                    Mergeswaps++;
                 } else {
                     mergedArr[l++] = arr3[k++];
+                    Mergeswaps++;
                 }
             } else {
+                Mergecounts++;
                 if (arr2[j] < arr3[k]) {
                     mergedArr[l++] = arr2[j++];
+                    Mergeswaps++;
                 } else {
                     mergedArr[l++] = arr3[k++];
+                    Mergeswaps++;
                 }
             }
         }
     
         while (i < arr1.length && j < arr2.length) {
+            Mergecounts++;
             if (arr1[i] < arr2[j]) {
                 mergedArr[l++] = arr1[i++];
             } else {
@@ -697,6 +762,7 @@ public class CompareSort {
         }
     
         while (j < arr2.length && k < arr3.length) {
+            Mergecounts++;
             if (arr2[j] < arr3[k]) {
                 mergedArr[l++] = arr2[j++];
             } else {
@@ -705,6 +771,7 @@ public class CompareSort {
         }
     
         while (i < arr1.length && k < arr3.length) {
+            Mergecounts++;
             if (arr1[i] < arr3[k]) {
                 mergedArr[l++] = arr1[i++];
             } else {
