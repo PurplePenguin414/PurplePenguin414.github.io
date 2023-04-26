@@ -36,9 +36,9 @@ public class CompareSort {
 
         int temp = 0;
 
-        String fileNamei = "2023/CS216/Assignmnents/Assignment10/files/inverse.txt";
-        String fileNamea = "2023/CS216/Assignmnents/Assignment10/files/almost.txt";
-        String fileNamer = "2023/CS216/Assignmnents/Assignment10/files/random.txt";
+        String fileNamei = "files/inverse.txt";
+        String fileNamea = "files/almost.txt";
+        String fileNamer = "files/random.txt";
 
         try{
             File ifile = new File(fileNamei);
