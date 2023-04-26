@@ -154,9 +154,9 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     public int compareTo(LotteryCustomer LotteryCustomer2) {
         int returnValue = 0;
 
-        if (Integer.parseInt(this.ID) < Integer.parseInt(LotteryCustomer2.ID)) {
+        if (returnValue > this.ID.compareTo(LotteryCustomer2.ID)) {
             returnValue = -1;
-        } else if (Integer.parseInt(this.ID) > Integer.parseInt(LotteryCustomer2.ID)) {
+        } else if (returnValue > this.ID.compareTo(LotteryCustomer2.ID)) {
             returnValue = 1;
         } else;
 

@@ -308,4 +308,25 @@ public class BinarySearchTree<ItemType extends Comparable<ItemType>>
                 return rightDepth + 1;  
         }  
     }
+
+    private LinkedQueue<ItemType> traversalQueue;
+
+    // ----------------------------------------------------------
+    // Public launcher for IN-ORDER traversal
+    public LinkedQueue traverseInOrder() 
+    {        
+        traversalQueue = new LinkedQueue<ItemType>();     
+        inorder(root);    // Launch recursion
+        return traversalQueue;
+    }
+
+    private void inorder(Node btree) 
+    {
+        if (btree != null) 
+        {
+            inorder(btree.left);
+            traversalQueue.enqueue(btree.value);
+            inorder(btree.right);
+        }
+    }
 }

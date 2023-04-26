@@ -23,32 +23,49 @@ public class LotteryDB {
 
         loadTree();
         System.out.println("\n\nThe Data Is Loaded---------------------------------------------------");
-        System.out.println("If you would like to edit a user type 'E' if you would like to search for a winner type 'W' ");
-        String str = inputScanner.nextLine();  
-        if (str.equalsIgnoreCase("E")){
+
+        // --------------------------------------------------------------------------
+
+        // Traverse tree INORDER and flatten into a linear (queue) format
+        LotteryCustomer acust;
+
+        System.out.println("\nIN-ORDER");
+        LinkedQueue<LotteryCustomer> dataSequence = new LinkedQueue<LotteryCustomer>();
+        dataSequence = theTree.traverseInOrder();
+        while (!dataSequence.isEmpty()) {
+            acust = dataSequence.dequeue();
+            //do something wiht var before you move to next---------------------------------------------------------------------------------------
+        }
+
+        System.out.println(
+                "If you would like to edit a user type 'E' if you would like to search for a winner type 'W' ");
+        String str = inputScanner.nextLine();
+        if (str.equalsIgnoreCase("E")) {
             System.out.println("Enter the ID you would like to edit");
-            String strID = inputScanner.nextLine(); 
+            String strID = inputScanner.nextLine();
             LotteryCustomer searchTarget = new LotteryCustomer();
             searchTarget.setId(strID);
-            if (theTree.contains(searchTarget)){
+            if (theTree.contains(searchTarget)) {
                 LotteryCustomer returnObject = theTree.retrieve(searchTarget);
-                System.out.println("FOUND: Key: " + strID + "\nData: " + returnObject);
-            }else{
-                System.out.println("NOT FOUND: Key: " + strID);  
+                System.out.println("DATA FOUND FOR KEY: " + strID
+                        + "\nData: -----------------------------------------\n" + returnObject);
+            } else {
+                System.out.println("DATA NOT FOUND FOR Key: " + strID);
             }
-        } else if (str.equalsIgnoreCase("W")){
+        } else if (str.equalsIgnoreCase("W")) {
             System.out.println("Enter the Winning ticket number in the format '00-00-00-00-00-00' ");
-            String strWT = inputScanner.nextLine(); 
+            String strWT = inputScanner.nextLine();
             LotteryCustomer searchTarget1 = new LotteryCustomer();
             searchTarget1.setTickets(strWT);
 
-            if (theTree.contains(searchTarget1)){
+            if (theTree.contains(searchTarget1)) {
                 LotteryCustomer returnObject = theTree.retrieve(searchTarget1);
-                System.out.println("DATA FOUND FOR KEY: " + strWT + "\nData: -----------------------------------------\n" + returnObject);
-            }else{
-                System.out.println("DATA NOT FOUND FOR Key: " + strWT);  
+                System.out.println("DATA FOUND FOR KEY: " + strWT
+                        + "\nData: -----------------------------------------\n" + returnObject);
+            } else {
+                System.out.println("DATA NOT FOUND FOR Key: " + strWT);
             }
-        }else{
+        } else {
             System.out.println("Invalid");
         }
     }
@@ -72,10 +89,10 @@ public class LotteryDB {
         inputfile = new File("2023/CS216/Assignmnents/DataProject/DataProject/lotterycustomers.txt");
 
         // Read file and populate linked list with Data objects
-        try (BufferedReader br = new BufferedReader(new FileReader(inputfile))){
+        try (BufferedReader br = new BufferedReader(new FileReader(inputfile))) {
             String line;
             int i = 0;
-            while ((line = br.readLine()) != null ) {
+            while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 LotteryCustomer cust = new LotteryCustomer();
 
@@ -100,12 +117,11 @@ public class LotteryDB {
             br.close(); // Close file
         } catch (IOException e) // If file error, report to console and crash
         {
-            System.out.println("ERROR: File input error" + e );
+            System.out.println("ERROR: File input error" + e);
             System.exit(0);
         }
 
     }
-
 
 
 }
