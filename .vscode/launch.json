@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BinarySearchController",
+            "request": "launch",
+            "mainClass": "BinarySearchController",
+            "projectName": "PurplePenguin414.github.io_e730b0ec"
+        },
+        {
+            "type": "java",
             "name": "CompareSort",
             "request": "launch",
             "mainClass": "CompareSort",
