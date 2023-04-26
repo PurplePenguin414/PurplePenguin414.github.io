@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LotteryDB",
+            "request": "launch",
+            "mainClass": "LotteryDB",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
             "name": "BinarySearchController",
             "request": "launch",
             "mainClass": "BinarySearchController",

@@ -70,22 +70,22 @@ public class BinarySearchTree<ItemType extends Comparable<ItemType>>
      * @param bstree The root of the binary search tree.
      * @return The root of the resulting binary search tree.
      */
-    private Node add(ItemType newData, Node bstree) 
+    private Node add(ItemType cust, Node bstree) 
     {
         if (bstree == null) 
-            return new Node(newData);
+            return new Node(cust);
         
         // bstree is not null. 
-        if (newData.compareTo(bstree.value) < 0)
+        if (cust.compareTo(bstree.value) < 0)
         {
             // Add newData to the left subtree and replace 
             // the current left subtree with the result.
-            bstree.left = add(newData, bstree.left);
+            bstree.left = add(cust, bstree.left);
         } 
         else 
         {
             // Add newData to the right subtree.
-            bstree.right = add(newData, bstree.right);
+            bstree.right = add(cust, bstree.right);
         }
         return bstree;
     }

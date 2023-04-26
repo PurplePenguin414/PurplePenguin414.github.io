@@ -4,9 +4,10 @@
     "javafx.libPath": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\javafx-sdk-19.0.2.1\\lib\"",
     "java.debug.settings.onBuildFailureProceed": true,
     "java.project.sourcePaths": [
+        "2023/CS216/Other/Final Exam",
         "2023/CS216/Assignmnents/GameProject",
         "2023/CS216/Assignmnents/Assignment10",
         "2023/CS216/Assignmnents/Assignment09",
-        "2023/CS216/Other/Final Exam"
+        "2023/CS216/Assignmnents/DataProject/DataProject"
     ]
 }
