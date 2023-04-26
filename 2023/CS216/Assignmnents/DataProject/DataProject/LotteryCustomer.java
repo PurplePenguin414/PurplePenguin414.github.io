@@ -21,21 +21,22 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     // Constructors
 
     public LotteryCustomer() {
-        String ID = null;
-        String Fname = null;
-        String Lname = null;
-        String Addy = null;
-        String City = null;
-        String State = null;
-        String Zip = null;
-        String Phone = null;
-        String Email = null;
-        String Tickets = null;
+        String ID = "00-00-00-00-00-00";
+        String Fname = "none";
+        String Lname = "none";
+        String Addy = "none";
+        String City = "none";
+        String State = "none";
+        String Zip = "none";
+        String Phone = "none";
+        String Email = "none";
+        String Tickets = "none";
     }
 
-    public LotteryCustomer(String id, String fname, String lname, String addy, String city, String state, String zip, String phone, String email, String tickets) // No-arg: Set to sentinel values
+    public LotteryCustomer(String id, String fname, String lname, String addy, String city, String state, String zip,
+            String phone, String email, String tickets) // No-arg: Set to sentinel values
     {
-        String ID =  id;
+        String ID = id;
         String Fname = fname;
         String Lname = lname;
         String Addy = addy;
@@ -51,7 +52,7 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
 
     // "Get" and "Set" methods
     public void setId(String id) {
-        ID  = id;
+        ID = id;
     }
 
     public String getId() {
@@ -59,7 +60,7 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     }
 
     public void setFname(String fname) {
-        Fname  = fname;
+        Fname = fname;
     }
 
     public String getFname() {
@@ -67,7 +68,7 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     }
 
     public void setLname(String lname) {
-        Lname  = lname;
+        Lname = lname;
     }
 
     public String getLname() {
@@ -75,7 +76,7 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     }
 
     public void setAddy(String addy) {
-        Addy  = addy;
+        Addy = addy;
     }
 
     public String getAddy() {
@@ -83,7 +84,7 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     }
 
     public void setCity(String city) {
-        City  = city;
+        City = city;
     }
 
     public String getCity() {
@@ -91,7 +92,7 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     }
 
     public void setState(String state) {
-        State  = state;
+        State = state;
     }
 
     public String getState() {
@@ -99,7 +100,7 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     }
 
     public void setZip(String zip) {
-        Zip  = zip;
+        Zip = zip;
     }
 
     public String getZip() {
@@ -107,7 +108,7 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     }
 
     public void setPhone(String phone) {
-        Phone  = phone;
+        Phone = phone;
     }
 
     public String getPhone() {
@@ -115,7 +116,7 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     }
 
     public void setEmail(String email) {
-        Email  = email;
+        Email = email;
     }
 
     public String getEmail() {
@@ -123,7 +124,7 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     }
 
     public void setTickets(String tickets) {
-        Tickets  = tickets;
+        Tickets = tickets;
     }
 
     public String getTickets() {
@@ -133,16 +134,16 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     // --------------------------------------------------------------
 
     public String toString() {
-        return "ID: " + ID + 
-        "\nFirst Name: " + Fname + 
-        "\tLast Name: " + Lname + 
-        "\nAddress: " + Addy + 
-        "\tCity: " + City + 
-        "\tState: " + State + 
-        "\tZip Code: " + Zip + 
-        "\nPhone Number: " + Phone + 
-        "\nEmail: " + Email + 
-        "\nTickets: " + Tickets;
+        return "ID: " + ID +
+                "\nFirst Name: " + Fname +
+                "\tLast Name: " + Lname +
+                "\nAddress: " + Addy +
+                "\tCity: " + City +
+                "\tState: " + State +
+                "\tZip Code: " + Zip +
+                "\nPhone Number: " + Phone +
+                "\nEmail: " + Email +
+                "\nTickets: " + Tickets;
     }
 
     // Compares components of two fractions for ordinality.
@@ -150,15 +151,15 @@ public class LotteryCustomer implements Comparable<LotteryCustomer> {
     // the first is greater than the second, zero if the two
     // are equal, and -1 if the first is less than the
     // second.
-    public int compareTo(LotteryCustomer LotteryCustomer2)
-    {
+    public int compareTo(LotteryCustomer LotteryCustomer2) {
         int returnValue = 0;
-       
-        if (Integer.parseInt(this.ID) < Integer.parseInt(LotteryCustomer2.ID))
+
+        if (Integer.parseInt(this.ID) < Integer.parseInt(LotteryCustomer2.ID)) {
             returnValue = -1;
-        if (Integer.parseInt(this.ID) > Integer.parseInt(LotteryCustomer2.ID))
-            returnValue = 1;     
-       
-       return returnValue;
-    }  
+        } else if (Integer.parseInt(this.ID) > Integer.parseInt(LotteryCustomer2.ID)) {
+            returnValue = 1;
+        } else;
+
+        return returnValue;
+    }
 }

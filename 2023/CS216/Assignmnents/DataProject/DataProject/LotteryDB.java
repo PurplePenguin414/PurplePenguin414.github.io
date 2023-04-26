@@ -15,12 +15,42 @@ public class LotteryDB {
 
     public static void main(String[] args) {
 
+        Scanner inputScanner = new Scanner(System.in);
+
         // Instantiate search tree and load from file
         theTree = new BinarySearchTree<LotteryCustomer>();
         String temp = "";
 
         loadTree();
         System.out.println("\n\nThe Data Is Loaded---------------------------------------------------");
+        System.out.println("If you would like to edit a user type 'E' if you would like to search for a winner type 'W' ");
+        String str = inputScanner.nextLine();  
+        if (str.equalsIgnoreCase("E")){
+            System.out.println("Enter the ID you would like to edit");
+            String strID = inputScanner.nextLine(); 
+            LotteryCustomer searchTarget = new LotteryCustomer();
+            searchTarget.setId(strID);
+            if (theTree.contains(searchTarget)){
+                LotteryCustomer returnObject = theTree.retrieve(searchTarget);
+                System.out.println("FOUND: Key: " + strID + "\nData: " + returnObject);
+            }else{
+                System.out.println("NOT FOUND: Key: " + strID);  
+            }
+        } else if (str.equalsIgnoreCase("W")){
+            System.out.println("Enter the Winning ticket number in the format '00-00-00-00-00-00' ");
+            String strWT = inputScanner.nextLine(); 
+            LotteryCustomer searchTarget1 = new LotteryCustomer();
+            searchTarget1.setTickets(strWT);
+
+            if (theTree.contains(searchTarget1)){
+                LotteryCustomer returnObject = theTree.retrieve(searchTarget1);
+                System.out.println("DATA FOUND FOR KEY: " + strWT + "\nData: -----------------------------------------\n" + returnObject);
+            }else{
+                System.out.println("DATA NOT FOUND FOR Key: " + strWT);  
+            }
+        }else{
+            System.out.println("Invalid");
+        }
     }
 
     // Method loads binary search tree from file of data
@@ -62,7 +92,6 @@ public class LotteryDB {
                 cust.Tickets = values[9];
 
                 // Construct object and add to array of objects
-                System.out.println(cust);
                 theTree.add(cust);
 
                 i++; // Advance marker index
@@ -76,5 +105,7 @@ public class LotteryDB {
         }
 
     }
+
+
 
 }
