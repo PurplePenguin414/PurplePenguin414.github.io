@@ -1,0 +1,20 @@
+body {font-family: Courier New, sans-serif; font-size: 100%; color: black}
+
+/* Match the color in the eBook */
+.keyword {color: darkblue;}
+.comment {color: darkred;} /* #008000 to gray */
+/*// .comment {color: darkred; background: #d1e0f0;} // #008000 to gray */
+.literal {color: green}  /* literal color #0000ff */
+.constant {color: teal}  /* constant color #0000ff */
+
+/*
+ output.format("%s\r\n", ".keyword {color: #000080; font-weight: bold}");
+ output.format("%s\r\n", ".comment {color: gray}"); // #008000 to gray
+ output.format("%s\r\n", ".literal {font-weight: bold; color: #3366FF}");  // literal color #0000ff
+
+
+// Match the color in the text
+// output.format("%s\r\n", ".keyword {color: black; font-weight: bold}");
+//      output.format("%s\r\n", ".comment {color: #77797C}");
+//      output.format("%s\r\n", ".literal {color: #007346; font-weight: bold}");
+*/
