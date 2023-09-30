@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Pizza",
+            "request": "launch",
+            "mainClass": "Pizza",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "PizzaOrderSystem",
+            "request": "launch",
+            "mainClass": "PizzaOrderSystem",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
+            "name": "proj1",
+            "request": "launch",
+            "mainClass": "proj1",
+            "projectName": "PurplePenguin414.github.io_fa0ea80d"
+        },
+        {
+            "type": "java",
             "name": "LotteryDB",
             "request": "launch",
             "mainClass": "LotteryDB",
