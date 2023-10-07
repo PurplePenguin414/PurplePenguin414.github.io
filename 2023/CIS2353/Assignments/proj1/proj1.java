@@ -6,84 +6,45 @@ public class proj1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Define crust options
-        String[] crustOptions = {"Plain", "Butter", "Garlic", "GarlicButter" , "Cheese"};
-        int crustChoice;
+        System.out.println("Welcome to the Pizza Order System!");
+        System.out.println("Available crust options: Plain, Butter, Garlic, GarlicButter, Cheese");
+        System.out.println("Available topping options: Cheese, Onions, Green Pepper, Ham, Pineapple, Pepperoni, Ground Beef, Italian Sausage, Anchovies");
+        System.out.println("Available size options: Small, Medium, Large, XLarge, XXLarge, Party");
 
-        // Define toppings options
-        String[] toppingsOptions = { "Cheese", "Onions", "Green Pepper", "Ham" , "Pineapple" , "Pepperoni" , "Ground Beef" , "Italian Sausage" , "Anchovies"};
-        ArrayList<String> selectedToppings = new ArrayList<>();
+        System.out.print("Enter your desired crust: ");
+        String crust = scanner.nextLine();
 
-        // Define size options
-        String[] sizeOptions = {"Small", "Medium", "Large", "XLarge", "XXLarge", "Party"};
-        int sizeChoice;
-        
-        // Welcome message
-        System.out.println("Welcome to the Pizza Ordering System!");
+        System.out.print("Enter your desired toppings (comma-separated): ");
+        String toppings = scanner.nextLine();
 
-        // Select crust
-        System.out.println("Choose your crust:");
-        for (int i = 0; i < crustOptions.length; i++) {
-            System.out.println((i + 1) + ". " + crustOptions[i]);
-        }
-        crustChoice = scanner.nextInt();
-        String selectedCrust = crustOptions[crustChoice - 1];
+        System.out.print("Enter your desired size: ");
+        String size = scanner.nextLine();
 
-        // Select toppings
-        System.out.println("Choose your toppings (enter 0 when done):");
-        for (int i = 0; i < toppingsOptions.length; i++) {
-            System.out.println((i + 1) + ". " + toppingsOptions[i]);
-        }
-        int toppingChoice;
-        while (true) {
-            toppingChoice = scanner.nextInt();
-            if (toppingChoice == 0) {
-                break;
-            }
-            if (toppingChoice >= 1 && toppingChoice <= toppingsOptions.length) {
-                selectedToppings.add(new Topping(toppingsOptions[toppingChoice - 1]));
-            } else {
-                System.out.println("Invalid topping choice. Please try again.");
-            }
-        }
+        // Create a Pizza object with user inputs
+        Pizza pizza = new Pizza(crust, toppings, size);
 
-        // Select size
-        System.out.println("Choose your pizza size:");
-        for (int i = 0; i < sizeOptions.length; i++) {
-            System.out.println((i + 1) + ". " + sizeOptions[i]);
-        }
-        sizeChoice = scanner.nextInt();
-        String selectedSize = sizeOptions[sizeChoice - 1];
+        // Display the order details
+        System.out.println("Your pizza order:");
+        System.out.println(pizza);
 
-        // Create a pizza object
-        Pizza pizza = new Pizza(selectedCrust, selectedToppings, selectedSize);
-
-        // Calculate and display the order summary
-        System.out.println("\nOrder Summary:");
-        System.out.println("Crust: " + pizza.getCrust());
-        List<Topping> toppingsList = pizza.getToppings();
-        if (!toppingsList.isEmpty()) {
-            System.out.print("Toppings: ");
-            for (Topping topping : toppingsList) {
-                System.out.print(topping.getName() + ", ");
-            }
-            System.out.println();
-        } else {
-            System.out.println("Toppings: None");
-        }
-        System.out.println("Size: " + pizza.getSize());
-
-
-        // Close the scanner
         scanner.close();
     }
 }
+
+
+
 class Pizza {
     private String crust;
-    private List<Topping> toppings;
+    private String toppings;
     private String size;
 
-    public Pizza(String crust, List<Topping> toppings, String size) {
+    public Pizza() {
+        this.crust = "Plain";
+        this.toppings = "empty";
+        this.size = "Small";
+    }
+
+    public Pizza(String crust, String toppings, String size) {
         this.crust = crust;
         this.toppings = toppings;
         this.size = size;
@@ -93,7 +54,7 @@ class Pizza {
         return crust;
     }
 
-    public List<Topping> getToppings() {
+    public String getToppings() {
         return toppings;
     }
 
@@ -101,27 +62,24 @@ class Pizza {
         return size;
     }
 
-    // Return object contents to string object
-    public String toString()
-   {
-      String outString  = "This pizza has a" + Crust + "crust and the following toppings:" + "\n" +
-                          "Toppings: " + selectedToppings.toString() + "\n";
-      return outString;
-   }
-    
-    }
-    
-
-class Topping {
-    private String name;
-
-    public Topping(String name) {
-        this.name = name;
+    public void setCrust(String crust) {
+        this.crust = crust;
     }
 
-    public String getName() {
-        return name;
+    public void setToppings(String toppings) {
+        this.toppings = toppings;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public void addToppings(String top) {
+        this.toppings += " ," + top;
+    }
+
+    @Override
+    public String toString() {
+        return "Pizza [crust=" + crust + ", toppings=" + toppings + ", size=" + size + "]";
     }
 }
-
-
