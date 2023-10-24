@@ -1,25 +1,16 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-class Topping {
-    private String name;
-
-    public Topping(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
-
-class Pizza {
+import java.util.*;
+public class Pizza implements Comparable<Pizza>{
     private String crust;
-    private List<Topping> toppings;
+    private String toppings;
     private String size;
 
-    public Pizza(String crust, List<Topping> toppings, String size) {
+    public Pizza() {
+        this.crust = "Plain";
+        this.toppings = "empty";
+        this.size = "Small";
+    }
+
+    public Pizza(String crust, String toppings, String size) {
         this.crust = crust;
         this.toppings = toppings;
         this.size = size;
@@ -29,7 +20,7 @@ class Pizza {
         return crust;
     }
 
-    public List<Topping> getToppings() {
+    public String getToppings() {
         return toppings;
     }
 
@@ -37,113 +28,94 @@ class Pizza {
         return size;
     }
 
-    public double calculateTotalPrice() {
-        // Define prices for crust, toppings, and size
-        double crustPrice = 0.0;
-        double toppingPrice = 1.0; // Price per topping
-        double sizePrice = 0.0;
-
-        switch (crust) {
-            case "Thin Crust":
-                crustPrice = 5.0;
-                break;
-            case "Thick Crust":
-                crustPrice = 6.0;
-                break;
-            case "Stuffed Crust":
-                crustPrice = 7.0;
-                break;
-        }
-
-        switch (size) {
-            case "Small":
-                sizePrice = 8.0;
-                break;
-            case "Medium":
-                sizePrice = 10.0;
-                break;
-            case "Large":
-                sizePrice = 12.0;
-                break;
-        }
-
-        double totalToppingsPrice = toppings.size() * toppingPrice;
-
-        return crustPrice + sizePrice + totalToppingsPrice;
+    public void setCrust(String crust) {
+        this.crust = crust;
     }
-}
 
-public class PizzaOrderSystem {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public void setToppings(String toppings) {
+        this.toppings = toppings;
+    }
 
-        // Define crust options
-        String[] crustOptions = {"Thin Crust", "Thick Crust", "Stuffed Crust"};
+    public void setSize(String size) {
+        this.size = size;
+    }
 
-        // Define toppings options
-        String[] toppingsOptions = {"Pepperoni", "Mushrooms", "Onions", "Sausage", "Bacon"};
-
-        // Define size options
-        String[] sizeOptions = {"Small", "Medium", "Large"};
-
-        // Welcome message
-        System.out.println("Welcome to the Pizza Ordering System!");
-
-        // Select crust
-        System.out.println("Choose your crust:");
-        for (int i = 0; i < crustOptions.length; i++) {
-            System.out.println((i + 1) + ". " + crustOptions[i]);
-        }
-        int crustChoice = scanner.nextInt();
-        String selectedCrust = crustOptions[crustChoice - 1];
-
-        // Select toppings
-        List<Topping> selectedToppings = new ArrayList<>();
-        System.out.println("Choose your toppings (enter 0 when done):");
-        for (int i = 0; i < toppingsOptions.length; i++) {
-            System.out.println((i + 1) + ". " + toppingsOptions[i]);
-        }
-        int toppingChoice;
-        while (true) {
-            toppingChoice = scanner.nextInt();
-            if (toppingChoice == 0) {
-                break;
-            }
-            if (toppingChoice >= 1 && toppingChoice <= toppingsOptions.length) {
-                selectedToppings.add(new Topping(toppingsOptions[toppingChoice - 1]));
-            } else {
-                System.out.println("Invalid topping choice. Please try again.");
-            }
-        }
-
-        // Select size
-        System.out.println("Choose your pizza size:");
-        for (int i = 0; i < sizeOptions.length; i++) {
-            System.out.println((i + 1) + ". " + sizeOptions[i]);
-        }
-        int sizeChoice = scanner.nextInt();
-        String selectedSize = sizeOptions[sizeChoice - 1];
-
-        // Create a pizza object
-        Pizza pizza = new Pizza(selectedCrust, selectedToppings, selectedSize);
-
-        // Calculate and display the order summary
-        System.out.println("\nOrder Summary:");
-        System.out.println("Crust: " + pizza.getCrust());
-        List<Topping> toppingsList = pizza.getToppings();
-        if (!toppingsList.isEmpty()) {
-            System.out.print("Toppings: ");
-            for (Topping topping : toppingsList) {
-                System.out.print(topping.getName() + ", ");
-            }
-            System.out.println();
+    public void addToppings(String top) {
+        if (!toppings.equals("empty")) {
+            this.toppings += "\n " + top;
         } else {
-            System.out.println("Toppings: None");
+            this.toppings = top;
         }
-        System.out.println("Size: " + pizza.getSize());
-        System.out.println("Total Price: $" + pizza.calculateTotalPrice());
+    }
 
-        // Close the scanner
-        scanner.close();
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Pizza otherPizza = (Pizza) obj;
+
+        // Compare the number of toppings
+        int thisToppingsCount = this.toppings.split(", ").length;
+        int otherToppingsCount = otherPizza.toppings.split(", ").length;
+
+        return thisToppingsCount == otherToppingsCount;
+    }
+
+
+
+
+    @Override
+    public int compareTo(Pizza otherPizza) {
+        // Compare the number of toppings first
+        int toppingsComparison = this.toppings.split(", ").length - otherPizza.toppings.split(", ").length;
+        if (toppingsComparison != 0) {
+            return toppingsComparison;
+        }
+
+        // If they have the same number of toppings, compare the crusts
+        int crustComparison = getCrustRank(this.crust) - getCrustRank(otherPizza.crust);
+        if (crustComparison > 1){
+            crustComparison = 1;
+        }
+
+        return crustComparison;
+    }
+
+    // Helper method to assign a rank to crusts
+    private int getCrustRank(String crust) {
+        switch (crust) {
+            case "Cheese":
+                return 5;
+            case "GarlicButter":
+                return 4;
+            case "Garlic":
+                return 3;
+            case "Butter":
+                return 2;
+            case "Plain":
+                return 1;
+            default:
+                return 0; // Return 0 for unknown crusts
+        }
+    }
+
+
+
+
+    @Override
+    public String toString() {
+        String top = "";
+        String[] topping = toppings.split(", ");
+        for (int i = 0; i < topping.length; i++){
+            top += ("\n" + topping[i]);
+        }
+        if (crust == ""){
+            this.crust = "Plain";
+        }else;
+        return "This pizza has a " + crust + " crust and the following toppings:" + " " + top;
     }
 }

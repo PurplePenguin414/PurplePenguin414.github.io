@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class proj1 {
@@ -21,65 +19,20 @@ public class proj1 {
         String size = scanner.nextLine();
 
         // Create a Pizza object with user inputs
-        Pizza pizza = new Pizza(crust, toppings, size);
+        Pizza pizza = new Pizza();
 
-        // Display the order details
+        if (toppings != null)
+            pizza.addToppings(toppings);
+        if (crust != null)
+            pizza.setCrust(crust);
+        if (size != null)
+            pizza.setSize(size);
+
+        // Display the order details using toString method
+        System.out.println("\n\n----------------------");
         System.out.println("Your pizza order:");
-        System.out.println(pizza);
+        System.out.println(pizza.toString());
 
         scanner.close();
-    }
-}
-
-
-
-class Pizza {
-    private String crust;
-    private String toppings;
-    private String size;
-
-    public Pizza() {
-        this.crust = "Plain";
-        this.toppings = "empty";
-        this.size = "Small";
-    }
-
-    public Pizza(String crust, String toppings, String size) {
-        this.crust = crust;
-        this.toppings = toppings;
-        this.size = size;
-    }
-
-    public String getCrust() {
-        return crust;
-    }
-
-    public String getToppings() {
-        return toppings;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setCrust(String crust) {
-        this.crust = crust;
-    }
-
-    public void setToppings(String toppings) {
-        this.toppings = toppings;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public void addToppings(String top) {
-        this.toppings += " ," + top;
-    }
-
-    @Override
-    public String toString() {
-        return "Pizza [crust=" + crust + ", toppings=" + toppings + ", size=" + size + "]";
     }
 }

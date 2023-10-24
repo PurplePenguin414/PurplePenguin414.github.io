@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PizzaDemo",
+            "request": "launch",
+            "mainClass": "PizzaDemo",
+            "projectName": "PurplePenguin414.github.io_e9e49406"
+        },
+        {
+            "type": "java",
+            "name": "proj1",
+            "request": "launch",
+            "mainClass": "proj1",
+            "projectName": "PurplePenguin414.github.io_e9e49406"
+        },
+        {
+            "type": "java",
             "name": "Pizza",
             "request": "launch",
             "mainClass": "Pizza",
