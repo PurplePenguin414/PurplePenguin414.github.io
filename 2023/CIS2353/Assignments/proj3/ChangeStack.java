@@ -138,7 +138,6 @@ public class ChangeStack {
 
                     while (!(user1a.contains(t))) {
                         stack.push(Integer.parseInt(user1a));
-                        System.out.println(user1a); 
                         user1a = scanner.next(); 
                     }
                     temp = -1;
