@@ -130,7 +130,7 @@ public class ChangeStack {
                 //depending on input complete desired actions
                 if (user1.contains("1")){
                     System.out.println("Enter each number one by one that you want to push (enter 00 to end)");
-                    String user1a = scanner.next();
+                    String user1a = scanner.nextLine();
 
                     if (user1a.equalsIgnoreCase("e")){
                         end = 0;
@@ -145,6 +145,7 @@ public class ChangeStack {
                     System.out.println("***POP***");
 
                     System.out.println(stack.pop());
+                    
                     temp = -1;
                 }else if (user1.contains("3")) {
                     System.out.println("***PEEK***");

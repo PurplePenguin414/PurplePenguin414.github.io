@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TSmain",
+            "request": "launch",
+            "mainClass": "proj4.TSmain",
+            "projectName": "PurplePenguin414.github.io_e9e49406"
+        },
+        {
+            "type": "java",
+            "name": "TSmain",
+            "request": "launch",
+            "mainClass": "proj4.TriageSimulator.TSmain",
+            "projectName": "PurplePenguin414.github.io_e9e49406"
+        },
+        {
+            "type": "java",
+            "name": "TSmain",
+            "request": "launch",
+            "mainClass": "TSmain",
+            "projectName": "PurplePenguin414.github.io_e9e49406"
+        },
+        {
+            "type": "java",
+            "name": "TSmain$Main",
+            "request": "launch",
+            "mainClass": "TSmain$Main",
+            "projectName": "PurplePenguin414.github.io_e9e49406"
+        },
+        {
+            "type": "java",
             "name": "ChangeStack",
             "request": "launch",
             "mainClass": "ChangeStack",
